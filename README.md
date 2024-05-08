@@ -1,4 +1,4 @@
-# ADSO 2929061 B
+# ADSO 2929061B
 
 ## Análisis y Desarrollo de software 
 
@@ -12,6 +12,6 @@
 
 | ID | THEME | DESCRIPTION                          |
 |--- |---    |---                                   |
-|01  |Emmet  |Work Flow - Markup & Styling          |
+|01  |JUAN   |Work Flow - Markup & Styling          |
 |02  |Html   |Structure - Hypertext Markup Language |
 |03  |Css    |Look & Fell - Cascading Style Sheets  |
