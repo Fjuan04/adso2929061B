@@ -4,7 +4,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Menu - ADSO2929061B</title>
+    <title>02-sibling</title>
     <link rel="stylesheet" href="../css/styles.css">
  
 
@@ -17,23 +17,23 @@
     </nav>
      <main>
         <header>
-            <h1><strong>01-Child</strong></h1> 
+            <h1><strong>02-sibling</strong></h1> 
             <p>
                 This wildcard allow you to create 
-                child elements (nest)
+                sibling elements (nest)
             </p>
         </header>
         <section>
             <h3>Example</h3>
-            <p>ul>li>a ↹</p>
+            <p>
+                header+section+footer ↹
+                
+            </p>
             <h3>Result</h3>
-            
 <xmp>
-<ul>
-    <li>
-        <a></a>
-    </li>
-</ul>
+<header></header>
+<section></section>
+<footer></footer>
 </xmp>
         </section>
      <main>
