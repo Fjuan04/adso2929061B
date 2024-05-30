@@ -157,6 +157,11 @@ body {
                   
 
         }
+        .neon-text {
+            color: #000000;
+            text-shadow: 
+                0 0 10px #ffffff;
+        }
         section {
             padding: 1rem;
             h3 {
