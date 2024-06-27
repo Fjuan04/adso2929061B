@@ -163,6 +163,7 @@ body {
                 0 0 10px #ffffff;
         }
         section {
+            flex-wrap: wrap;
             margin-inline: auto;
             padding: 1rem;
             
