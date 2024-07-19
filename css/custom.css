@@ -21,7 +21,7 @@ section{
     h2:hover {
         transform: scale(1.1);
         cursor: pointer;
-        background-color: #fff;
+        background-color: #fffffffb;
 
     }
     h2:hover div:first-child {
