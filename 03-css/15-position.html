@@ -8,6 +8,57 @@
     <link rel="stylesheet" href="../css/styles.css">
     <style>
         ul {color: white;}
+    div.parent {
+        border: 2px solid #0009;
+        margin: 2rem auto;
+        padding: 2rem;
+        min-height: 100px;
+        width: 260px;
+        position: relative;
+        background-color: #fff6;
+    }
+    div.child {
+        background-color: #0006;
+        color: #fff9;
+        padding: 0.4rem;
+        text-align: center;
+        width: 80px;
+        height: 60px;
+    }
+    div.relative {
+        position: relative;
+        top: -20px;
+        left: 130px;
+    }
+        
+    div.absolute {
+        position: absolute;
+        top: 1px;
+        left: 2px;
+
+      
+    }
+
+    div.fixed {
+        position: fixed;
+        top: 620px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9;
+        width: 70px;
+
+    }
+    div.sticky {
+        top: 20px;
+        position: sticky;
+        position: -webkit-sticky;
+        
+    }
+    div.parent p {
+        font-size: 0.8rem;
+        text-align: justify;
+    }
+    
     </style>
  
 
@@ -34,19 +85,20 @@
                 
                 <h3>Relative</h3>
                 <div class="parent">
-                    <div class="child relative">BOX</div>
+                    <div class="child relative">BOX <small>relative</small></div>
                 </div>
                 <h3>Absolute</h3>
                 <div class="parent">
-                    <div class="child absolute">BOX</div>
+                    <div class="child absolute">BOX <small>absolute</small></div>
                 </div>
                 <h3>Fixed</h3>
                 <div class="parent">
-                    <div class="child fixed">BOX</div>
+                    <div class="child fixed">BOX <small>fixed</small>
+                    </div>
                 </div>
                 <h3>Sticky</h3>
                 <div class="parent">
-                    <div class="child sticky">BOX</div>
+                    <div class="child sticky">BOX <small>sticky</small></div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo temporibus fugiat consequuntur accusantium, sapiente ipsum ad voluptatem sint eum placeat quia tempore, libero quod sequi iure aspernatur veritatis dicta quo reprehenderit praesentium ipsa hic. Vero, soluta. Consectetur labore molestias quidem cum omnis ipsam nihil officia sit esse possimus odio neque enim vitae, at autem nam laborum praesentium incidunt adipisci qui numquam impedit quisquam dignissimos. Tenetur dolorem vitae atque perferendis nisi! Consequuntur eum beatae provident quibusdam asperiores odit illum iste ad quasi, aliquam nobis eaque ut dolores commodi rem vitae? Laboriosam voluptate corrupti at quas nisi rem eius eum. Libero incidunt sunt mollitia. Ut eum inventore tenetur voluptatibus, sint corrupti commodi quos amet explicabo asperiores culpa ad obcaecati recusandae tempora minus, in accusantium soluta nobis maiores sed porro saepe totam eius id. Nostrum repellat facere sunt consequuntur quos iure necessitatibus. Nostrum voluptatibus ullam veritatis cumque ab voluptas, nisi distinctio sunt sed numquam obcaecati alias cum totam, consectetur magni odit repellendus inventore dicta similique quis non quae unde nulla voluptatum? Temporibus nesciunt repellendus fugit doloribus! Dolores cupiditate dignissimos animi a odio possimus quia sunt corrupti perferendis non maiores, voluptatem, veritatis voluptate repellat illo, iusto quam atque voluptates! Nemo consequuntur veritatis reiciendis provident.
                 </div
         </section>
     </main>
