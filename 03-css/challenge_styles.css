@@ -96,7 +96,16 @@ div.middle {
     justify-content: center;
     align-items: center;
     
-    
+}
+
+div.middle div.row1 p:hover {
+    color: #17a053;
+}
+div.middle div.row2 p:hover {
+    color: #17a053;
+}
+div.middle div.row3 p:hover {
+    color: #17a053;
 }
 
 div.middle div.row1 {
@@ -264,7 +273,7 @@ footer article div.menu div.rowa button{
     width: 130px;
     height: 50px;
     background-color: #fff;
-    border: none;
+    border: 1px solid white;
     cursor: pointer;
     margin: -1rem 0.5rem;
     
