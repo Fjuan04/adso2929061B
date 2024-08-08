@@ -1,0 +1,275 @@
+body {
+    background-color: #17a053;
+    
+}
+
+
+div.box {
+    
+    background: url(/css/images/spriteweb.png) no-repeat;
+    background-size: 420%;
+    background-position: 1.8% 90%;
+    overflow: hidden;
+    width: 250px;
+    height: 150px;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+div.menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem auto;
+            
+            
+}
+div.rowi {
+    display: flex;
+    
+}
+
+div.menu div.rowi button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    text-transform: uppercase;
+    margin: 1rem 1rem;
+    width: 130px;
+    height: 50px;
+    background-color: #0007;
+    border: none;
+    border-bottom: 4px solid white;
+    cursor: pointer;
+    
+    
+    }
+
+div.menu div.rowi button:hover {
+    background-color: #0009;
+    border-bottom: 4px solid yellow;
+}
+
+main header section{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    margin-bottom: 1.5rem;
+    
+    
+}
+main header section div.row {
+    display: flex;
+    background-color: #0007;
+    
+}
+
+div.row div.box {
+    background: url(/css/images/spriteweb.png) no-repeat;
+    background-size: 300%;
+    background-position: 92% 2% ;
+    height: 147px;
+    width: 208px;
+    border: 2px solid #fff8;
+    margin: 1.5rem 1.5rem ;
+
+}
+
+div.row  div.title {
+    display: flex;
+    background-color: #fff7;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    }
+section div.row div.box:hover div.title {
+    background-color: rgba(255, 255, 255, 0.733);
+}
+
+div.middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+div.middle div.row1 {
+    display: flex;
+    background-color: #0007;
+    min-width: 783px;
+    max-width: 783px;
+    text-align: center;
+}
+
+
+
+
+div.middle div.row1 p {
+    
+    background-color: #fff;
+    
+    text-align: justify;
+    line-height: 1.5;
+    min-width: 451px;
+    height: 160px;
+    
+    
+}
+div.middle div.row1 div.img {
+    background: url(/css/images/spriteweb.png);
+    background-position: 41% 100%;
+    background-size: 765%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+div.middle div.row1 div.im {
+    background: url(/css/images/spriteweb.png);
+    background-size: 450%;
+    background-position: 8% 49%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+
+
+div.middle div.row2 {
+    display: flex;
+    background-color: #0007;
+    min-width: 783px;
+    max-width: 783px;
+    text-align: center;
+}
+
+
+
+
+div.middle div.row2 p {
+    
+    background-color: #fff;
+    text-align: justify;
+    line-height: 1.5;
+    min-width: 451px;
+    height: 160px;
+    margin-top: -0.0rem;
+   
+    
+}
+div.middle div.row2 div.img {
+    background: url(/css/images/spriteweb.png);
+    background-position: 41% 100%;
+    background-size: 765%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-left: 1rem;
+    
+}
+div.middle div.row2 div.im {
+    background: url(/css/images/spriteweb.png);
+    background-size: 450%;
+    background-position: 8% 49%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-right: 1rem;
+    
+}
+
+div.middle div.row3 {
+    display: flex;
+    background-color: #0007;
+    min-width: 783px;
+    max-width: 783px;
+    text-align: center;
+}
+
+div.middle div.row3 p {
+    
+    background-color: #fff;
+    text-align: justify;
+    line-height: 1.5;
+    min-width: 451px;
+    height: 160px;
+    margin-top: -0.0rem;
+   
+    
+}
+div.middle div.row3 div.img {
+    background: url(/css/images/spriteweb.png);
+    background-position: 41% 100%;
+    background-size: 765%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-left: 1rem;
+    
+}
+div.middle div.row3 div.im {
+    background: url(/css/images/spriteweb.png);
+    background-size: 450%;
+    background-position: 8% 49%;
+    min-width: 150px;
+    max-height: 160px;
+    margin-right: 1rem;
+    
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+footer article {
+    
+    display: flex;
+    min-width: 783px;
+    flex-direction: column;
+    height: fit-content;
+    background-color: #fff;
+    margin-bottom: 5rem;
+    
+}
+div.box2 {
+    background: url(/css/images/spriteweb.png) no-repeat;
+    background-size: 290%;
+    background-position: 94% 100%;
+    overflow: hidden;
+    width: 250px;
+    height: 155px;
+    margin: 0rem auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -1.5rem;
+}
+
+footer article div.menu {
+    margin-bottom: 1.2rem;
+}
+
+footer article div.menu div.rowa button{
+    
+    justify-content: center;
+    align-items: center;
+    color:#000000;
+    text-transform: uppercase;
+    margin-top: -1rem;
+    width: 130px;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: -1rem 0.5rem;
+    
+}
+
+footer article div.menu div.rowa button:hover {
+    border-bottom: 4px solid #17a053; 
+}
