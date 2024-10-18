@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45-challenge-grid</title>
+    <link rel="stylesheet" href="../css/styles.css">
+ 
+
+</head>
+<body class="css"> 
+    <nav>
+        <a href="../03-css/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <style>
+        .rectangle1 {
+            margin-top: 4rem;
+            height: 600px;
+            width: fit-content;
+            border: 3px solid #000;
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 5px;
+            background-color: black;
+            border-bottom: none;
+        }
+        .rectangle2 {
+            border: 2px solid #000;
+            border-top: 4px solid black;
+            width: fit-content;
+            height: 450px;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            gap: 3.9px;
+            background-color: black;
+        }
+        .c1r1 {
+            background-color: yellow;
+            background: url(https://devsoft.io/wp-content/uploads/2021/05/mejores-lenguajes-de-programacion-2018.jpg);
+            background-position: 24%;
+            background-size: 800%;
+        }
+        .c2r1 {
+            background-color: red;
+            grid-row: 1 / 3;
+            grid-column: 2 / 3;
+            background: url(https://w7.pngwing.com/pngs/336/658/png-transparent-javascript-programmer-logo-programming-language-program-logo-text-logo-c.png) 50% / cover;
+        }
+        .c3r1 {
+            background-color: blue;
+            background: url(https://i.ytimg.com/vi/b0HrcsURDAg/hqdefault.jpg) 50% / 181%;
+        }
+        .c1r2 {
+            background-color: green;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM43W1VGbQ4E11eVoThB0lBx53Lun3rch5Kw&s)
+            no-repeat 50% / 100%;        }
+        .c2r2 {
+            background-color: pink;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnxNxpQPz-sG15TCpjwGX4hzkico1N_vaHcw&s ) 50%;
+        }
+        .c3r2 {
+            background-color: violet;
+            grid-column: 1 / 3;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMTxXV_DEiK40m12h7Fs_iTBuxYRAj_vhuIA&s) 50% / cover;
+        }
+        .c1r3 {
+            background-color: aqua;
+            background: url(https://devsoft.io/wp-content/uploads/2021/05/mejores-lenguajes-de-programacion-2018.jpg);
+        }
+        .leftbig {
+            background-color: purple;
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            background: url(https://tecnologia-informatica.com/wp-content/uploads/2022/09/word-image-19611-5.jpeg) 50%;
+        }
+        .row1c2 {
+            background-color: orange;
+            background: url(data:image/jpeg;base64,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) 50% /cover;
+        }
+        .row1c3 {
+            background-color: olive;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRphLFgv6VZonsbMRYLO8-P1TsmvOmXnIbnDA&s) 50% /cover;
+        }
+        .row3c1 {
+            background-color: fuchsia;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo0SmCcQPSYYmnrF1oOvWNm_05j97L0DJLOw&s) 50% / cover;
+        }
+        .row3c2 {
+            background-color: ghostwhite;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYvRS_zVgNRxt8yV5EUJyQ76E9k4b7I8I8g&s) 50% / cover;
+        }
+        
+        .rightbig {
+            background-color: red;
+            grid-column: 3 / 5;
+            grid-row: 2 / 4;
+            background: url(https://ih1.redbubble.net/image.523774428.2277/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u3.jpg) 50% / cover;
+        }
+
+        .back {
+            background: #000;
+            width: 640px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 20px;
+            position: relative;
+        }
+    </style>
+     <main>
+        <section class="back">
+            <div class="rectangle1">
+                <div class="square c1r1"></div>
+                <div class="square c2r1"></div>
+                <div class="square c3r1"></div>
+                <div class="square c1r2"></div>
+                <div class="square c2r2"></div>
+                <div class="square c3r2"></div>
+                <div class="square c1r3"></div>
+            </div>
+            <div class="rectangle2">
+                <div class="square leftbig "></div>
+                <div class="square row1c2"></div>
+                <div class="square row1c3"></div>
+                <div class="square rightbig"></div>
+                <div class="square row3c1"></div>
+                <div class="square row3c2"></div>
+            </div>
+    </section>
+    </main>
+</body>
+</html>
+            
