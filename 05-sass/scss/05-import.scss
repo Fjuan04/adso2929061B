@@ -1,0 +1,17 @@
+
+@import "filters";
+ 
+section.content {
+    text-align: center;
+    figure {
+        background: #fff url(https://kirby.nintendo.com/assets/img/home/kirby-powerful.png) no-repeat center;
+        background-size: cover;
+        border: 2px solid #d94d9b;
+        border-radius: 110px;
+        display: inline-block;
+        height: 140px;
+        margin: 10px;
+        padding: 0px;
+        width: 140px;
+    }
+}
