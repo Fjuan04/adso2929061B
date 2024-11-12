@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+}
+.navbar .open {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  visibility: hidden;
+}
+.navbar .title {
+  font: 500 1.4rem "Montserrat";
+  margin-left: 20px;
+  text-wrap: nowrap;
+}
+.navbar ul {
+  display: flex;
+  height: 100%;
+}
+.navbar ul li {
+  display: flex;
+  height: 100%;
+  width: 110px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease-in;
+}
+.navbar ul li:hover a {
+  cursor: pointer;
+  background-color: #DC5B9F;
+  color: #ded;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  align-content: center;
+  text-align: center;
+  height: 100%;
+  font: 500 1.1rem "Montserrat";
+  text-transform: capitalize;
+  transition: all 0.4s ease-in;
+}
+.navbar ul li a::first-letter {
+  font: 500 1rem "Montserrat";
+  margin: 5px;
+}
+
+#colmenu {
+  overflow: hidden;
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.4s ease-in;
+}
+#colmenu:target {
+  height: 360px;
+}
+#colmenu ul {
+  margin-top: 60px;
+  padding: 0;
+}
+#colmenu ul li {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+}
+#colmenu ul li a {
+  box-sizing: border-box;
+  padding: 20px;
+  height: 60px;
+  width: 100vw;
+  text-decoration: none;
+  font: 500 1.1rem "Montserrat";
+  color: #000;
+  transition: all 0.4s ease-in;
+}
+#colmenu ul li a::first-letter {
+  margin: 5px;
+}
+#colmenu ul li a:hover {
+  background-color: #DC5B9F;
+  color: #fff;
+}
+
+#close {
+  position: absolute;
+  height: 360px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@media (min-width: 840px) {
+  .col {
+    display: none;
+  }
+}
+@media (max-width: 840px) {
+  li.line, a.line {
+    display: none;
+  }
+  .btn.open {
+    visibility: visible;
+    text-decoration: none;
+    color: #DC5B9F;
+    box-sizing: border-box;
+    font-size: 2rem;
+    right: 15px;
+  }
+  .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+}
