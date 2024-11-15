@@ -1,131 +1,99 @@
+@charset "UTF-8";
 body {
+  font: 500 1.2rem "Montserrat";
   margin: 0;
-  padding: 0;
 }
 
 .navbar {
   display: flex;
+  align-items: center;
+  height: 70px;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #ddd;
-  width: 100%;
-  height: 60px;
   box-sizing: border-box;
-}
-.navbar .open {
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  visibility: hidden;
+  border: 2px solid #ededed;
+  background-color: #fff;
 }
 .navbar .title {
-  font: 500 1.4rem "Montserrat";
-  margin-left: 20px;
-  text-wrap: nowrap;
+  margin-left: 30px;
+  font-weight: bolder;
 }
-.navbar ul {
+.navbar #sections {
   display: flex;
-  height: 100%;
+  height: 70px;
+  overflow: hidden;
+  margin: 0;
+  box-sizing: border-box;
+  transition: height 0.5s ease;
 }
-.navbar ul li {
-  display: flex;
-  height: 100%;
-  width: 110px;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease-in;
-}
-.navbar ul li:hover a {
-  cursor: pointer;
-  background-color: #DC5B9F;
-  color: #ded;
-}
-.navbar ul li a {
-  text-decoration: none;
+.navbar #sections .line {
+  display: inline-block;
   color: #000;
-  width: 100%;
+  width: 120px;
   align-content: center;
   text-align: center;
-  height: 100%;
-  font: 500 1.1rem "Montserrat";
-  text-transform: capitalize;
-  transition: all 0.4s ease-in;
-}
-.navbar ul li a::first-letter {
-  font: 500 1rem "Montserrat";
-  margin: 5px;
-}
-
-#colmenu {
-  overflow: hidden;
-  height: 60px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  transition: all 0.4s ease-in;
-}
-#colmenu:target {
-  height: 360px;
-}
-#colmenu ul {
-  margin-top: 60px;
-  padding: 0;
-}
-#colmenu ul li {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  width: 100vw;
-}
-#colmenu ul li a {
-  box-sizing: border-box;
-  padding: 20px;
-  height: 60px;
-  width: 100vw;
   text-decoration: none;
-  font: 500 1.1rem "Montserrat";
-  color: #000;
-  transition: all 0.4s ease-in;
+  height: 70px;
+  transition: background-color 0.4s ease-in, color 0.4s ease-in;
 }
-#colmenu ul li a::first-letter {
-  margin: 5px;
-}
-#colmenu ul li a:hover {
-  background-color: #DC5B9F;
+.navbar #sections .line:hover {
+  background-color: #9b59b6;
   color: #fff;
 }
 
-#close {
-  position: absolute;
-  height: 360px;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
+#toggle {
+  display: none;
 }
 
-@media (min-width: 840px) {
-  .col {
-    display: none;
-  }
+label[for=toggle] {
+  position: relative;
+  display: none;
+  font-size: 2.4rem;
+  color: #9b59b6;
+  font-weight: bolder;
 }
-@media (max-width: 840px) {
-  li.line, a.line {
-    display: none;
-  }
-  .btn.open {
-    visibility: visible;
-    text-decoration: none;
-    color: #DC5B9F;
-    box-sizing: border-box;
+label[for=toggle]:hover {
+  cursor: pointer;
+}
+label[for=toggle]::after {
+  content: "≡";
+}
+
+@media (max-width: 940px) {
+  .navbar #toggle:checked ~ .equis::after {
+    content: "X";
     font-size: 2rem;
-    right: 15px;
+    font-weight: 600;
   }
-  .navbar {
-    position: relative;
-    z-index: 1000;
+  .navbar #toggle:checked ~ #sections {
+    height: 420px;
+  }
+  .navbar .title {
+    text-wrap: nowrap;
+  }
+  .navbar label[for=toggle] {
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+  }
+  .navbar #sections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: -1;
+  }
+  .navbar #sections:last-child {
+    border-bottom: 2px solid #ededed;
+  }
+  .navbar #sections .line {
+    padding-left: 35px;
+    box-sizing: border-box;
+    text-align: start;
+    width: 100%;
+  }
+  .navbar #sections .line:first-child {
+    margin-top: 70px;
   }
 }

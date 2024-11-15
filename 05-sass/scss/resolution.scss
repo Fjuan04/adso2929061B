@@ -1,0 +1,41 @@
+@media (max-width:940px) {
+    
+    .navbar {
+        #toggle:checked ~ .equis::after{
+            content: "X";
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        #toggle:checked ~ #sections {
+            height: 420px;
+        }
+        .title {text-wrap: nowrap;}
+        label[for="toggle"]{
+            display: inline-block;
+            position: absolute;
+            right: 30px;
+        }
+        #sections{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            z-index: -1;
+            &:last-child {
+                border-bottom: 2px solid #ededed;
+            }
+            .line {
+                padding-left: 35px;
+                box-sizing: border-box;
+                text-align: start;
+                width: 100%;
+                &:first-child{
+                    margin-top: 70px;
+                }
+                
+            }
+        }
+    }
+    }
