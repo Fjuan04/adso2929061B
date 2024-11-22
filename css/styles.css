@@ -3,6 +3,7 @@
 /* - - - - - - - - - - - - - - - - */ 
 *, *::before, *::after{
     box-sizing: border-box; 
+    font-family: "Quicksand";
 }
 
 *{
@@ -164,7 +165,7 @@ body {
         }
         section {
             padding: 1rem;
-            background-color: #ffffffb1;
+            background-color: #eed;
             border-radius: 4px;
             margin-inline: auto;
             margin-block: 1rem;
@@ -317,4 +318,34 @@ img {
     height: 250px;
     object-position: 1%;
 }
+}
+
+body.bootstrap {
+    
+    background: url(https://coreui.io/images/blog/bootstrap_hu1665405764739445843.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    img {
+        
+        backdrop-filter: blur(10px);
+        border-color: #EDE9;
+    }
+    h3 {
+        color: #Ede;
+    }
+    a{
+        font-weight: light;
+        color: #ede !important;
+        backdrop-filter: blur(5px);
+    }
+    a:hover {
+        background: #700FF4;
+    }
+    span {
+        
+        background: #ede;
+        color: #700FF4;
+    }
+    
 }
