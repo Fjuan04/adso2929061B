@@ -326,6 +326,9 @@ body.bootstrap {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    h1 {
+        color: #eee9
+    }
     img {
         
         backdrop-filter: blur(10px);
