@@ -77,7 +77,7 @@ body {
     align-items: center;
     min-height: 100vh;
     flex-wrap: wrap;
-    nav { 
+    nav:not(.nofloat) { 
         
         position: fixed;
         top: 10px;
