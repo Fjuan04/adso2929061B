@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-  <section style="background-color:   #e5e7e9  ;" class="min-vh-100" >
+  <section id="home" style="background-color:   #e5e7e9  ;" class="min-vh-100" >
     
 
     <nav class="z-3 px-lg-5 px-3 navbar navbar-expand-md">
@@ -49,22 +49,22 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class=" navbar-nav">
           <li class="nav-item">
-            <a href="#" class=" nav-link text-light fs-5 ">
+            <a href="#home" class=" nav-link text-light fs-5 ">
               Home
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link text-light fs-5">
+            <a href="#about" class="nav-link text-light fs-5">
               About
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link text-light fs-5">
+            <a href="#services" class="nav-link text-light fs-5">
               Services
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link text-light fs-5">
+            <a href="#portfolio" class="nav-link text-light fs-5">
               Portfolio
             </a>
           </li>
@@ -84,7 +84,7 @@
       <img style="filter: drop-shadow(30px -38px 30px  #111);" class="img-fluid w-75 h-75"  src="/06-bootstrap/images/main.webp" alt="">
     </div>
   </section>
-  <section class="min-vh-100">
+  <section id="about" class="min-vh-100">
     <div   class="container-fluid min-vh-100 w-100 d-flex">
       <div style="width: 40%;" class=" min-vh-100 d-flex">
         <div  style="border: 20px solid #4b0081; height: 700px;" class="m-auto d-flex align-items-end position-relative">
@@ -117,7 +117,7 @@
 
     </div>
   </section>
-  <section style="background-color: #e5e7e9;" class="min-vh-100 d-flex flex-column align-content-center">
+  <section id="services" style="background-color: #e5e7e9;" class="min-vh-100 d-flex flex-column align-content-center">
     <h3 style="margin-top: 80px; color:#4b0081 ;" class="text-center fs-4">Services</h3>
     <div class="d-flex mt-2">
       <h2 class="m-auto">Service | Provide</h2>
@@ -192,7 +192,7 @@
     
   </div>
   </section>
-  <section class="px-lg-5 px-3 min-vh-100">
+  <section id="portfolio" class="px-lg-5 px-3 min-vh-100">
     <div class="d-flex flex-column ">
       <h3 style=" color:#4b0081 ;" class=" fs-4 mt-5">Portfolio</h3>
       <h2 class="fw-bold">Latest Projects</h2>
@@ -235,16 +235,16 @@
    <nav class="navbar">
     <ul class="navbar-nav flex-row w-25 mx-auto justify-content-evenly">
       <li class="nav-item fw-bolder">
-        <a class="nav-link" href="">Home</a>
+        <a class="nav-link" href="#home">Home</a>
       </li>
       <li class="nav-item fw-bolder">
-        <a class="nav-link" href="">About</a>
+        <a class="nav-link" href="#about">About</a>
       </li>
       <li class="nav-item fw-bolder">
-        <a class="nav-link" href="">Services</a>
+        <a class="nav-link" href="#services">Services</a>
       </li>
       <li class="nav-item fw-bolder">
-        <a class="nav-link" href="">Portfolio</a>
+        <a class="nav-link" href="#portfolio">Portfolio</a>
       </li>
     </ul>
    </nav>   
