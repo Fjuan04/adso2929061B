@@ -6,10 +6,10 @@
     font-family: "Quicksand";
 }
 
-*{
+/* *{
     margin: 0; 
     padding: 0; 
-}
+} */
 
 ul[role='list'], ol[role='list']{
     list-style: none; 
@@ -351,4 +351,31 @@ body.bootstrap {
         color: #700FF4;
     }
     
+}
+body.tailwind {
+    background: url(https://v3.tailwindcss.com/_next/static/media/blog-post-form-dark@90.5b274bea.jpg);
+    background-attachment: fixed;
+    h1 {
+        color: #fff8;
+    }
+    .logo {
+        object-fit: contain;
+        border-color: #fff8;
+    }
+    a{
+        font-weight: light;
+        color: #fff !important;
+        backdrop-filter: blur(5px);
+    }
+    a:hover {
+        background: #1ca4bc;
+    }
+    span {
+        
+        background: #14c9b6;
+        color: #fff;
+    }
+    menu {
+        justify-content: start;
+    }
 }
