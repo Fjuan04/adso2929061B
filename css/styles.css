@@ -377,5 +377,6 @@ body.tailwind {
     }
     menu {
         justify-content: start;
+        height: 400px;
     }
 }
