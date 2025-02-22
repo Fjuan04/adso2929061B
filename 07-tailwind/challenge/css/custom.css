@@ -1,0 +1,22 @@
+body {
+    background: url(../images/8622324_3962997.jpg);
+}
+.navcha {
+    position: fixed;
+        top: 10px;
+        left: 10px;
+        a:is(:link, :visited) {
+            background-color: var(--color-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            opacity: .8;
+            transition: all 0.2s ease-in;
+            width: 35px;
+            svg {
+                width: 24px;
+            }
+        }
+}
