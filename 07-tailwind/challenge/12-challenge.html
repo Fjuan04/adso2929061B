@@ -5,28 +5,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12-challenge</title>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+   
     <link rel="stylesheet" href="css/custom.css">
+    
  
 
 </head>
 <body class="tailwind flex justify-center min-h-screen items-center"> 
-    <nav class="navcha">
+    <nav class="navcha bg-black">
         <a href="../index.html">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
      <main>
         <header>
-            <h1 class="m-auto  text-blue-500"><strong>12-challenge</strong></h1> 
+            <h1 class="text-center text-2xl text-blue-500  "><strong>12-challenge</strong></h1> 
             <p>
                 
             </p>
         </header>
-        <section>
+        <section class="flex rounded relative">
+            <a class="w-auto p-1 m-2 h-[40px] bg-white" href="#wireframe">Wireframe</a>
+            <a class="w-auto p-1 m-2 h-[40px] bg-white absolute top-15 left-0" href="#screen1">Challenge</a>
+            <iframe id="wireframe" style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="100%" src="https://embed.figma.com/design/7FUwcWfIabQKfEG4pXON9O/tracking-player?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+
+
+            <div id="screen1" class=" h-[90%] mt-10 absolute   flex left-[25%] rounded-4xl flex-col w-[50%]">
+                <div class="h-[65%] w-full rounded-t-4xl bg-custom2 flex ]">
+                    <img src="images/be188b13b1219d11e68d0006beb12547.png" class=" rounded-t-4xl " alt="logo">
+                </div>
+                <div class="h-[35%] w-full rounded-b-4xl bg-custom1 flex flex-col py-3 px-5">
+                    <h2 class="text-white font-extrabold text-2xl">Range, Skills and Percentage</h2>
+                    <h2 class="text-white font-bold text-left mt-2">Welcome to the Valorant Tracker 🎯🔥</h2>
+                    <h3 class="mt-1 text-white font-thin text-left text-xs">Track your performance in every match, analyze your stats, and improve your game. From K/D to headshot percentage, find everything you need to rank up.
+                    Let the games begin! 🚀</h3>
+                    <a href="#screen2" class=" w-[60%] h-[50px] bg-custom3 rounded-md text-center text-white mt-6 text-3xl flex items-center justify-center font-bold self-center">Get Started!</a>
+                </div>
+            </div>
             
+            <div id="screen2" class=" h-[90%] absolute   flex left-[25%] rounded-4xl flex-col bg-white mt-10 w-[50%]">
+                <div class="navbar h-15 flex  bg-custom1 ">
+                    <a class="relative h-[100%]" href="#screen1"><svg class="fill-white  absolute top-4 left-3 w-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
+                    <h3 class="text-white self-center  text-center w-100 text-3xl font-thin">Tracker</h3>
+                    
+                </div>
+                <div class="carousel overflow-hidden h-[83.5%] relative z-0">
+                    <div class="owl-carousel ">
+                        <img class="item object-contain" src="images/chamber-valorant.jpg" alt="">
+                        <img class="item" src="images/Tejo-Valorant-agent-1024x576.png" alt="">
+                        <img class="item" src="images/valorant.jpg"  alt="">
+                        
+                    </div>
+                    <div class="search absolute top-0 z-3 h-full w-full flex flex-col justify-center items-center"">
+                        
+                        <form class="flex flex-col w-full h-full justify-center items-center" action="">
+                            <h2 class="text-7xl font-bold w-70 pr-50 pl-1 tracking-wider -indent-[15px] text-custom">Find Players</h2>
+                            <input class="mt-15 bg-white h-12 w-70 text-2xl rounded-4xl outline-none px-4" type="text" placeholder="Name#000" >
+                            <a href="#screen3" class="mt-15 w-[60%] h-[50px] bg-custom3 rounded-md text-center text-white mt-6 text-3xl flex items-center justify-center font-bold self-center">
+                                Look For!
+                            </a>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="footer h-15 rounded-b-4xl bg-custom1 flex justify-center items-center">
+                    <p class="text-custom text-xl font-thin ">Update Pro 12/Month</p>
+                </div>
+            </div>
+            
+            <div id="screen3" class="w-[50%] h-[90%] absolute   flex left-[25%] rounded-4xl flex-col mt-10  bg-custom2">
+                <div class="navbar h-15 flex w-full bg-custom1 justify-around">
+                    <a class="relative h-[100%]" href="#screen1">
+                        <svg class="fill-white  absolute top-4 right-4 w-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+                        
+                    </a>
+                    <h3 class="text-white self-center    text-3xl font-thin">Found</h3>
+                    
+                    <a class="relative h-full bg-white" href="#screen2">
+                        <svg class="fill-white  absolute top-4 left-2 w-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                    </a>
+                    
+                </div>
+                <div class="user h-52 flex items-center p-5 relative">
+                    <div class="rounded-full w-40 h-40 overflow-hidden">
+                        <img src="images/93577589-eb80-4e0f-8bfa-ce09df63c8d3.webp" alt="">
+                    </div>
+                    <p class="text-white text-3xl tracking-wider font-thin ml-5"><span class="font-bold">Name</span>#000</p>
+                   
+                        <svg class="absolute w-[34px] top-2 right-2 fill-custom star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"/></svg>
+                    
+                </div>
+
+
+                <div class="options bg-custom4  h-13 flex justify-evenly items-center">
+                    <div class="h-[80%] w-[25%] bg-custom3 flex ">
+                        <h3 class="floatbtn text-md text-white m-auto">Overview</h3>
+                    </div>
+                    <div class="floatbtn h-[80%] w-[25%] bg-custom3 flex ">
+                        <h3 class="text-md text-white m-auto">Matches</h3>
+                    </div>
+                    <div class="floatbtn h-[80%] w-[25%] bg-custom3 flex ">
+                        <h3 class="text-md text-white m-auto">Performance</h3>
+                    </div>
+                   
+                </div>
+                
+
+                <div class="skills h-85 flex flex-col justify-evenly items-center">
+                    <div class="target h-[25%] w-90 bg-custom4 flex p-2">
+                        <svg class="min-w-[70px] mr-4 fill-[#d9ed92]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M24 32c13.3 0 24 10.7 24 24l0 352c0 13.3 10.7 24 24 24l416 0c13.3 0 24 10.7 24 24s-10.7 24-24 24L72 480c-39.8 0-72-32.2-72-72L0 56C0 42.7 10.7 32 24 32zM128 136c0-13.3 10.7-24 24-24l208 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0c-13.3 0-24-10.7-24-24zm24 72l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 96l272 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-272 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg> <div class="info flex flex-col text-white">
+                            <h3 class="font-bold">Damage/Round</h3>
+                            <p class="text-md">184.4</p>
+                            <p class="text-xs">top 20%</p>
+                        </div>
+                    </div>
+
+                    <div class="target h-[25%] w-90 bg-custom4 flex p-2">
+                        <svg class="min-w-[70px] mr-4 fill-[#9d4edd]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 80l0 112c0 2.5 1.2 4.9 3.2 6.4l51.2 38.4c6.8 5.1 10.4 13.4 9.5 21.9L133.5 352l-48.3 0 9.4-85L54.4 236.8C40.3 226.2 32 209.6 32 192L32 72c0-22.1 17.9-40 40-40l304 0c22.1 0 40 17.9 40 40l0 120c0 17.6-8.3 34.2-22.4 44.8L353.4 267l9.4 85-48.3 0-10.4-93.3c-.9-8.4 2.7-16.8 9.5-21.9l51.2-38.4c2-1.5 3.2-3.9 3.2-6.4l0-112-64 0 0 24c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-24-64 0 0 24c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-24L80 80zm4.7 384l278.7 0-16.6-32-245.6 0L84.7 464zm271.9-80c12 0 22.9 6.7 28.4 17.3l26.5 51.2c3 5.8 4.6 12.2 4.6 18.7c0 22.5-18.2 40.8-40.8 40.8L72.8 512C50.2 512 32 493.8 32 471.2c0-6.5 1.6-12.9 4.6-18.7l26.5-51.2C68.5 390.7 79.5 384 91.5 384l265 0zM208 288c-8.8 0-16-7.2-16-16l0-48c0-17.7 14.3-32 32-32s32 14.3 32 32l0 48c0 8.8-7.2 16-16 16l-32 0z"/></svg>
+                        <div class="info flex flex-col text-white">
+                            <h3 class="font-bold">Ranked</h3>
+                            <p class="text-sm">Diamond <span class="text-xs font-regular"> (77%)</span></p>
+                        </div>
+                    </div>
+
+                    <div class="target h-[25%] w-90 bg-custom4 flex p-2">
+                        <svg class="min-w-[70px] mr-4 fill-[#780000]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9c0 .4 0 .7 0 1.1l0 64c0 26.5 21.5 48 48 48l48 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16l0 48 64 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16l0 48 48 0c26.5 0 48-21.5 48-48l0-64c0-.4 0-.7 0-1.1zM96 256a64 64 0 1 1 128 0A64 64 0 1 1 96 256zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                        <div class="info flex flex-col text-white">
+                            <h3 class="font-bold">K/D Ratio</h3>
+                            <p class="text-md">1.38</p>
+                            <p class="text-xs ">top 11%</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="footer h-15 rounded-b-4xl bg-custom1 flex justify-center items-center">
+                    <p class="text-custom text-xl font-thin ">Update Pro 12/Month</p>
+    
+                </div>
+                
+            </div>
+                
         </section>
     </main>
     <script src="../js/tailwind.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/owl.carousel.min.js""></script>
+   <script>
+   $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    
+    responsive:{
+        
+        600:{
+            items:1
+        },
+        2000:{
+            items:1
+        }
+    },
+    autoplay:true,
+autoplayTimeout:1500,
+autoplayHoverPause:true,
+})
+   </script>
 </body>
 </html>
             
+
