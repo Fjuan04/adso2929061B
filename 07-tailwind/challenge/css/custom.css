@@ -1,5 +1,6 @@
 body {
-    background: url(../images/8622324_3962997.jpg);
+    background: url(https://v3.tailwindcss.com/_next/static/media/blog-post-form-dark@90.5b274bea.jpg);
+    background-attachment: fixed;
 }
 .navcha {
     position: fixed;
@@ -23,7 +24,7 @@ body {
 section {
     width: 800px;
     height: 800px;
-    background-color: red;
+    background-color: #fff9;
 }
 #wireframe {
     display: none;
