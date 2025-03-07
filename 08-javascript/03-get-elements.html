@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-get-elements</title>
+    <link rel="stylesheet" href="../css/styles.css">
+ 
+    <style>
+        .animal {
+            display: flex;
+            height: fit-content;
+            text-align: center;
+            align-items: center;
+            width: fit-content;
+            background-color: #fff9;
+            margin: auto;
+            font-size: 3rem;
+
+        }
+    </style>
+</head>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>03-get-elements</strong></h1> 
+            <p>
+                Access and manipulate HTML elements using JavaScript.
+            </p>
+        </header>
+        <section>
+            <h3>Get Element By ID</h3>
+            <h4 id="year"></h4>
+            <h3>Get Elements by Tag Name</h3>
+            <ul>
+                <li>Apple</li>
+                <li>Pineapple</li>
+                <li>Berry</li>
+            </ul>
+            <h4></h4>
+            <h3>Get Elements By Classname</h3>
+            <p class="paragraph">lorem ipsum dolor</p>
+            <p class="paragraph">lorem ipsum dolor</p>
+            <p class="paragraph">lorem ipsum dolor</p>
+            <h3>Query Selector & Selector All</h3>
+            <figure class="animal first">🐯</figure>
+            <figure class="animal">🐼</figure>
+            <figure class="animal">🦖</figure>
+        </section>
+    </main>
+    <script>
+        //get element by id
+        const year = document.getElementById('year')
+        const fdate = new Date()
+        year.textContent = 'Current Year: ' + fdate.getFullYear()
+
+
+        //get elemente by tagname
+
+        const fruits = document.getElementsByTagName('li')
+        
+        const header4 = document.getElementsByTagName('h4')
+        header4[1].textContent = 'There are: ' + fruits.length + ' fruits'
+        header4[1].innerHTML += '<br> The las fruit is: ' + fruits[fruits.length-1].textContent
+        
+        //get elements by class name
+
+        const paragraphs = document.getElementsByClassName('paragraph')
+
+        paragraphs[1].style.backgroundColor = '#f0f'
+
+        
+        //query selector
+
+        const first = document.querySelector('figure.first')
+
+        first.style.backgroundColor = 'skyblue'
+
+        //query selector all
+
+        const animals = document.querySelectorAll('figure.animal') 
+
+        // animals[0].style.borderRadius = '50%'
+
+        animals.forEach((element) =>
+        element.style.borderRadius = '50%'
+    )
+        
+
+        
+
+    </script>
+</body>
+</html>
+            
