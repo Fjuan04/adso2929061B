@@ -1,0 +1,80 @@
+section {
+    height: 800px ; 
+    width: 500px !important ;
+    display: flex;
+}
+
+figure.vehicle{
+    height: 760px;
+    border: 1px solid;
+    align-self: center;
+    width: 470px;
+    border-radius: 20px;
+
+}
+div.logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50% ;
+    transform: translate(-50%);
+    top: 25px;
+    background: none;
+
+}
+.logo.mercedes {
+    background: url(vehicleImages/mercedes.svg) no-repeat center;
+}
+.logo.audi {
+    background: url(vehicleImages/audi.svg) no-repeat center;
+}
+
+.logo.toyota {
+    background: url(vehicleImages/toyota.svg) no-repeat center;
+}
+.logo.bmw {
+    background: url(vehicleImages/bmw.svg) no-repeat center;
+}
+.logo.porsche {
+    background: url(vehicleImages/porsche.svg) no-repeat center;
+}
+
+.vehicle.dark {
+    .logo.mercedes {
+        background: url(vehicleImages/mercedes-night.svg) no-repeat center;
+    }
+    .logo.audi {
+        background: url(vehicleImages/audi-night.svg) no-repeat center;
+    }
+    
+    .logo.toyota {
+        background: url(vehicleImages/toyota-night.svg) no-repeat center;
+    }
+    .logo.bmw {
+        background: url(vehicleImages/bmw-night.svg) no-repeat center;
+    }
+    .logo.porsche {
+        background: url(vehicleImages/porsche-night.svg) no-repeat center;
+    }
+
+    
+
+    .landscape {
+        .sky {
+            background: url(vehicleImages/Cielo.svg);
+            height: 100%;
+        }
+        .mountains {
+            background: url(vehicleImages/Montañas.svg)  center / cover;            
+        }
+        .trees {
+            background: url(vehicleImages/ARBOLES.svg) center / cover;
+        }
+        .road {
+            background: url(vehicleImages/Piso.svg) center / cover;
+        }
+    }
+}
+
+
+
