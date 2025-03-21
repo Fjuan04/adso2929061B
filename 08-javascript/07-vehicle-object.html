@@ -154,22 +154,34 @@
             position: absolute;
             background-repeat: repeat-x;
         }
-        
+        .car {
+            
+            left: 50%;
+            translate: -50%;
+            bottom: 50px;
+            z-index: 10;
+           
+            position: absolute;
+            width: 40%;
+        }
         .sky {
             background: url(vehicleImages/Cielo-day.svg);
             height: 100%;
         }
         .mountains {
             background: url(vehicleImages/Montañas-day.svg)  center / cover;            
-            animation: parallax 120s linear infinite;
+            animation: parallax 480s linear infinite;
+            zoom: 4;
         }
         .trees {
             background: url(vehicleImages/ARBOLES-day.svg) center / cover;
-            animation: parallax 60s linear infinite;
+            animation: parallax 290s linear infinite;
+            zoom: 4;
         }
         .road {
             background: url(vehicleImages/Piso-day.svg) center / cover;
-            animation: parallax 15s linear infinite;
+            animation: parallax 160s linear infinite;
+            zoom: 4;
         }
     }
         }
@@ -218,7 +230,7 @@
             }
         }
         @keyframes parallax {
-            100% { background-position: calc(-300px*10) }
+            100% { background-position: calc(-300px*25) }
         }
  
         @keyframes showData {
@@ -261,7 +273,9 @@
                 <button class="btn-prev"></button>
                 <div class="logo mercedes"></div>
                 <button class="btn-next"></button>
-                <div class="landscape bg-night">
+                <div class="landscape">
+                    <img class="car" src="" alt="">
+
                     <div class="sky"></div>
                     <div class="mountains"></div>
                     <div class="trees"></div>
@@ -285,11 +299,12 @@
                 { brand: 'Mercedes Benz',
                  refer: 'Cla 200',   
                  model: '2023', 
-                 color: 'Blue' },
-                { brand: 'Audi',       refer: 'Q8',      model: '2020', color: 'Green' },
-                { brand: 'Porsche',     refer: 'Taycan S', model: '2025', color: 'Black' },
-                { brand: 'Toyota',    refer: '4Runner', model: '2024', color: 'Sky Blue' },
-                { brand: 'Bmw',       refer: '128 Ti',     model: '2019', color: 'Orange' }
+                 color: 'Blue',
+                 image: 'vehicleImages/vMercedes.svg' },
+                { brand: 'Audi',       refer: 'Q8',      model: '2020', color: 'Green', image: 'vehicleImages/vAudi.svg' },
+                { brand: 'Porsche',     refer: 'Taycan S', model: '2025', color: 'Black',image: 'vehicleImages/vPorsche.svg' },
+                { brand: 'Toyota',    refer: '4Runner', model: '2024', color: 'Sky Blue', image: 'vehicleImages/vToyota.svg' },
+                { brand: 'Bmw',       refer: '128 Ti',     model: '2019', color: 'Orange', image: 'vehicleImages/vBmw.svg' }
             ]
         }
  
@@ -299,11 +314,14 @@
         const tRefer  = document.querySelector('.title-refer')
         const tModel  = document.querySelector('.title-model')
         const tColor  = document.querySelector('.title-color')
+        const carImg = document.querySelector('.car')
         const logo = document.querySelector('.logo')
         // Buttons
         const btnMode = document.querySelector('.btn-mode')
         const btnPrev = document.querySelector('.btn-prev')
         const btnNext = document.querySelector('.btn-next')
+        const btnPowerOn = document.querySelector('.btn-power-on')
+        const btnPowerOff = document.querySelector('.btn-power-off')
  
         // Variables
         let inx = 0
@@ -381,6 +399,7 @@
                 car.refer = vehicles.attrs[inx].refer
                 car.model = vehicles.attrs[inx].model
                 car.color = vehicles.attrs[inx].color
+                car.image = vehicles.attrs[inx].image
                 Blogo(inx)
                 
                 car.displayData()
@@ -399,6 +418,7 @@
                 car.refer = vehicles.attrs[inx].refer
                 car.model = vehicles.attrs[inx].model
                 car.color = vehicles.attrs[inx].color
+                car.image = vehicles.attrs[inx].image
                 Blogo(inx)
 
                 car.displayData()
@@ -412,16 +432,21 @@
             }
         })
         
- 
+        btnPowerOn.addEventListener('click',()=>{
+            car.powerOn()
+        })
+        btnPowerOff.addEventListener('click',()=>{
+            car.powerOff()
+        })
  
         // Class
         class Vehicle {
-            constructor(brand, refer, model, color) {
+            constructor(brand, refer, model, color, image) {
                 this.brand = brand
                 this.refer = refer
                 this.model = model
                 this.color = color
-               
+                this.image = image
                 this.isOn  = false
             }
  
@@ -434,40 +459,46 @@
                 tModel.classList.add('show-data')
                 tColor.textContent = this.color
                 tColor.classList.add('show-data')
-                
+                carImg.src         = this.image
+                carImg.classList.add('show-data')
+
                 
                 setTimeout(function() {
                     tBrand.classList.remove('show-data')
                     tRefer.classList.remove('show-data')
                     tModel.classList.remove('show-data')
                     tColor.classList.remove('show-data')
-                    
+                    carImg.classList.remove('show-data')
                 }, 1000)
             }
             powerOn() {
                 if (!this.isOn) {
                     this.isOn = true
-                    console.log('Its On')
-                } else {
-                    console.log('Already On')
-                }
+                    startEngine()
+                } 
             }
             powerOff() {
                 if(this.isOn) {
                     this.isOn = false
-                    console.log('Its Off')
+                    startEngine()
                 }
             }
         }
  
-        car = new Vehicle(vehicles.attrs[inx].brand,
-                          vehicles.attrs[inx].refer,
-                          vehicles.attrs[inx].model,
-                          vehicles.attrs[inx].color,
-                          vehicles.attrs[inx].logo    
+        car = new Vehicle(
+        vehicles.attrs[inx].brand,
+        vehicles.attrs[inx].refer,
+        vehicles.attrs[inx].model,
+        vehicles.attrs[inx].color,
+        vehicles.attrs[inx].image,
                         )
         car.displayData()
         //car.powerOn()
+        function startEngine(){
+            if(!car.isOn) return 
+            carImg.style.transform = `translateY(${2 * Math.sin(Date.now() / 15)} px)`
+            requestAnimationFrame(startEngine)
+        }
         //car.powerOn()
         //car.powerOff()
     </script>
