@@ -496,7 +496,7 @@
         //car.powerOn()
         function startEngine(){
             if(!car.isOn) return 
-            carImg.style.transform = `translateY(${2 * Math.sin(Date.now() / 15)} px)`
+            carImg.style.transform = `translateY(${2 * Math.sin(Date.now() / 15)}px)`
             requestAnimationFrame(startEngine)
         }
         //car.powerOn()
