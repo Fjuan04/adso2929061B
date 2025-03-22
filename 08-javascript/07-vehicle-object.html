@@ -112,6 +112,9 @@
                 
                 width: 467px;
                 bottom: 6px;
+                &:hover button:not(:hover) {
+                    opacity: 0.5;
+                }
                 button {
                     border: none;
                     cursor: pointer;
@@ -124,10 +127,10 @@
                     &.btn-power-on {
                         background: url(vehicleImages/power-svgrepo-com\ 1.svg) no-repeat center;
                     }
-                    &.btn-forward {
+                    &.change {
                         background: url(vehicleImages/rewind-forward-circle-svgrepo-com\ 1.svg) no-repeat center;
                     }
-                    &.btn-stop {
+                    &.pause {
                         background: url(vehicleImages/pause-circle-svgrepo-com\ 1.svg) no-repeat center;
                     }
                     &.btn-backward {
@@ -164,25 +167,24 @@
             position: absolute;
             width: 40%;
         }
-        .sky {
-            background: url(vehicleImages/Cielo-day.svg);
+        .bg1 {
+            background: url(vehicleImages/Cielo-day.svg) center / cover;
             height: 100%;
         }
-        .mountains {
+        .bg2 {
             background: url(vehicleImages/Montañas-day.svg)  center / cover;            
-            animation: parallax 480s linear infinite;
+            
             zoom: 4;
         }
-        .trees {
+        .bg3 {
             background: url(vehicleImages/ARBOLES-day.svg) center / cover;
-            animation: parallax 290s linear infinite;
             zoom: 4;
         }
-        .road {
+        .bg4 {
             background: url(vehicleImages/Piso-day.svg) center / cover;
-            animation: parallax 160s linear infinite;
             zoom: 4;
         }
+        
     }
         }
  
@@ -214,10 +216,10 @@
                     &.btn-power-on {
                         background: url(vehicleImages/power-svgrepo-com\ 1-1.svg) no-repeat center;
                     }
-                    &.btn-forward {
+                    &.change {
                         background: url(vehicleImages/rewind-forward-circle-svgrepo-com\ 1-1.svg) no-repeat center;
                     }
-                    &.btn-stop {
+                    &.pause {
                         background: url(vehicleImages/pause-circle-svgrepo-com\ 1-1.svg) no-repeat center;
                     }
                     &.btn-backward {
@@ -229,9 +231,7 @@
                 }
             }
         }
-        @keyframes parallax {
-            100% { background-position: calc(-300px*25) }
-        }
+    
  
         @keyframes showData {
             0% {
@@ -273,21 +273,32 @@
                 <button class="btn-prev"></button>
                 <div class="logo mercedes"></div>
                 <button class="btn-next"></button>
-                <div class="landscape">
+                <main class="landscape">
                     <img class="car" src="" alt="">
+                    <div class="layer01">
+                      <div class="layer bg1"></div>
+                    </div>
+                    <div class="layer02">
+                      <div class="layer bg2"></div>
+                    </div>
+                      <div class="layer03">
+                      <div class="layer bg3"></div>
+                    </div>
+                    <div class="layer04">
+                        <div class="layer bg4"></div>
+                      </div>
+                      
+                  </main>
 
-                    <div class="sky"></div>
-                    <div class="mountains"></div>
-                    <div class="trees"></div>
-                    <div class="road"></div>
-
-                </div>
                 <div class="methods">
                     <button class="btn-power-on"></button>
-                    <button class="btn-forward"></button>
-                    <button class="btn-stop"></button>
+                    <button class="change"></button>
+                    <button class="pause"></button>
                     <button class="btn-backward"></button>
                     <button class="btn-power-off"></button>
+                        
+                        
+                     
                 </div>
             </figure>
         </section>
@@ -322,7 +333,8 @@
         const btnNext = document.querySelector('.btn-next')
         const btnPowerOn = document.querySelector('.btn-power-on')
         const btnPowerOff = document.querySelector('.btn-power-off')
- 
+        
+        const mountains = document.querySelector('.mountains')
         // Variables
         let inx = 0
         btnPrev.style.opacity = '0.2'
@@ -383,7 +395,7 @@
     }
         // Events
 
-    
+        
 
 
         btnMode.addEventListener('click', () => {
@@ -478,12 +490,13 @@
                 } 
             }
             powerOff() {
-                if(this.isOn) {
+                if(this.isOn && isPaused) {
                     this.isOn = false
                     startEngine()
                 }
             }
         }
+        
  
         car = new Vehicle(
         vehicles.attrs[inx].brand,
@@ -499,8 +512,63 @@
             carImg.style.transform = `translateY(${2 * Math.sin(Date.now() / 15)}px)`
             requestAnimationFrame(startEngine)
         }
-        //car.powerOn()
-        //car.powerOff()
+       
+       const btnBackward = document.querySelector('.btn-backward')
+       const btnChange    = document.querySelector('.change')
+const btnPause     = document.querySelector('.pause')
+const layers       = document.querySelectorAll('.layer')
+let isForward      = false
+let isReversed     = false
+let isPaused       = false
+let lastTimestamp  = 0
+const speedFactors = [0.1, 0.05, 0.1,0.5]
+
+
+
+layers.forEach(layer => {
+  layer.dataset.pos = '0'
+})
+
+function animate(timestamp) {
+  if (!isPaused) {
+    const delta   = timestamp - (lastTimestamp || timestamp)
+    lastTimestamp = timestamp
+
+    layers.forEach((layer, index) => {
+      let currentPos = (parseFloat(layer.dataset.pos) || 0) + speedFactors[index] * (isReversed ? -delta : delta)
+      layer.style.backgroundPositionX = `${currentPos}px`
+      layer.dataset.pos = currentPos
+    })
+  }
+  requestAnimationFrame(animate)
+}
+
+btnChange.addEventListener('click', () => {
+  if(car.isOn){
+    if (isPaused) { 
+        isPaused = false
+        isReversed = true
+        lastTimestamp = 0
+
+    
+    }
+}
+})
+
+btnPause.addEventListener('click', () => {
+  isPaused = true
+})
+btnBackward.addEventListener('click', () => {
+    if(isPaused && car.isOn){
+        isPaused = false
+        isReversed = false
+        lastTimestamp = 0
+    }
+})
+requestAnimationFrame(animate)
+
+
+
     </script>
 </body>
 </html>
