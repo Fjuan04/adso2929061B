@@ -519,7 +519,7 @@ const btnPause     = document.querySelector('.pause')
 const layers       = document.querySelectorAll('.layer')
 let isForward      = false
 let isReversed     = false
-let isPaused       = false
+let isPaused       = true
 let lastTimestamp  = 0
 const speedFactors = [0.1, 0.05, 0.1,0.5]
 
@@ -559,10 +559,12 @@ btnPause.addEventListener('click', () => {
   isPaused = true
 })
 btnBackward.addEventListener('click', () => {
+    
     if(isPaused && car.isOn){
         isPaused = false
         isReversed = false
         lastTimestamp = 0
+        
     }
 })
 requestAnimationFrame(animate)
