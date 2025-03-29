@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-Challenge Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Winky Sans';
+        }
+        section {
+            min-height: 600px !important;
+            min-width: 380px !important ;
+            display: flex;
+            justify-content: center;
+        }
+        .calculator {
+            width: 360px;
+            height: 610px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: url(calculator/bg-light.png) no-repeat center ;
+            border: 4px solid #1064f0;
+        }
+        .header {
+            height: 180px;
+            width: 350px;
+            margin-top: 3px;
+            display: flex;
+            align-items: end;
+            justify-content:end ;
+            padding-right: 13px ;
+            position: relative;
+
+            button {
+                height: 70px;
+                width: 70px;
+                background: url(calculator/btn-light.png);
+                border: none;
+                border-radius: 50%;
+                transition: all 0.4s ease-in;
+                position: absolute;
+                top: 0;
+                left: 0;
+                &:hover {
+                    cursor: pointer;
+                    scale: 1.1;
+                }
+            }
+            input {
+                font-size: 1.4rem;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                text-align: end;
+                color: #fff;
+                margin-bottom: -10px;
+                font-weight: lighter;
+            }
+            h2.result {
+                text-decoration: none;
+                font-size: 2.9rem;
+                color: #fff;
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-weight: bolder;
+
+            }
+        }
+        .keyboard {
+            width: 350px;
+            height: 420px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr ;
+            row-gap: 5px;
+            column-gap: 10px;
+
+            button {
+                border: none;
+                border-radius: 50%;
+                background: url(calculator/btn-skyblue.png);
+                height: 80px;
+                width: 80px;
+                color: #fff;
+                font-size: 2.3rem;
+                font-weight: bolder;
+                cursor: pointer;
+                opacity: 90%;
+                &:hover {
+                    opacity: 100%;
+                }
+
+                
+            }
+            .btn-kingblue {
+                    background: url(calculator/btn-kingblue.png);
+                }
+            .btn-green {
+                background: url(calculator/btn-green.png);
+            }
+            .btn-purple{
+                background: url(calculator/btn-purple.png);
+            }
+            .btn-oliva{
+                background: url(calculator/btn-oliva.png);
+            }
+            
+        }
+    </style>
+
+</head>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>13-Challenge Calculator</strong></h1> 
+            <p>
+                Calculator
+            </p>
+        </header>
+        <section>
+            <div class="calculator">
+                <header class="header">
+                    <button class="mode"></button>
+                    <input  type="text" class="operation">
+                    <h2 class="result">12,936</h2> 
+                </header>
+                <div class="keyboard">
+                    <button class="btn-c btn-kingblue">C</button>
+                    <button class="btn-del btn-kingblue"><</button>
+                    <button class="btn-pow btn-kingblue">^</button>
+                    <button class="btn-mod btn-green">%</button>
+        
+                    <button class="btn-1">1</button><button class="btn-2">2</button><button class="btn-3">3</button>
+                    <button class="btn-mult btn-green">X</button>
+                    
+                    <button class="btn-4">4</button><button class="btn-5">5</button><button class="btn-6">6</button>
+                    <button class="btn-subs btn-green">-</button>
+        
+                    <button class="btn-7">7</button><button class="btn-8">8</button><button class="btn-9">9</button>
+                    <button class="btn-add btn-green">+</button>
+                    
+                    <button class="btn-div btn-purple">/</button>
+                    <button class="btn-0">0</button>
+                    <button class="btn-dot">.</button>
+                    <button class="btn-equal btn-oliva">=</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+            
