@@ -113,6 +113,42 @@
             }
             
         }
+
+        .calculator.dark {
+            
+            background: url(calculator/bg-dark.png) no-repeat center ;
+            
+
+            .mode {
+                background: url(calculator/btn-dark.png);
+               
+            }
+            
+            
+        
+        
+
+            button[data-num] {
+                background: url(calculator/btn-skyblue-dark.png); 
+            }
+            .btn-kingblue {
+                    background: url(calculator/btn-kingblue-dark.png);
+                }
+            .btn-dot {
+                background: url(calculator/btn-skyblue-dark.png);
+            }
+            .btn-green {
+                background: url(calculator/btn-green-dark.png);
+            }
+            .btn-purple{
+                background: url(calculator/btn-darkDiv.png);
+            }
+            .btn-oliva{
+                background: url(calculator/btn-oliva-dark.png);
+            }
+            
+        }
+        
     </style>
 
 </head>
@@ -133,32 +169,84 @@
             <div class="calculator">
                 <header class="header">
                     <button class="mode"></button>
-                    <input  type="text" class="operation">
-                    <h2 class="result">12,936</h2> 
+                    <input  type="text" class="oper" >
+                    <h2 class="result"></h2> 
                 </header>
                 <div class="keyboard">
-                    <button class="btn-c btn-kingblue">C</button>
-                    <button class="btn-del btn-kingblue"><</button>
-                    <button class="btn-pow btn-kingblue">^</button>
-                    <button class="btn-mod btn-green">%</button>
+                    <button class="btn-c btn-kingblue" data-opr="clear">C</button>
+                    <button class="btn-del btn-kingblue" data-opr="delete"><</button>
+                    <button class="btn-pow btn-kingblue" data-opr="**" >^</button>
+                    <button class="btn-mod btn-green" data-opr="%">%</button>
         
-                    <button class="btn-1">1</button><button class="btn-2">2</button><button class="btn-3">3</button>
-                    <button class="btn-mult btn-green">X</button>
+                    <button class="btn-1" data-num="1">1</button><button class="btn-2" data-num="2">2</button><button class="btn-3" data-num="3">3</button>
+                    <button class="btn-mult btn-green" data-opr="*">X</button>
                     
-                    <button class="btn-4">4</button><button class="btn-5">5</button><button class="btn-6">6</button>
-                    <button class="btn-subs btn-green">-</button>
+                    <button class="btn-4" data-num="4">4</button><button class="btn-5" data-num="5">5</button><button class="btn-6" data-num="6">6</button>
+                    <button class="btn-subs btn-green" data-opr="-">-</button>
         
-                    <button class="btn-7">7</button><button class="btn-8">8</button><button class="btn-9">9</button>
-                    <button class="btn-add btn-green">+</button>
+                    <button class="btn-7" data-num="7">7</button><button class="btn-8" data-num="8">8</button><button class="btn-9" data-num="9">9</button>
+                    <button class="btn-add btn-green" data-opr="+">+</button>
                     
-                    <button class="btn-div btn-purple">/</button>
-                    <button class="btn-0">0</button>
-                    <button class="btn-dot">.</button>
-                    <button class="btn-equal btn-oliva">=</button>
+                    <button class="btn-div btn-purple" data-opr="/">/</button>
+                    <button class="btn-0" data-num="0">0</button>
+                    <button class="btn-dot" data-opr=".">.</button>
+                    <button class="btn-equal btn-oliva" data-opr="=">=</button>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+    // Elements 
+    const calc        = document.querySelector('.calculator');
+    const mode        = document.querySelector('.mode');
+    const oper        = document.querySelector('.oper');
+    const resultDisp  = document.querySelector('.result');
+    const btnsNumber  = document.querySelectorAll('button[data-num]');
+    const btnsOpers   = document.querySelectorAll('button[data-opr]');
+
+    let expression = '';
+
+    // Toggle dark mode (visual only)
+    mode.addEventListener('click', () => {
+        calc.classList.toggle('dark');
+    });
+
+    // Number buttons
+    btnsNumber.forEach(btn => {
+        btn.addEventListener('click', () => {
+            expression += btn.dataset.num;
+            oper.value = expression;
+        });
+    });
+
+    // Operator buttons
+    btnsOpers.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const opr = btn.dataset.opr;
+
+            if (opr === "clear") {
+                expression = '';
+                oper.value = '';
+                resultDisp.textContent = '';
+            } else if (opr === "delete") {
+                expression = expression.slice(0, -1);
+                oper.value = expression;
+            } else if (opr === "=") {
+                try {
+                    const result = eval(expression);
+                    resultDisp.textContent = result;
+                } catch (err) {
+                    resultDisp.textContent = 'Error';
+                }
+            } else {
+                expression += opr;
+                oper.value = expression;
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
             
