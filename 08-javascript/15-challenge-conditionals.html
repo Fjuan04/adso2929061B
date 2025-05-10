@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-challenge-conditionals</title>
+    <link rel="stylesheet" href="../css/styles.css">
+ 
+
+</head>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>15-challenge-conditionals</strong></h1> 
+            <p>
+                Lorem.
+            </p>
+        </header>
+        <section>
+            <input type="text" class="q">
+            <button class="btn">Buscar</button>
+            <p class="show"></p>
+        </section>
+    </main>
+    <script>
+        //Elements 
+
+        const q     = document.querySelector('.q')
+        const btn   = document.querySelector('.btn')
+        const show  = document.querySelector('.show')
+        
+        //events
+        btn.addEventListener('click', (e) => {
+            showWeather(q.value)
+        })
+
+        const showWeather = async (q) => {
+            const url = `http://api.weatherapi.com/v1/current.json?key=9a61cceb9d46444fa9d11106251005&q=${q}`    
+            const response = await fetch(url)
+            const data     = await response.json()
+            
+            const info     = {
+                "country": data.location.country,
+                "name": data.location.name,
+                "time": data.location.localtime,
+                "temp": data.current.temp_c,
+                "isDay": data.current.is_day,
+                "condition-icon": data.current.condition.icon,
+                "condition-text": data.current.condition.text,
+                "humidity": data.current.humidity,
+                "cloud": data.current.cloud,
+                
+
+            }
+            show.textContent = JSON.stringify(info)
+        }
+
+        
+    </script>
+</body>
+</html>
+            
