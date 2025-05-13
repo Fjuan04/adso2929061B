@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Mode Test</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configurar modo oscuro por clase -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="p-6">
+
+  
+  <p class="text-blue-500 dark:text-red-800 text-xl font-semibold">Hola Mundo</p>
+
+<div class="texto-ajustable text-base">Texto normal</div>
+<div class="texto-ajustable text-base">Este texto es demasiado largo para lo que debería ser</div>
+
+<script>
+  document.querySelectorAll(".texto-ajustable").forEach(el => {
+    const texto = el.textContent || el.innerText;
+    if (texto.length > 20) {
+      el.classList.remove("text-base");
+      el.classList.add("text-xs");
+    }
+  });
+</script>
+    
+</body>
+</html>

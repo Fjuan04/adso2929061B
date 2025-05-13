@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>15-challenge-conditionals</title>
     <link rel="stylesheet" href="../css/styles.css">
- 
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script>tailwind.config = {darkMode: 'class',}</script>
+    <style>
+        *{
+            font-family: "Inter", 'sans-serif';
+            transition: all 0.5s ease-in;
+        }
+    </style>
 </head>
 <body class="js"> 
     <nav>
@@ -17,27 +26,76 @@
     </nav>
      <main>
         <header>
-            <h1><strong>15-challenge-conditionals</strong></h1> 
+            <h1><strong>15-challenge conditionals</strong></h1> 
             <p>
-                Lorem.
+                Weather Challenge
             </p>
         </header>
-        <section>
-            <input type="text" class="q">
-            <button class="btn">Buscar</button>
-            <p class="show"></p>
+        <section class="bg-[#f9f9f9] dark:bg-[#0e1116]">
+            <div class="w-[360px] border border-[#d9dadb] dark:border-[#171c21] flex h-[400px] m-auto rounded-[20px] bg-white dark:bg-[#0E1216] overflow-hidden flex-col p-[16px] relative items-center ">
+                <button class="mode absolute top-20 right-0 h-[25px] w-[25px] rounded-s-[7px] border border-[#d9d9d9] border-r-0 bg-transparent text-[#9f9f9f] dark:border-[#181c21] dark:text-[#6a7482]">⇆</button>
+
+                <input type="text" class="q w-[100%] border border-[#d9d9d9] rounded-[10px] min-h-[35px] focus:outline-none ps-3 pe-8 dark:bg-[#0E1216] dark:text-[#6a7482] dark:border-[#181C21]" placeholder="Enter city name">
+
+                <button class="btn w-[20px] absolute right-6 top-6 "><svg class="dark:fill-[#6A7482] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 19.29l-4.39-4.39c1.05-1.35 1.69-3.05 1.69-4.9 0-4.42-3.58-8-8-8S2 5.58 2 10s3.58 8 8 8c1.85 0 3.55-.63 4.9-1.69l4.39 4.39c.39.39 1 .39 1.41 0s.39-1 0-1.41ZM4 10c0-3.31 2.69-6 6-6s6 2.69 6 6-2.69 6-6 6-6-2.69-6-6Z"></path></svg></button>
+
+                <h4 class="date text-[12px] mt-2  text-[#9f9f9f] dark:text-[#94a2af]"></h4>
+
+                <h2  class=" country text-[#333333] mt-[-9px] text-[32px]  font-bold max-w-[200px] min-h-[50px] overflow-scroll text-nowrap dark:text-[#eef4f5]"></h2>
+
+                <img src="images/weathericon.png" alt="" class="condicon object-cover  w-[120px] h-[120px] mt-[-4px]" >
+
+                <h2 class="temperature text-[45px] ml-2 font-semibold text-[#000] mt-[-16px] min-h-[51px] dark:text-[#eef4f5]"></h2>
+
+                <h4 class="condition text-[#9f9f9f] font-light mt-1 dark:text-[#94a2af]"></h4>
+                
+                <hr class="border  w-[100%] mt-1 border-[#d9d9d9] dark:border-[#181C21]">
+                
+                <div class="features mt-1 w-[100%] h-[100%] grid grid-cols-2 text-center">
+                    
+                    <div class="border-r  border-r-[#d9d9d9] col dark:border-r-[#181C21]">
+                        <h4 class="font-light text-[14px] text-[#000] dark:text-[#94a2af]">Cloud</h4>
+                        <p class="cloud font-bold text-[#000] text-[16px] mt-[-5px] h-[1px] dark:text-[#eef4f5]"></p>
+                    </div>
+                    
+                    <div class=" col">
+                        <h4 class="font-light text-[14px] text-[#000] dark:text-[#94a2af]">Wind</h4>
+                        <p class="wind font-bold text-[#000] text-[16px] mt-[-5px] h-[1px] dark:text-[#eef4f5]"></p>
+                    </div>
+                    
+                    <div class=" col-span-2">
+                        <h4 class="font-light text-[14px] text-[#000] dark:text-[#94a2af]">Humidity</h4>
+                        <p class="humidity font-bold text-[#000] text-[16px] mt-[-5px] h-[1px] dark:text-[#eef4f5]"></p>
+                    </div>
+                
+                </div>
+            </div>
         </section>
     </main>
     <script>
         //Elements 
 
-        const q     = document.querySelector('.q')
-        const btn   = document.querySelector('.btn')
-        const show  = document.querySelector('.show')
-        
+        const q            = document.querySelector('.q')
+        const btn          = document.querySelector('.btn')
+        const mode         = document.querySelector('.mode')
+
+        const date         = document.querySelector('.date')
+        const country      = document.querySelector('.country')
+        const img          = document.querySelector('.condicon')
+        const temp         = document.querySelector('.temperature')
+        const condition    = document.querySelector('.condition')
+        const cloud        = document.querySelector('.cloud')
+        const wind         = document.querySelector('.wind')       
+        const humidity     = document.querySelector('.humidity')
+    
         //events
         btn.addEventListener('click', (e) => {
             showWeather(q.value)
+            
+        })
+        mode.addEventListener('click', (e) => {
+            const html = document.documentElement
+            html.classList.toggle('dark')
         })
 
         const showWeather = async (q) => {
@@ -55,13 +113,27 @@
                 "condition-text": data.current.condition.text,
                 "humidity": data.current.humidity,
                 "cloud": data.current.cloud,
-                
+                "wind": data.current.wind_kph
 
             }
-            show.textContent = JSON.stringify(info)
+            
+            date.textContent        = info.time
+            country.textContent     = info.country
+            img.src                 = info['condition-icon']
+            temp.textContent        = `${info.temp}º`
+            condition.textContent   = info['condition-text']
+            cloud.textContent       = `${info.cloud}`
+            wind.textContent        = `${info.wind} kmh`
+            humidity.textContent    = `${info.humidity}%`
+
+            
+            
         }
 
+        q.value = 'Manizales'
+        showWeather('manizales')
         
+         
     </script>
 </body>
 </html>
