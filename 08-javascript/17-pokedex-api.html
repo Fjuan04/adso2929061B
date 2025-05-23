@@ -8,6 +8,48 @@
     <link rel="stylesheet" href="../css/styles.css">
  
 
+    <style>
+        .list {
+            list-style: none;
+            display: grid;
+            margin: 2rem auto;
+            gap: 0.4rem;
+            grid-template-columns: repeat(4, 88px);
+            padding: 0;
+            &.hidden {
+                display: none;
+            }
+            li {
+                background-color: #fff9;
+                border: 2px solid #0009;
+                border-radius: 0.4rem;
+                position: relative;
+                width: 88px;
+                transition: all 0.4s ease-in;
+
+                h3 {
+                    text-align: center;
+                }
+                h4 {
+                    margin: 0;
+                    font-size: 0.8rem;
+                    text-align: center;
+                }
+                &:hover {
+                    scale: 1.05;
+                    background-color: #0009;
+                    color: #fff;
+
+                    
+                }
+            }
+        }
+        img.loader {
+            &.hidden {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body class="js"> 
     <nav>
@@ -23,8 +65,81 @@
             </p>
         </header>
         <section>
+            <select name="" id="" class="generation">
+                <option value="">Select Generation</option>
+                <option value="0">First Generation</option>
+                <option value="1">Second Generation</option>
+                <option value="2">Third Generation</option>
+                <option value="3">Fourth Generation</option>
+                <option value="4">Fifth Generation</option>
+                <option value="5">Sixth Generation</option>
+                <option value="6">Seventh Generation</option>
+                <option value="7">Eighth Generation</option>
+            </select>
+            <img class="loader hidden" src="images/loader.gif" alt="Loader">
+            <ul class="list hidden">
+
+            </ul>
         </section>
     </main>
+
+    <script>
+        // Elements
+        const list       = document.querySelector('.list')
+        const generation = document.querySelector('.generation')
+        const loader     = document.querySelector('.loader')
+        // Objeto
+
+        const generations = {
+           generation: [
+            {start : 1, end: 151},
+            {start : 152, end: 251},
+            {start : 252, end: 386},
+            {start : 387, end: 493},
+            {start : 494, end: 649},
+            {start : 650, end: 721},
+            {start : 722, end: 809},
+            {start : 810, end: 890},
+           ]
+        }
+
+        // Events 
+        generation.addEventListener('change', function(event){
+            const start  = generations.generation[this.value].start
+            const end    = generations.generation[this.value].end
+            loadPokemon(start, end)
+             
+        })
+
+
+        // Function
+         const loadPokemon = async (start, end) => {
+            list.innerHTML = ``
+            loader.classList.remove('hidden')
+            list.classList.add('hidden')
+            setTimeout(()=>{
+                loader.classList.add('hidden')
+                list.classList.remove('hidden')
+            },5000)
+            for(let pk = start ; pk <= end; pk++){
+                const url      = `https://pokeapi.co/api/v2/pokemon/${pk}`   
+                const response = await fetch(url)
+                const data     = await response.json()
+                let imgPk = data.id
+                if(pk < 100){
+                     imgPk    = (pk < 10 ) ? "00"+data.id : "0"+data.id
+                }
+
+                list.innerHTML += `<li style="background-color:${data.color}">
+                    <h3>#${imgPk}</h3>
+                    <h4>${data.name}</h4>
+                    <img src="https://www.serebii.net/swordshield/pokemon/${imgPk}.png">
+                    </li>` 
+                    
+            }
+            
+         }
+    </script>
 </body>
 </html>
             
