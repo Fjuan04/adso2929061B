@@ -6,49 +6,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>17-Pokedex-api</title>
     <link rel="stylesheet" href="../css/styles.css">
- 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <style>
-        .list {
-            list-style: none;
-            display: grid;
-            margin: 2rem auto;
-            gap: 0.4rem;
-            grid-template-columns: repeat(4, 88px);
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
-            &.hidden {
-                display: none;
+            font-family: 'Poppins';
+        }
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        
+        section {
+
+            background-color: transparent !important;
+        }
+        
+        
+        .pokedesk {
+            background-color:#fff;
+            width: 380px;
+            height: 700px;
+            margin: auto;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        section {
+            display: flex;
+        }
+        .home {
+            transition: left 0.4s ease;
+            padding-block: 50px;
+            position: relative;
+            z-index: 4;
+            background-color: #fff;
+            .logo {
+                width: 350px;
             }
-            li {
-                background-color: #fff9;
-                border: 2px solid #0009;
-                border-radius: 0.4rem;
-                position: relative;
-                width: 88px;
-                transition: all 0.4s ease-in;
+            
+            .started {
+                width: 250px;
+                height: 70px;
+                border-radius: 75px;
+                background: linear-gradient(90deg,#0071b9, #1d2c5e);
+                display: flex;
+                align-items: center;
+                border: none;
+                padding: 5px;;
+                cursor: pointer;
+                overflow: hidden;
+                transition: width 0.4s ease;
 
-                h3 {
-                    text-align: center;
-                }
-                h4 {
-                    margin: 0;
-                    font-size: 0.8rem;
-                    text-align: center;
-                }
-                &:hover {
-                    scale: 1.05;
-                    background-color: #0009;
-                    color: #fff;
-
+                img {
+                    height: 60px;
                     
                 }
+                h2 {
+                    text-align: center;
+                    color: #c7a008;
+                    font-size: 24px;
+                    font-weight: medium;
+                    margin-left: 10px;
+                    text-decoration: none;
+                    text-wrap: nowrap;
+                }
             }
         }
-        img.loader {
-            &.hidden {
-                display: none;
+
+        .grid {
+            left: -380px;
+            position: absolute;
+            top: 0;
+            overflow: scroll;
+            background-color: #fff;
+            z-index: 3;
+            transition: left 0.4s ease;
+            
+            .list {
+                list-style: none;
+                gap: 14px;
+                margin: auto;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0;
+                overflow: hidden;
+                
+                
+                li {
+                   
+                    color: #fff;
+                    border-radius: 0.4rem;
+                    position: relative;
+                    width: 160px;
+                    height: 130px;
+                    border-radius: 10px;
+                    transition: all 0.4s ease-in;
+                    display: flex;
+                    margin: 0;
+                    overflow: hidden;
+                    padding: 10px;
+
+                    .features {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+
+                        .name {
+                            text-wrap: nowrap;
+                            overflow: scroll;
+                            width: 200%;
+                        }
+
+                        .types {
+                            width: 60px;
+                            height: 20px;
+                            background-color: #fff5;
+                            border-radius: 50px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 14px;
+                            font-weight: 300;
+                            margin-block: 5px;
+                        }
+                    }
+                    
+                    .sprites {
+                        width: 50%;
+                        display: flex;
+                        align-items: end;
+                        img {
+                            scale: 1.2;
+                            margin-bottom: 3px;
+                            position: relative;
+                            z-index: 5;
+
+                        }
+                        .vector {
+                            position: relative;
+                            z-index: 0;
+                            left: -50px;
+                        }
+
+                    }
+                   
+                }
+            }
+            .title {
+                background: linear-gradient( #0071B9, #1D2C5E);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 36px;
+                font-weight: bold;
+                align-self: start;
+                margin-left: 15px;
+            }
+
+           
+            .generation {
+                text-align: center;
+                width: 207px;
+                height: 32px;
+                border-radius: 20px;
+                background: linear-gradient(90deg, #0071b9, #1d2c5e);
+                color: #c7a008;
+                font-weight: bold;
+                margin-top: 10px;
+                border: none;
+                font-size: 1rem;
+            }
+            
+            .landscape {
+                overflow: scroll;
+                overflow-x: hidden;
+                width: 334px;
+                height: 562px ;
+                margin-bottom: 30px;
+                display: flex;
+                padding: 0;
+                align-items: center;
+                justify-content: center;
+                
+            }
+
+            .loader {
+                width: 380px;
+                height: 280px;
+                scale: 1.6;
+            }
+            
+        }
+
+        .leftarrow {
+            position: absolute;
+            height: 32px;
+            background-color: transparent;
+            left: 15px;
+            top: 8px;
+            border: none;
+            
+            &:hover {
+                cursor: pointer;
+            }
+            &:active {
+                scale: 1.2;
             }
         }
+        .screen {
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .hidden {
+            display: none;
+            
+        }
+        .background {
+            mask-image: linear-gradient(to bottom,transparent 5%, black 60%, transparent 100%);
+}
+        
     </style>
 </head>
 <body class="js"> 
@@ -64,22 +251,52 @@
                 Fetch and display data from the Pokedex API.
             </p>
         </header>
-        <section>
-            <select name="" id="" class="generation">
-                <option value="">Select Generation</option>
-                <option value="0">First Generation</option>
-                <option value="1">Second Generation</option>
-                <option value="2">Third Generation</option>
-                <option value="3">Fourth Generation</option>
-                <option value="4">Fifth Generation</option>
-                <option value="5">Sixth Generation</option>
-                <option value="6">Seventh Generation</option>
-                <option value="7">Eighth Generation</option>
-            </select>
-            <img class="loader hidden" src="images/loader.gif" alt="Loader">
-            <ul class="list hidden">
+        <section class="">
+            <div class="pokedesk">
+                <div class="home screen">
 
-            </ul>
+                    <img class="logo" src="images/pokemon-23.svg" alt="">
+                    
+                    <video class="gif" width="380" >
+                        <source src="images/original-43472038981c093ff734c22c7afe8910.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+
+                    
+
+                    <button class="started">
+                        <img class="rotar" src="images/pokeball-pokemon-svgrepo-com.svg" alt="">
+                        <h2 href="">
+                            Get started
+                        </h2>
+                    </button>
+                </div>
+                
+                <div class="grid screen">
+                    <button class="leftarrow"><img src="images/leftarrow.png" alt=""></button>
+                    <select name="" id="" class="generation" >
+                        <option value="">Select Generation</option>
+                        <option value="0">First Generation</option>
+                        <option value="1">Second Generation</option>
+                        <option value="2">Third Generation</option>
+                        <option value="3">Fourth Generation</option>
+                        <option value="4">Fifth Generation</option>
+                        <option value="5">Sixth Generation</option>
+                        <option value="6">Seventh Generation</option>
+                        <option value="7">Eighth Generation</option>
+                    </select>
+                    <h2 class="title">Pokedesk</h2>
+                    <div class="landscape">
+                        <img class="loader hidden" src="images/loader.gif" alt="Loader">
+                        <img class="background" src="images/startgrid.png" alt="">
+                        <ul class="list hidden">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
         </section>
     </main>
 
@@ -88,6 +305,13 @@
         const list       = document.querySelector('.list')
         const generation = document.querySelector('.generation')
         const loader     = document.querySelector('.loader')
+        const btnStarted = document.querySelector('.started')
+        const rotar      = document.querySelector('.rotar')
+        const gif        = document.querySelector('.gif')
+        const home       = document.querySelector('.home')
+        const background = document.querySelector('.background')
+        const grid       = document.querySelector('.grid')
+        const btnBack        = document.querySelector('.leftarrow')
         // Objeto
 
         const generations = {
@@ -108,18 +332,42 @@
             const start  = generations.generation[this.value].start
             const end    = generations.generation[this.value].end
             loadPokemon(start, end)
-             
+            
+        })
+
+        btnStarted.addEventListener('click', (e) => {
+
+            gif.play()
+            btnStarted.style.width = '70px'
+            rotar.style.animation  = 'girar 1s linear 0.35s 8 '
+            setTimeout(() => {
+                grid.style.zIndex = '3'
+                grid.style.left = 0
+                home.style.zIndex = '1'
+                home.style.left = '-380px'
+            }, 9000);
+            
+        })
+
+        btnBack.addEventListener('click', () => {
+                btnStarted.style.width = '250px'
+                grid.style.left = '-380px'
+                grid.style.zIndex = '1'
+                home.style.zIndex = '3'
+                home.style.left = '0'
+
         })
 
 
         // Function
          const loadPokemon = async (start, end) => {
+            list.style.display = 'none'
             list.innerHTML = ``
             loader.classList.remove('hidden')
-            list.classList.add('hidden')
+            background.classList.add('hidden')
             setTimeout(()=>{
                 loader.classList.add('hidden')
-                list.classList.remove('hidden')
+                list.style.display = 'grid'
             },5000)
             for(let pk = start ; pk <= end; pk++){
                 const url      = `https://pokeapi.co/api/v2/pokemon/${pk}`   
@@ -129,16 +377,68 @@
                 if(pk < 100){
                      imgPk    = (pk < 10 ) ? "00"+data.id : "0"+data.id
                 }
+                
 
-                list.innerHTML += `<li style="background-color:${data.color}">
-                    <h3>#${imgPk}</h3>
-                    <h4>${data.name}</h4>
-                    <img src="https://www.serebii.net/swordshield/pokemon/${imgPk}.png">
-                    </li>` 
-                    
+
+                // Background Color
+                // Objeto Colors
+                const colors = {
+                    'yellow' : '#E0B347',
+                    'red' : '#B85757',
+                    'blue' : '	#4D84B7',
+                    'green' : '#6A9E6D',
+                    'black' : '#4A4A4A',
+                    'brown' : '#A78B7C',
+                    'purple' : '#9B6FB2',
+                    'white' : '#e7e5e4',
+                    'pink' : '#D68CA1',
+                    'gray' : '#B4B4B4',
+
+                }
+                
+                const speciesFeatures  = data.species.url
+                const featuresResponse = await fetch (speciesFeatures)
+                const features         = await featuresResponse.json()
+                const colorName        = features.color.name
+                
+                
+                list.innerHTML += `<li style="background-color: ${colors[colorName]};">
+                        <div class="features"> 
+                            <h2 class='name'>${data.name}</h2>
+                            ${data.types.map(t => `<h5 class="types">${t.type.name}</h5>`).join('')}
+                            
+                        </div>
+                        <div class="sprites">
+                            <img  src="https://www.serebii.net/swordshield/pokemon/${imgPk}.png">   
+                            <img class="vector" src="images/pokeball_vector 2.svg" alt=""> 
+                        </div>
+                    </li>
+                    `
+                    const items = document.querySelectorAll('.list li')
+
+                   items.forEach(item => {
+                        const bgColor = window.getComputedStyle(item).backgroundColor;
+                        if (bgColor === 'rgb(231, 229, 228)') {
+                            
+                           const typeInside = item.querySelectorAll('.types')
+                           const nameInside = item.querySelector('.name')
+
+                           nameInside.style.color = 'gray'
+
+                            typeInside.forEach(type => {
+                                type.style.color = 'gray'
+                            })
+                        }
+                    });
+
+                }   
             }
             
-         }
+            
+         
+         
+
+         
     </script>
 </body>
 </html>
