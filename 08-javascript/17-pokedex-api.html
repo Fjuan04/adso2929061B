@@ -200,8 +200,6 @@
 
             .loader {
                 width: 380px;
-                height: 285px;
-                scale: 1.6;
             }
             
         }
@@ -211,8 +209,8 @@
             top: 0;
             padding: 0;
             margin: 0;
-            right: -385px;
             transition: right 0.4s ease;
+            right: -385px;
             .status {
                 background: url(images/3-screenstats.svg) no-repeat center / cover;
                 width: 100%;
@@ -266,12 +264,26 @@
                     transform: translateX(-50%);
                 }
                 .flavortext {
-                    font-size: 12px;
+                    font-size: 10px;
                     position: absolute;
-                    bottom: 10px;
+                    bottom: 6px;
                     width: 380px;
                     text-align: center;
                     padding: 10px;
+                    max-height: 70px ;
+
+                }
+                .statnumber {
+                    min-height:192px ;
+                    position: absolute;
+                    bottom: 80.5px ;
+                    left: 72px;
+                    .stnum {
+                        font-size: 20px;
+                        color: #000;
+
+
+                    }
                 }
                 .quantities {
                     width: 256.59px;
@@ -287,36 +299,9 @@
                     .bar {
                         height: 12px;
                         border-radius: 100px;
-                        
-                        &:nth-child(1) {
-                            background-color: #4C7C59;
-                            width: 50%;
-                        }
-
-                        &:nth-child(2) {
-                            background-color: #A14C4C;
-                            width: 30%;
-                        }
-                        &:nth-child(3){
-                            background-color: #4C7C59;
-                            width: 76%;
-                        }
-                        &:nth-child(4){
-                            background-color: #4C7C59;
-                            width: 52%;
-                        }
-                        &:nth-child(5){
-                            background-color: #A14C4C;
-                            width: 40%;
-                        }
-                        &:nth-child(6){
-                            background-color: #A14C4C;
-                            width: 48%;
-                        }
-                        &:nth-child(7){
-                            background-color: #4C7C59;
-                            width: 56%;
-                        }
+                        background-color: blue;
+                        width: 0;
+                        transition: width 1s ease-in;
                     }
 
                 }
@@ -445,8 +430,18 @@
                         </ul>
                         <h4 class="pknumber">#001</h4>
                         <img class="pkimg"  ">  
+                        <div class="statnumber">
+                            <h2 class="stnum hpnum">40</h2>
+                            <h2 class="stnum atknum">40</h2>
+                            <h2 class="stnum defnum">40</h2>
+                            <h2 class="stnum satknum">40</h2>
+                            <h2 class="stnum sdefnum">40</h2>
+                            <h2 class="stnum spnum">40</h2>
+                            <h2 class="stnum totalnum">40</h2>
+                            
+                        </div>
                         <div class="quantities">
-                            <div class="hp bar"></div>
+                            <div class="hpbar bar"></div>
                             <div class="atk bar"></div>
                             <div class="def bar"></div>
                             <div class="satk bar"></div>
@@ -477,6 +472,7 @@
         const btnBack    = document.querySelector('.leftarrow')
         const btnToGrid  = document.querySelector('.backtogrid')
         const flavortext = document.querySelector('.flavortext')
+        const quantities = document.querySelectorAll('.bar')
         // Objeto
 
         const generations = {
@@ -584,6 +580,13 @@
                             ${data.types.map(t => `<h5 class="types">${t.type.name}</h5>`).join('')}
                             <p class='hidden id'>${imgPk}</p>
                             <p class='flavortext hidden'>${features.flavor_text_entries[0].flavor_text}  </p>
+                            <h5 class='hph hidden'> ${data.stats[0].base_stat} <h5>
+                            <h5 class='attack hidden'> ${data.stats[1].base_stat} <h5>
+                            <h5 class='defense hidden'> ${data.stats[2].base_stat} <h5>
+                            <h5 class='sattack hidden'> ${data.stats[3].base_stat} <h5>
+                            <h5 class='sdefense hidden'> ${data.stats[4].base_stat} <h5>
+                            <h5 class='speed hidden'> ${data.stats[5].base_stat} <h5>
+
                         </div>
                         <div class="sprites">
                             <img  src="https://www.serebii.net/swordshield/pokemon/${imgPk}.png">   
@@ -593,7 +596,7 @@
                     `
                 
 
-                    //Stats Elements
+                   
 
 
                 
@@ -619,6 +622,8 @@
                         const pknumber = document.querySelector('.pknumber')
                         pokemon.style.cursor = 'pointer'
                         pokemon.addEventListener('click', () => {
+
+
                             flavortext.textContent = pokemon.querySelector('.flavortext').textContent
                             stats.style.zIndex = '4'
                             stats.style.right = '0'
@@ -626,10 +631,52 @@
                             let pktypeinside = pokemon.querySelectorAll('.types')
                             
                             pktype.innerHTML = Array.from(pktypeinside).map(t => `<li class="type">${t.textContent}</li>`).join('')
+
+                            // STATS ELEMENTS
+
+                            let fullstat = 300;
+                            let hp       = parseInt(pokemon.querySelector('.hph').textContent);                     
+                            let attack   = parseInt(pokemon.querySelector('.attack').textContent);
+                            let defense  = parseInt(pokemon.querySelector('.defense').textContent);
+                            let sattack  = parseInt(pokemon.querySelector('.sattack').textContent);
+                            let sdefense = parseInt(pokemon.querySelector('.sdefense').textContent);
+                            let speed    = parseInt(pokemon.querySelector('.speed').textContent);
+                            let sum   = hp + attack + defense + sattack + sdefense + speed;
+                            let total = Math.round(sum / 6)
+
+                            document.querySelector('.hpbar').style.width = `${Math.round(hp * 100 / fullstat)}%`;
+                            document.querySelector('.atk').style.width   = `${Math.round(attack * 100 / fullstat)}%`;
+                            document.querySelector('.def').style.width   = `${Math.round(defense * 100 / fullstat)}%`;
+                            document.querySelector('.satk').style.width  = `${Math.round(sattack * 100 / fullstat)}%`;
+                            document.querySelector('.sdef').style.width  = `${Math.round(sdefense * 100 / fullstat)}%`;
+                            document.querySelector('.sp').style.width    = `${Math.round(speed * 100 / fullstat)}%`;
+                            document.querySelector('.total').style.width = `${Math.round(total * 100 / fullstat)}%`;
+
+                            quantities.forEach(bar => {
+                            
+                            let width = parseInt(bar.style.width);
+
+                            if (width >= 20) {
+                                bar.style.backgroundColor = '#5b8a72'
+                            }else {
+                                bar.style.backgroundColor = '#b14a4a'
+                            }
+                        });
+                            
+
+                            //nums stats
+
+                            document.querySelector('.hpnum').textContent = hp
+                            document.querySelector('.atknum').textContent = attack
+                            document.querySelector('.defnum').textContent = defense
+                            document.querySelector('.satknum').textContent = sattack
+                            document.querySelector('.sdefnum').textContent = sdefense
+                            document.querySelector('.spnum').textContent = speed
+                            document.querySelector('.totalnum').textContent = total
+
                             
                             
                             pkname.textContent = pokemon.querySelector('.name').textContent
-                            
                             pknumber.textContent = `
                             #${pokemon.querySelector('.id').textContent}
                             `
