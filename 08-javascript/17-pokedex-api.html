@@ -17,9 +17,14 @@
             padding: 0;
             font-family: 'Poppins';
         }
-        @keyframes girar {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
+
+        
+            @keyframes girar {
+                from { transform: rotate(0deg); }
+                to   { transform: rotate(360deg); }
+        }
+        .rotacion {
+            animation: girar 1s linear 0.35s 8;
         }
         
         section {
@@ -29,11 +34,9 @@
         
         
         .pokedesk {
-            background-color:#fff;
-            width: 380px;
+            min-width: 380px;
             height: 700px;
             margin: auto;
-            border-radius: 20px;
             position: relative;
             overflow: hidden;
         }
@@ -80,13 +83,13 @@
         }
 
         .grid {
-            left: -380px;
             position: absolute;
             top: 0;
             overflow: scroll;
             background-color: #fff;
             z-index: 3;
             transition: left 0.4s ease;
+            left: -385px;
             
             .list {
                 list-style: none;
@@ -197,15 +200,133 @@
 
             .loader {
                 width: 380px;
-                height: 280px;
+                height: 285px;
                 scale: 1.6;
             }
             
         }
+        
+        .stats {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            margin: 0;
+            right: -385px;
+            transition: right 0.4s ease;
+            .status {
+                background: url(images/3-screenstats.svg) no-repeat center / cover;
+                width: 100%;
+                height: 100%;
+
+                .pkname {
+                    font-weight: bold;
+                    font-size: 42px;
+                    color: #Fff;
+                    position: absolute;
+                    top: 30px;
+                    left: 20px;
+                }
+                
+                ul.pktypes {
+                    display: flex;
+                    position: absolute;
+                    left: 20px;
+                    top: 93px;
+                    color: #fff;
+                    
+                    .type {
+                        
+                        font-size: 13px;
+                        height: 20px;
+                        background-color: #fff6 ;
+                        border-radius: 50px;
+                        padding-inline: 20px;
+                        margin-right: 5px;
+                        list-style: none;
+                        
+                    }
+                }
+
+                .pknumber {
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 500;
+                    position: absolute;
+                    right: 34px;
+                    top: 86px;
+                }
+
+                .pkimg {
+                    margin: auto;
+                    display: flex;
+                    width: 240px;
+                    position: absolute;
+                    bottom: 48%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                .flavortext {
+                    font-size: 12px;
+                    position: absolute;
+                    bottom: 10px;
+                    width: 380px;
+                    text-align: center;
+                    padding: 10px;
+                }
+                .quantities {
+                    width: 256.59px;
+                    min-height: 192px;
+                    position: absolute;
+                    right: 15px;
+                    bottom: 90px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+
+                    .bar {
+                        height: 12px;
+                        border-radius: 100px;
+                        
+                        &:nth-child(1) {
+                            background-color: #4C7C59;
+                            width: 50%;
+                        }
+
+                        &:nth-child(2) {
+                            background-color: #A14C4C;
+                            width: 30%;
+                        }
+                        &:nth-child(3){
+                            background-color: #4C7C59;
+                            width: 76%;
+                        }
+                        &:nth-child(4){
+                            background-color: #4C7C59;
+                            width: 52%;
+                        }
+                        &:nth-child(5){
+                            background-color: #A14C4C;
+                            width: 40%;
+                        }
+                        &:nth-child(6){
+                            background-color: #A14C4C;
+                            width: 48%;
+                        }
+                        &:nth-child(7){
+                            background-color: #4C7C59;
+                            width: 56%;
+                        }
+                    }
+
+                }
+
+            }
+        }
 
         .leftarrow {
             position: absolute;
-            height: 32px;
+            height: 30px;
             background-color: transparent;
             left: 15px;
             top: 8px;
@@ -233,9 +354,25 @@
             
         }
         .background {
-            mask-image: linear-gradient(to bottom,transparent 5%, black 60%, transparent 100%);
+           object-fit: cover;
+           overflow: hidden;
 }
-        
+        .figma {
+            position:absolute;
+            top: 200px;
+            left: 20vw;
+            text-decoration: none;
+            color: #c7a008;
+            height: 50px;
+            background-color: #1D2C5E;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bolder;
+        }
     </style>
 </head>
 <body class="js"> 
@@ -252,6 +389,7 @@
             </p>
         </header>
         <section class="">
+            <a class="figma" href="https://www.figma.com/design/H5kOzyZzjhDr03vxLblR2u/17-Podedex-API?node-id=0-1&t=D7ThgEOc6sdC9rSW-1" target="_blank">FIGMA</a>
             <div class="pokedesk">
                 <div class="home screen">
 
@@ -275,7 +413,7 @@
                 <div class="grid screen">
                     <button class="leftarrow"><img src="images/leftarrow.png" alt=""></button>
                     <select name="" id="" class="generation" >
-                        <option value="">Select Generation</option>
+                        <option value="8">Select Generation</option>
                         <option value="0">First Generation</option>
                         <option value="1">Second Generation</option>
                         <option value="2">Third Generation</option>
@@ -288,13 +426,37 @@
                     <h2 class="title">Pokedesk</h2>
                     <div class="landscape">
                         <img class="loader hidden" src="images/loader.gif" alt="Loader">
-                        <img class="background" src="images/startgrid.png" alt="">
+                        <img class="background" src="images/imagen-start.png" alt="">
                         <ul class="list hidden">
                             
                         </ul>
                     </div>
                 </div>
 
+                <div class="stats screen">
+                    
+                    <div class="status">
+                        
+                        <button class="leftarrow backtogrid"><img src="images/leftarrow.png" alt=""></button>
+                        <h2 class="pkname">Name</h2>
+                        <ul class="pktypes">
+                            
+
+                        </ul>
+                        <h4 class="pknumber">#001</h4>
+                        <img class="pkimg"  ">  
+                        <div class="quantities">
+                            <div class="hp bar"></div>
+                            <div class="atk bar"></div>
+                            <div class="def bar"></div>
+                            <div class="satk bar"></div>
+                            <div class="sdef bar"></div>
+                            <div class="sp bar"></div>
+                            <div class="total bar"></div>
+                        </div>
+                        <p class="flavortext"></p>
+                    </div>
+                </div>
             </div>
             
         </section>
@@ -308,10 +470,13 @@
         const btnStarted = document.querySelector('.started')
         const rotar      = document.querySelector('.rotar')
         const gif        = document.querySelector('.gif')
-        const home       = document.querySelector('.home')
         const background = document.querySelector('.background')
+        const home       = document.querySelector('.home')
         const grid       = document.querySelector('.grid')
-        const btnBack        = document.querySelector('.leftarrow')
+        const stats      = document.querySelector('.stats')
+        const btnBack    = document.querySelector('.leftarrow')
+        const btnToGrid  = document.querySelector('.backtogrid')
+        const flavortext = document.querySelector('.flavortext')
         // Objeto
 
         const generations = {
@@ -336,28 +501,36 @@
         })
 
         btnStarted.addEventListener('click', (e) => {
-
+            generation.value = 8
             gif.play()
             btnStarted.style.width = '70px'
-            rotar.style.animation  = 'girar 1s linear 0.35s 8 '
+            rotar.classList.add('rotacion')
             setTimeout(() => {
                 grid.style.zIndex = '3'
                 grid.style.left = 0
                 home.style.zIndex = '1'
-                home.style.left = '-380px'
+                home.style.left = '-385px'
+                rotar.classList.remove('rotacion')
+
             }, 9000);
             
         })
 
         btnBack.addEventListener('click', () => {
                 btnStarted.style.width = '250px'
-                grid.style.left = '-380px'
-                grid.style.zIndex = '1'
+                
+                grid.style.left = '-385px'
+                grid.style.zIndex = '2'
                 home.style.zIndex = '3'
                 home.style.left = '0'
 
         })
 
+        btnToGrid.addEventListener('click', () => {
+                grid.style.left = '0'
+                grid.style.zIndex = '3'
+                stats.style.right = '-385px'
+        })
 
         // Function
          const loadPokemon = async (start, end) => {
@@ -380,7 +553,6 @@
                 
 
 
-                // Background Color
                 // Objeto Colors
                 const colors = {
                     'yellow' : '#E0B347',
@@ -396,17 +568,22 @@
 
                 }
                 
+                
                 const speciesFeatures  = data.species.url
                 const featuresResponse = await fetch (speciesFeatures)
                 const features         = await featuresResponse.json()
                 const colorName        = features.color.name
                 
+            //////////////////////////////////////////////////////////
+
+            //Grid 
                 
                 list.innerHTML += `<li style="background-color: ${colors[colorName]};">
                         <div class="features"> 
                             <h2 class='name'>${data.name}</h2>
                             ${data.types.map(t => `<h5 class="types">${t.type.name}</h5>`).join('')}
-                            
+                            <p class='hidden id'>${imgPk}</p>
+                            <p class='flavortext hidden'>${features.flavor_text_entries[0].flavor_text}  </p>
                         </div>
                         <div class="sprites">
                             <img  src="https://www.serebii.net/swordshield/pokemon/${imgPk}.png">   
@@ -414,14 +591,21 @@
                         </div>
                     </li>
                     `
-                    const items = document.querySelectorAll('.list li')
+                
 
-                   items.forEach(item => {
-                        const bgColor = window.getComputedStyle(item).backgroundColor;
+                    //Stats Elements
+
+
+                
+                    const items = document.querySelectorAll('.list li')
+           
+
+                    items.forEach(pokemon => {
+                        const bgColor = window.getComputedStyle(pokemon).backgroundColor;
                         if (bgColor === 'rgb(231, 229, 228)') {
                             
-                           const typeInside = item.querySelectorAll('.types')
-                           const nameInside = item.querySelector('.name')
+                           const typeInside = pokemon.querySelectorAll('.types')
+                           const nameInside = pokemon.querySelector('.name')
 
                            nameInside.style.color = 'gray'
 
@@ -429,13 +613,50 @@
                                 type.style.color = 'gray'
                             })
                         }
-                    });
+
+                        const pkname = document.querySelector('.pkname')
+                        const pktype = document.querySelector('.pktypes')
+                        const pknumber = document.querySelector('.pknumber')
+                        pokemon.style.cursor = 'pointer'
+                        pokemon.addEventListener('click', () => {
+                            flavortext.textContent = pokemon.querySelector('.flavortext').textContent
+                            stats.style.zIndex = '4'
+                            stats.style.right = '0'
+                            stats.style.backgroundColor = pokemon.style.backgroundColor
+                            let pktypeinside = pokemon.querySelectorAll('.types')
+                            
+                            pktype.innerHTML = Array.from(pktypeinside).map(t => `<li class="type">${t.textContent}</li>`).join('')
+                            
+                            
+                            pkname.textContent = pokemon.querySelector('.name').textContent
+                            
+                            pknumber.textContent = `
+                            #${pokemon.querySelector('.id').textContent}
+                            `
+                            const pkimg = document.querySelector('.pkimg')
+
+                            pkimg.setAttribute('src',`https://www.serebii.net/swordshield/pokemon/${pokemon.querySelector('.id').textContent}.png`)
+
+                            if (stats.style.backgroundColor === 'rgb(231, 229, 228)') {
+                                pkname.style.color = 'gray'
+                                pktype.style.color = 'gray'
+                                pknumber.style.color = 'gray'
+                                
+                            }else {
+                                pkname.style.color = '#fff'
+                                pktype.style.color = '#fff'
+                                pknumber.style.color = '#fff'
+                            }
+
+                           
+                            
+                        })
+                    })
 
                 }   
             }
             
             
-         
          
 
          
