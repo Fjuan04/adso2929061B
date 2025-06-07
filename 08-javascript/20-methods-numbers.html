@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-Methods-numbers</title>
+    <link rel="stylesheet" href="../css/styles.css">
+ 
+<style>
+        section {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        button {
+            background-color: #b7a63c;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.6rem;
+            width: 160px;
+        }
+        input {
+            border: 2px solid #b7a63c;
+            border-radius: 5px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            width: 140px;
+        }
+    </style>
+</head>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>20-Methods Numbers</strong></h1> 
+            <p>
+                Do operation with number's methods
+            </p>
+        </header>
+        <section>
+            <input type="number" class="num-float" placeholder="Enter a float number">
+            <button class="btn-calc">Calculate</button>
+            <ul class="output">
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        //Elements
+
+        const numFloat  = document.querySelector('.num-float')
+        const btnCalc   = document.querySelector('.btn-calc')
+        const outPut    = document.querySelector('.output')
+
+
+        //Events
+
+        btnCalc.addEventListener('click', () => {
+            if(isFloat(numFloat.value)){
+                outPut.innerHTML = `<li><strong>ToString:</strong>${numFloat.value.toString()}
+                 
+                <li><strong>ToFixed:</strong>${parseFloat(numFloat.value).toFixed(0)}   
+                <li><strong>ToPrecision:</strong>${parseFloat(numFloat.value).toPrecision(2)}   
+                <li><strong>parseInt:</strong>${parseInt(numFloat.value)}   
+
+                    
+                    
+                    `
+            }else {
+                alert(`You must enter a float number \n example: 1.5`)
+            }
+
+
+
+        })
+
+        //Functions 
+        function isFloat(number){
+            return (number % 1 !== 0)
+        }
+        
+    </script>
+</body>
+</html>
+            
