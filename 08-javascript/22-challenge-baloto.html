@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-Baloto
+
+    </title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            color: #fff;
+        }
+       
+        .container{
+            width: 425px;
+            height: 852px;
+            border-radius: 65px;
+            background: url(images/Phone.svg) no-repeat center / cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            .home {
+                background: url(images/bg-home.png) center / cover;
+                .play {
+                    position: relative;
+                    top: 147px;
+                    left: 50%;
+                    transform: translate(-50%);
+                    cursor: pointer;
+                    transition: all ease 0.4s;
+                    
+                    &:hover {
+                        transform:
+                        translate(-50%) 
+                        scale(1.05);
+                    }
+                }
+            }
+            
+            .lottery {
+                background-color: red;
+                left: 420px;
+                background: url(images/bg-lottery.png);
+
+                .cash{
+                    position: absolute;
+                    top: 25px;
+                    right: 34px;
+                    color: #fff;
+                    font-weight: bolder;
+                    font-size: 20px;
+                    margin: 0;
+
+                }
+
+                .btn-back {
+                    width: 42px;
+                    height: 42px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    top: 25px;
+                    position: absolute;
+                    left: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    font-size: 2rem;
+                    background: linear-gradient(90deg, #FF6B00, #B47C54);
+                    color: #fff;
+                    cursor: pointer;
+                }
+
+                .time {
+                    top: 71px;
+                    left: 30px;
+                    position: absolute;
+                    font-size: 15px;
+                    font-weight: 500;
+
+
+                }
+                .balotas{
+                    display: flex;
+                    justify-content: center;
+                    position: absolute;
+                    top: 42%;
+                    left: 110%;
+                    
+                    .balota {
+                        width: 84px ;
+                        height: 84px;
+                        position: relative;
+                        margin-inline: 2px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: "Kalam", cursive;
+                        font-size: 40px;
+                    }
+
+                    .balota-anim{
+                        animation: bounce 1s ease-in 4,
+                                    move 5s ease-out forwards,
+                                    girar 1s linear 5 forwards;
+
+                    }
+
+                    .b1 {
+                        background: url(images/ball-blue.png) center;
+                        rotate: -8deg;
+                    }
+                    .b2 {
+                        background: url(images/ball-red.png) center;
+                        rotate: 5deg;
+                    }
+                    .b3 {
+                        background: url(images/ball-green.png) center;
+                    }
+                    .b4 {
+                        background: url(images/ball-pink.png) center;
+                    }
+                }
+                .numbers {
+                    width: 340px;
+                    height: 338px;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 50%;
+                    transform: translate(-50%);
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    padding: 0;
+                    margin: 0;
+                    gap: 8px ;
+                    justify-content: center;
+
+                    .num {
+                        width: 40px ;
+                        height: 40px;
+                        background-color: #Fff3;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 1.3rem;
+                    }    
+
+                }
+
+                .btn-sort {
+                    width: 133px;
+                    height: 44px;
+                    background-color: #FF6B00;
+                    border-radius: 5px;
+                    border: none;
+                    position: absolute;
+                    bottom: 30px;
+                    margin: 0;
+                    left: 50%;
+                    transform: translate(-50%);
+                    font-size: 32px;
+                    font-weight: bolder;
+                    cursor: pointer;
+                }
+            }
+            .screen {
+                width: 377px;
+                height: 817px;
+                border-radius: 45px;
+                position: absolute;
+                transition: all 0.4s ease-in-out;
+                overflow: hidden;
+                
+            }
+            
+        }
+
+        
+       @keyframes bounce{
+        0% {
+            top: 0;
+            
+        }
+        
+        50% {
+            top: -50%;
+            
+        }
+        100%{
+            top: 0;
+            
+        }
+        
+        }
+        @keyframes move {
+        0%{
+            left: 0;
+            
+        }
+        100%{
+            left: -115%;
+        }
+
+        }
+        @keyframes girar {
+        from {
+            transform: rotate(720deg);
+        }
+        to {
+            transform: rotate(0deg);
+        }
+        }
+        
+    </style>
+
+</head>
+<body class="js" "> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>22-Baloto
+
+            </strong></h1> 
+            <p>
+                
+            </p>
+        </header>
+        <div class="container">
+            <div class="screen">
+                <div class="home screen">
+                <img src="images/toplay.png" alt="" class="play">
+            </div>
+
+            <div class="screen lottery">
+                <h5 class="cash"></h5>
+                <button class="btn-back"><-</button>
+                <h2 class="time">Time: <span></span></h2>
+                <ul class="numbers">
+                    
+                </ul>
+                <div class="balotas">
+                    <div class="balota b1"></div>
+                    <div class="balota b2"></div>
+                    <div class="balota b3"></div>
+                    <div class="balota b4"></div>
+                </div>
+                <button class="btn-sort">Sort</button>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Elements 
+        const   toLottery   = document.querySelector('.play')
+        const   cash        = document.querySelector('.cash')
+        const   btnBack     = document.querySelector('.btn-back')
+        const   timeText    = document.querySelector('.time span')
+        const   grid        = document.querySelector('.numbers')
+        const   gridNums    = document.querySelectorAll('.numbers div')
+        const   btnSort     = document.querySelector('.btn-sort')
+        const   numQuant    = 43
+        const   balotas     = document.querySelectorAll('.balotas div')
+
+
+        const   home        = document.querySelector('.home')
+        const   lottery     = document.querySelector('.lottery')
+
+        
+    
+            
+        
+        
+        //functions
+        function clock(){
+            setInterval(() => {
+            const   time        = {
+                hour : new Date().getHours(),
+                minutes : new Date().getMinutes(),
+                seconds : new Date().getSeconds(),
+            }
+            timeText.textContent    = `${time.hour}:${time.minutes}:${time.seconds}`
+            },1000)
+            cash.textContent        = `$500`
+        }
+
+
+        function sortear(callback, existentes = []) {
+
+            let numeroValido
+            let counter = 0
+            const maxIters = 15
+            // Para la ultima balota =========  serie 1-16
+            const limite = existentes.length === 3 ? 16 : numQuant
+
+            do {
+                let aleatorio = Math.ceil(Math.random() * limite)
+                numeroValido = aleatorio < 10 ? '0'+aleatorio : aleatorio
+            } while (existentes.includes(numeroValido))
+
+            const intervalo = setInterval(() => {
+                let randomNum = Math.ceil(Math.random() * limite)
+                let randomStr = randomNum < 10 ? '0'+randomNum : randomNum
+
+                if (counter === maxIters) {
+                    randomStr = numeroValido
+                }
+
+                if (counter < 7) {
+                    do {
+                        randomNum = Math.ceil(Math.random() * limite)
+                        randomStr = randomNum < 10 ? '0'+randomNum : randomNum
+                    } while (randomStr === numeroValido)
+                } else {
+                    if (randomStr === numeroValido) {
+                        let winner = document.querySelector(`.num${numeroValido}`)
+                        if (winner) winner.style.background = '#0f0'
+
+                        setTimeout(() => {
+                            if (winner) winner.style.background = ''
+                        }, 3000)
+
+                        clearInterval(intervalo)
+
+                        if (typeof callback === 'function') {
+                            callback(numeroValido)
+                        }
+
+                        return
+                    }
+                }
+                
+                let select = document.querySelector(`.num${randomStr}`)
+                if (select) {
+                    select.style.background = '#f00'
+                    setTimeout(() => {
+                        select.style.background = ''
+                    }, 200)
+                }
+
+                counter++
+            }, 200)
+        }
+
+
+        //Events
+        toLottery.onclick = () => {
+            clock()
+            lottery.style.zIndex = 5
+            lottery.style.left   = 0
+        }
+        btnBack.onclick = () => {
+            lottery.style.left   = '420px'
+
+        }
+        
+        btnSort.addEventListener('click', () => {
+
+            btnSort.disabled = true
+            btnSort.style.background = 'gray'
+            btnSort.style.cursor = 'not-allowed'
+
+            const ganadores = [] 
+            const tiempos = [0, 8000, 16000, 24000] 
+
+            // Limpiar balotas antes del sorteo
+            balotas.forEach(b => {
+                b.textContent = ''
+                b.classList.remove('balota-anim')
+            })
+
+
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    sortear((numeroGanador) => {
+                        
+                        
+                         if(i == 3){
+                            while(numeroGanador > 16){
+                                let serie = Math.ceil(Math.random() * 16)
+                                numeroGanador = serie < 10 ? '0'+serie : serie
+                            }
+                        }
+                        balotas[i].textContent = numeroGanador
+                        ganadores.push(numeroGanador)
+                        balotas[i].classList.add(`balota-anim`)
+                       
+                        if (ganadores.length === 4) {
+                            let price = 500
+                            setTimeout(() => {
+                                const intervalCash  = setInterval(() => {
+                                if(price == 1999){
+                                    cash.style.fontSize = '20px'
+                                    cash.style.color = '#fff'
+                                    clearInterval(intervalCash)
+                                }   
+                                    cash.style.fontSize = '23px'
+                                    cash.style.color = '#0f0'
+                                    cash.textContent = `$${++price}`
+                                },5)
+                            },4000)
+
+                            setTimeout(() => {
+                                btnSort.disabled = false
+                                btnSort.style.background = ''
+                                btnSort.style.cursor = ''
+                            }, 6000);
+                        }
+                        
+                    }, ganadores) 
+                }, tiempos[i])
+        }
+    })
+
+ 
+        //Grid
+
+        for(let i = 1; i <= numQuant; i++){
+                grid.innerHTML += `<div class="num num${i < 10 ? '0'+i :i}">${i < 10 ? '0'+i :i }</div>`
+            }
+        
+
+
+
+    </script>
+</body>
+</html>
+            
