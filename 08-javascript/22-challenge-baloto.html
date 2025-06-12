@@ -291,11 +291,10 @@
         const   numQuant    = 43
         const   balotas     = document.querySelectorAll('.balotas div')
 
-
         const   home        = document.querySelector('.home')
         const   lottery     = document.querySelector('.lottery')
-
-        
+        // Premio
+        let price = 0
     
             
         
@@ -310,7 +309,7 @@
             }
             timeText.textContent    = `${time.hour}:${time.minutes}:${time.seconds}`
             },1000)
-            cash.textContent        = `$500`
+            cash.textContent        = `$0`
         }
 
 
@@ -415,18 +414,22 @@
                         balotas[i].classList.add(`balota-anim`)
                        
                         if (ganadores.length === 4) {
-                            let price = 500
+                            
                             setTimeout(() => {
-                                const intervalCash  = setInterval(() => {
-                                if(price == 1999){
-                                    cash.style.fontSize = '20px'
-                                    cash.style.color = '#fff'
-                                    clearInterval(intervalCash)
-                                }   
-                                    cash.style.fontSize = '23px'
-                                    cash.style.color = '#0f0'
-                                    cash.textContent = `$${++price}`
-                                },5)
+                                const target = price + 500
+                                const intervalCash = setInterval(() => {
+                                    if (price >= target) {
+                                        cash.textContent = `$${price}`
+                                        cash.style.fontSize = '20px'
+                                        cash.style.color = '#fff'
+                                        clearInterval(intervalCash)
+                                    } else {
+                                        price++
+                                        cash.textContent = `$${price}`
+                                        cash.style.fontSize = '23px'
+                                        cash.style.color = '#0f0'
+                                    }
+                                }, 5)
                             },4000)
 
                             setTimeout(() => {
