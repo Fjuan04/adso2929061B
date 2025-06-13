@@ -43,13 +43,41 @@
                         scale(1.05);
                     }
                 }
+                .figma {
+                    width: 100px;
+                    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
+                    height: 100px;
+                    display: flex;
+                    position: absolute;
+                    align-items: center;
+                    justify-content: center;
+                    right: 20px;
+                    top: 20px;
+                    text-decoration: none;
+                    border-radius: 50%;
+                    font-size: 12px;
+
+                }
             }
             
             .lottery {
-                background-color: red;
                 left: 420px;
                 background: url(images/bg-lottery.png);
+                .figma {
+                    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
+                    width: 60px;
+                    height: 60px;
+                    display: flex;
+                    position: absolute;
+                    align-items: center;
+                    justify-content: center;
+                    right: 20px;
+                    bottom: 20px;
+                    text-decoration: none;
+                    border-radius: 50%;
+                    font-size: 12px;
 
+                }
                 .cash{
                     position: absolute;
                     top: 25px;
@@ -106,6 +134,8 @@
                         justify-content: center;
                         font-family: "Kalam", cursive;
                         font-size: 40px;
+                        font-weight: bolder;
+                        color: #000;
                     }
 
                     .balota-anim{
@@ -116,18 +146,16 @@
                     }
 
                     .b1 {
-                        background: url(images/ball-blue.png) center;
-                        rotate: -8deg;
+                        background: url(images/blue-ball.png) center;
                     }
                     .b2 {
-                        background: url(images/ball-red.png) center;
-                        rotate: 5deg;
+                        background: url(images/red-ball.png) center;
                     }
                     .b3 {
-                        background: url(images/ball-green.png) center;
+                        background: url(images/green-ball.png) center;
                     }
                     .b4 {
-                        background: url(images/ball-pink.png) center;
+                        background: url(images/pink-ball.png) center;
                     }
                 }
                 .numbers {
@@ -183,21 +211,7 @@
             }
             
         }
-        .figma {
-            width: 100px;
-            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
-            height: 100px;
-            display: flex;
-            position: fixed;
-            align-items: center;
-            justify-content: center;
-            left: 7px;
-            top: 55px;
-            text-decoration: none;
-            border-radius: 50%;
-            font-size: 12px;
-
-        }
+        
 
         
        @keyframes bounce{
@@ -253,28 +267,30 @@
                 
             </p>
         </header>
-        <a href="https://www.figma.com/design/aO8ehOcA7jjEdAzXzjdF2t/Lottery?node-id=0-1&t=RcLXQg2DIeJGR02w-1" class="figma" target="_blank"></a>
+        
         <div class="container">
             <div class="screen">
                 <div class="home screen">
-                <img src="images/toplay.png" alt="" class="play">
-            </div>
-
-            <div class="screen lottery">
-                <h5 class="cash"></h5>
-                <button class="btn-back"><-</button>
-                <h2 class="time">Time: <span></span></h2>
-                <ul class="numbers">
-                    
-                </ul>
-                <div class="balotas">
-                    <div class="balota b1"></div>
-                    <div class="balota b2"></div>
-                    <div class="balota b3"></div>
-                    <div class="balota b4"></div>
+                    <img src="images/toplay.png" alt="" class="play">
+                    <a href="https://www.figma.com/design/aO8ehOcA7jjEdAzXzjdF2t/Lottery?node-id=0-1&t=RcLXQg2DIeJGR02w-1" class="figma" target="_blank"></a>
                 </div>
-                <button class="btn-sort">Sort</button>
-            </div>
+
+                <div class="screen lottery">
+                    <h5 class="cash"></h5>
+                    <button class="btn-back"><-</button>
+                    <h2 class="time">Time: <span></span></h2>
+                    <ul class="numbers">
+                        
+                    </ul>
+                        <div class="balotas">
+                            <div class="balota b1"></div>
+                            <div class="balota b2"></div>
+                            <div class="balota b3"></div>
+                            <div class="balota b4"></div>
+                        </div>
+                    <button class="btn-sort">Sort</button>
+                    <a href="https://www.figma.com/design/aO8ehOcA7jjEdAzXzjdF2t/Lottery?node-id=0-1&t=RcLXQg2DIeJGR02w-1" class="figma" target="_blank"></a>
+                </div>
             </div>
         </div>
     </main>
