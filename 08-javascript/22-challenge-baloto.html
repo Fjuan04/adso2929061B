@@ -44,19 +44,8 @@
                     }
                 }
                 .figma {
-                    width: 100px;
-                    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
-                    height: 100px;
-                    display: flex;
-                    position: absolute;
-                    align-items: center;
-                    justify-content: center;
                     right: 20px;
                     top: 20px;
-                    text-decoration: none;
-                    border-radius: 50%;
-                    font-size: 12px;
-
                 }
             }
             
@@ -64,18 +53,11 @@
                 left: 420px;
                 background: url(images/bg-lottery.png);
                 .figma {
-                    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
                     width: 60px;
                     height: 60px;
-                    display: flex;
-                    position: absolute;
-                    align-items: center;
-                    justify-content: center;
                     right: 20px;
                     bottom: 20px;
-                    text-decoration: none;
-                    border-radius: 50%;
-                    font-size: 12px;
+                    
 
                 }
                 .cash{
@@ -211,7 +193,22 @@
             }
             
         }
-        
+        .figma {
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 12px;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s) no-repeat center / cover;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            &:hover {
+                scale: 1.2;
+            }
+        }
 
         
        @keyframes bounce{
@@ -306,15 +303,15 @@
         const   btnSort     = document.querySelector('.btn-sort')
         const   numQuant    = 43
         const   balotas     = document.querySelectorAll('.balotas div')
-
         const   home        = document.querySelector('.home')
         const   lottery     = document.querySelector('.lottery')
+        const   figma       = document.querySelector('.figma')
         // Premio
         let price = 0
     
             
         
-        
+
         //functions
         function clock(){
             setInterval(() => {
