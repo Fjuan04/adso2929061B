@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24-methods-array</title>
+    <link rel="stylesheet" href="../css/styles.css">
+ <style>
+    section ul {
+        padding: 0;
+    }
+    section ul.emojis li {
+        display: grid;
+        grid-template-columns: 160px 220px;
+    }
+</style>
+
+</head>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        <header>
+            <h1><strong>24-methods-array</strong></h1> 
+            <p>
+                Lorem.
+            </p>
+        </header>
+        <section>
+            <ul class="emojis"></ul>
+        </section>
+    </main>
+
+    <script>
+        //Elements 
+        const emojis    = document.querySelector('.emojis')
+        emojis.style.fontSize = `1.4rem`
+
+        // Methods array
+
+        let arrayEmojis = ['👮','🧑‍⚕️','👩‍🔬','👨‍🍳','👨‍🏫']
+
+
+        emojis.innerHTML = `<li><b>Values: </b> ${arrayEmojis.valueOf()}</li>
+        <li><b>String: </b> ${arrayEmojis.toString()}</li>
+        <li><b>Join: </b> ${arrayEmojis.join('-')}</li>
+        <li><b>Sort: </b> ${arrayEmojis.sort()}</li>
+        <li><b>Reverse: </b> ${arrayEmojis.reverse()}</li>
+        `
+        arrayEmojis.pop()
+        emojis.innerHTML += `<li><b>Pop: </b> ${arrayEmojis.valueOf()}</li>`
+
+        arrayEmojis.shift()
+        emojis.innerHTML += `<li><b>Shift: </b> ${arrayEmojis.valueOf()}</li>`
+
+        arrayEmojis.unshift('🤴')
+        emojis.innerHTML += `<li><b>Unshift: </b> ${arrayEmojis.valueOf()}</li>`
+        arrayEmojis.push('👨‍🚒')
+        emojis.innerHTML += `<li><b>Push: </b> ${arrayEmojis.valueOf()}</li>`
+        emojis.innerHTML += `<li><b>Shuffle: </b> ${shuffle(arrayEmojis)}</li>`
+        //function shuffle array
+        function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5)
+        }
+
+        
+
+
+        </script>
+</body>
+</html>
+            
