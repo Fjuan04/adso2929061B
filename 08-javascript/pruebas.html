@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            border: 1px solid;
+            height: 700px;
+            width: 380px;
+            margin: 200px auto;
+            position: relative;
+                    
+            .btn-search {
+                position: absolute;
+                top: -60px;
+                height: 30px;
+                background: #4bb;
+                color: #fff;
+                border:  none;
+                right: 0;
+                padding: 5px;
+            }
+            .search {
+                top: -60px;
+                position: absolute;
+                height: 30px;
+                font-size: 1.5rem
+        }
+
+            .landscape {
+                height: 60%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+                background-color: red;
+
+                .image {
+                    width: 100%;
+                    height: 100%;
+                }
+                .btn-back, .btn-next {
+                    position: absolute;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    top: 50%;
+                    
+                    
+                    
+                }
+                .btn-back  {
+                        left: -60px;
+                    }
+                
+                .btn-next {
+                    right: -60px;
+
+                }
+
+                
+                
+            }
+
+            .stats{
+                height: 40%;
+                background-color: #000;
+                .properties{
+                    list-style: none;
+                    padding: 20px;
+                    font-size: 2rem;
+                    color: #fed;
+                }
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="search">
+        <div class="landscape"><button class="btn-search">Buscar</button>
+            
+            <img src="" alt="image" class="image">
+            <button class="btn-back"><-</button>
+            <button class="btn-next">-></button>
+        </div>
+        <div class="stats">
+            <ul class="properties">
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        //elements
+        const query         = document.querySelector('.search')
+        const btnSearch     = document.querySelector('.btn-search')
+        const btnBack       = document.querySelector('.btn-back')
+        const btnNext       = document.querySelector('.btn-next')
+        const img           = document.querySelector('.image')
+        const properties    = document.querySelector('.properties')
+        let character       = 1
+
+        // function load
+
+        const load = async function(value, byName = false) {
+            let url = byName 
+                ? `https://rickandmortyapi.com/api/character/?name=${value}` 
+                : `https://rickandmortyapi.com/api/character/${value}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const characterData = byName ? data.results?.[0] : data;
+
+                if (!characterData) {
+                    img.src = '';
+                    properties.innerHTML = `<li>No se encontró el personaje</li>`;
+                    return;
+                }
+
+                // mostrar personaje
+                character = characterData.id; // actualizar ID global
+                properties.innerHTML = `
+                    <li>Name: ${characterData.name}</li>
+                    <li>Status: ${characterData.status}</li>
+                    <li>Specie: ${characterData.species}</li>
+                    <li>Gender: ${characterData.gender}</li>
+                    <li>Origin: ${characterData.origin.name}</li>
+                `;
+                img.src = characterData.image;
+
+                // actualizar estado del botón "back"
+                btnBack.disabled = character <= 1;
+                btnBack.style.cursor = btnBack.disabled ? 'not-allowed' : 'pointer';
+
+            } catch (error) {
+                img.src = '';
+                properties.innerHTML = `<li>Error al buscar personaje</li>`;
+                console.error(error);
+            }
+        };
+
+
+
+        // events
+        btnSearch.addEventListener('click', () => {
+            const name = query.value.trim().toLowerCase()
+            if (!name) return
+            load(name, true)
+        });
+
+        btnNext.addEventListener('click', ()=>{
+             ++character
+            load(character)
+            
+        })
+        btnBack.addEventListener('click', () => {
+             if(character > 1) --character
+            load(character)
+        })
+
+        window.onload =() => {
+            load(character)
+        }
+    </script>
+</body>
+</html>
