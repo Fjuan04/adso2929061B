@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Flappy Bird</title>
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      width: 50px;
+      height: 50px;
+      left: 10px;
+      position: absolute;
+      top: 10px;
+      padding: 10px;
+    }
+
+    nav a {
+      background: url(images/dragon.png) no-repeat center / cover;
+      text-decoration: none;
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+
+    .flappy {
+      width: 400px;
+      height: 600px;
+      background: url(images/bg.png) center;
+      background-size: cover;
+      animation: moverBg 20s linear infinite;
+    }
+
+    @keyframes moverBg {
+      0% { background-position: 0%; }
+      100% { background-position: 100%; }
+    }
+
+    canvas {
+      display: block;
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="js">
+  <nav>
+    <a href="../08-javascript/index.html"></a>
+  </nav>
+
+  <main>
+    <section class="flappy">
+      <canvas class="canvas" width="400" height="600"></canvas>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.querySelector(".canvas");
+    const ctx = canvas.getContext("2d");
+
+    let bird = {
+      x: 50,
+      y: 200,
+      width: 40,
+      height: 40,
+      velY: 0,
+      gravity: 0.6,
+      lift: -10,
+      image: (() => {
+        const img = new Image();
+        img.src = "images/dragon.png";
+        return img;
+      })()
+    };
+
+    let pipes = [];
+    let score = 0;
+    let frame = 0;
+
+    function createPipe() {
+      let top = Math.random() * 200 + 50;
+      let gap = 120;
+      pipes.push({
+        x: canvas.width,
+        top: top,
+        bottom: top + gap,
+        width: 50
+      });
+    }
+
+    function drawBird() {
+      if (bird.image.complete) {
+        ctx.drawImage(bird.image, bird.x, bird.y, bird.width, bird.height);
+      } else {
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+      }
+    }
+
+    function drawPipes() {
+      ctx.fillStyle = "green";
+      pipes.forEach(p => {
+        ctx.fillRect(p.x, 0, p.width, p.top);
+        ctx.fillRect(p.x, p.bottom, p.width, canvas.height - p.bottom);
+      });
+    }
+
+    function updatePipes() {
+      pipes.forEach(p => {
+        p.x -= 2;
+
+        if (p.x + p.width === Math.floor(bird.x)) {
+          score++;
+        }
+
+        if (
+          bird.x + bird.width > p.x &&
+          bird.x < p.x + p.width &&
+          (bird.y < p.top || bird.y + bird.height > p.bottom)
+        ) {
+          gameOver();
+        }
+      });
+
+      pipes = pipes.filter(p => p.x + p.width > 0);
+    }
+
+    function drawScore() {
+      ctx.fillStyle = "white";
+      ctx.font = "20px Arial";
+      ctx.fillText("Puntaje: " + score, 10, 30);
+    }
+
+    function gameOver() {
+      alert("¡Perdiste! Puntaje: " + score);
+      document.location.reload();
+    }
+
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      bird.velY += bird.gravity;
+      bird.y += bird.velY;
+
+      if (bird.y + bird.height > canvas.height || bird.y < 0) {
+        gameOver();
+      }
+
+      if (frame % 100 === 0) {
+        createPipe();
+      }
+
+      updatePipes();
+      drawPipes();
+      drawBird();
+      drawScore();
+
+      frame++;
+      requestAnimationFrame(update);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        bird.velY = bird.lift;
+      }
+    });
+
+    update();
+  </script>
+</body>
+</html>
+  

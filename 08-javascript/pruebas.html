@@ -1,177 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        .container {
-            border: 1px solid;
-            height: 700px;
-            width: 380px;
-            margin: 200px auto;
-            position: relative;
-                    
-            .btn-search {
-                position: absolute;
-                top: -60px;
-                height: 30px;
-                background: #4bb;
-                color: #fff;
-                border:  none;
-                right: 0;
-                padding: 5px;
-            }
-            .search {
-                top: -60px;
-                position: absolute;
-                height: 30px;
-                font-size: 1.5rem
-        }
-
-            .landscape {
-                height: 60%;
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                flex-direction: column;
-                position: relative;
-                background-color: red;
-
-                .image {
-                    width: 100%;
-                    height: 100%;
-                }
-                .btn-back, .btn-next {
-                    position: absolute;
-                    height: 50px;
-                    width: 50px;
-                    border-radius: 50%;
-                    top: 50%;
-                    
-                    
-                    
-                }
-                .btn-back  {
-                        left: -60px;
-                    }
-                
-                .btn-next {
-                    right: -60px;
-
-                }
-
-                
-                
-            }
-
-            .stats{
-                height: 40%;
-                background-color: #000;
-                .properties{
-                    list-style: none;
-                    padding: 20px;
-                    font-size: 2rem;
-                    color: #fed;
-                }
-            }
-        }
-    
-    </style>
+  <meta charset="UTF-8" />
+  <title>Dragon Flappy</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(#6ab7ff, #e0f7fa);
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: #a0e3ff;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <input type="text" class="search">
-        <div class="landscape"><button class="btn-search">Buscar</button>
-            
-            <img src="" alt="image" class="image">
-            <button class="btn-back"><-</button>
-            <button class="btn-next">-></button>
-        </div>
-        <div class="stats">
-            <ul class="properties">
+<canvas id="gameCanvas" width="480" height="640"></canvas>
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
-            </ul>
-        </div>
-    </div>
+let gravity = 0.6;
+let lift = -12;
+let dragonY = canvas.height / 2;
+let dragonVelocity = 0;
 
-    <script>
-        //elements
-        const query         = document.querySelector('.search')
-        const btnSearch     = document.querySelector('.btn-search')
-        const btnBack       = document.querySelector('.btn-back')
-        const btnNext       = document.querySelector('.btn-next')
-        const img           = document.querySelector('.image')
-        const properties    = document.querySelector('.properties')
-        let character       = 1
+let pipes = [];
+let frame = 0;
+let score = 0;
+let speed = 2;
+let gameOver = false;
 
-        // function load
+let sprite = new Image();
+sprite.src = "data:image/png;base64,{{REPLACE_THIS}}"; // Aquí irá la imagen en base64
 
-        const load = async function(value, byName = false) {
-            let url = byName 
-                ? `https://rickandmortyapi.com/api/character/?name=${value}` 
-                : `https://rickandmortyapi.com/api/character/${value}`;
+let spriteFrame = 0;
+let spriteFrames = 8;
+let spriteWidth = 512 / 8;
+let spriteHeight = 128;
 
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+// Generar tuberías
+function newPipe() {
+  let top = Math.random() * (canvas.height / 2);
+  let gap = 150;
+  pipes.push({
+    x: canvas.width,
+    top: top,
+    bottom: top + gap,
+    width: 60,
+  });
+}
 
-                const characterData = byName ? data.results?.[0] : data;
+// Dibujar dragón
+function drawDragon() {
+  ctx.drawImage(
+    sprite,
+    spriteFrame * spriteWidth, 0,
+    spriteWidth, spriteHeight,
+    60, dragonY, 70, 50
+  );
+  spriteFrame = (spriteFrame + 1) % spriteFrames;
+}
 
-                if (!characterData) {
-                    img.src = '';
-                    properties.innerHTML = `<li>No se encontró el personaje</li>`;
-                    return;
-                }
+// Dibujar tuberías
+function drawPipes() {
+  ctx.fillStyle = "#388e3c";
+  pipes.forEach(pipe => {
+    ctx.fillRect(pipe.x, 0, pipe.width, pipe.top);
+    ctx.fillRect(pipe.x, pipe.bottom, pipe.width, canvas.height - pipe.bottom);
+    pipe.x -= speed;
 
-                // mostrar personaje
-                character = characterData.id; // actualizar ID global
-                properties.innerHTML = `
-                    <li>Name: ${characterData.name}</li>
-                    <li>Status: ${characterData.status}</li>
-                    <li>Specie: ${characterData.species}</li>
-                    <li>Gender: ${characterData.gender}</li>
-                    <li>Origin: ${characterData.origin.name}</li>
-                `;
-                img.src = characterData.image;
+    // Colisión
+    if (
+      60 + 50 > pipe.x && 60 < pipe.x + pipe.width &&
+      (dragonY < pipe.top || dragonY + 50 > pipe.bottom)
+    ) {
+      gameOver = true;
+    }
 
-                // actualizar estado del botón "back"
-                btnBack.disabled = character <= 1;
-                btnBack.style.cursor = btnBack.disabled ? 'not-allowed' : 'pointer';
+    if (pipe.x + pipe.width < 0) {
+      pipes.shift();
+      score++;
+    }
+  });
+}
 
-            } catch (error) {
-                img.src = '';
-                properties.innerHTML = `<li>Error al buscar personaje</li>`;
-                console.error(error);
-            }
-        };
+// Loop principal
+function draw() {
+  if (gameOver) {
+    ctx.fillStyle = "black";
+    ctx.font = "40px sans-serif";
+    ctx.fillText("GAME OVER", 120, canvas.height / 2);
+    return;
+  }
 
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  drawPipes();
+  drawDragon();
 
-        // events
-        btnSearch.addEventListener('click', () => {
-            const name = query.value.trim().toLowerCase()
-            if (!name) return
-            load(name, true)
-        });
+  dragonVelocity += gravity;
+  dragonY += dragonVelocity;
 
-        btnNext.addEventListener('click', ()=>{
-             ++character
-            load(character)
-            
-        })
-        btnBack.addEventListener('click', () => {
-             if(character > 1) --character
-            load(character)
-        })
+  if (dragonY + 50 > canvas.height || dragonY < 0) {
+    gameOver = true;
+  }
 
-        window.onload =() => {
-            load(character)
-        }
-    </script>
+  frame++;
+  if (frame % 90 === 0) newPipe();
+
+  ctx.fillStyle = "#000";
+  ctx.font = "20px Arial";
+  ctx.fillText("Score: " + score, 10, 30);
+
+  requestAnimationFrame(draw);
+}
+
+// Control del salto
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    dragonVelocity = lift;
+  }
+});
+
+// Aumentar velocidad después de 10 segundos
+setTimeout(() => {
+  speed += 1.5;
+}, 10000);
+
+sprite.onload = () => {
+  draw();
+};
+</script>
 </body>
 </html>
