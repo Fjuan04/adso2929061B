@@ -1,180 +1,143 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini Flappy Bird</title>
-  <style>
-    body {
-      margin: 0;
-      background: #222;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27-Challenge collisions</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
 
-    nav {
-      width: 50px;
-      height: 50px;
-      left: 10px;
-      position: absolute;
-      top: 10px;
-      padding: 10px;
-    }
+      .canvas {
+        background: url(Game/bgGame.png) repeat center / cover;
 
-    nav a {
-      background: url(images/dragon.png) no-repeat center / cover;
-      text-decoration: none;
-      font-size: 24px;
-      width: 50px;
-      height: 50px;
-      position: absolute;
-    }
+        animation: moverbg 120s linear infinite;
+      }
+      @keyframes moverbg {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 100%;
+        }
+      }
 
-    .flappy {
-      width: 400px;
-      height: 600px;
-      background: url(images/bg.png) center;
-      background-size: cover;
-      animation: moverBg 20s linear infinite;
-    }
+      
+    </style>
 
-    @keyframes moverBg {
-      0% { background-position: 0%; }
-      100% { background-position: 100%; }
-    }
-
-    canvas {
-      display: block;
-      background: transparent;
-    }
-  </style>
 </head>
-<body class="js">
-  <nav>
-    <a href="../08-javascript/index.html"></a>
-  </nav>
+<body class="js"> 
+    <nav>
+        <a href="../08-javascript/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+     <main>
+        
+          <canvas class="canvas" height="600" width="380" style="background-color: red; margin-block: 0;"></canvas>
+        
+    </main>
 
-  <main>
-    <section class="flappy">
-      <canvas class="canvas" width="400" height="600"></canvas>
-    </section>
-  </main>
 
-  <script>
-    const canvas = document.querySelector(".canvas");
-    const ctx = canvas.getContext("2d");
+    <script>
 
-    let bird = {
-      x: 50,
-      y: 200,
-      width: 40,
-      height: 40,
-      velY: 0,
-      gravity: 0.6,
-      lift: -10,
-      image: (() => {
-        const img = new Image();
-        img.src = "images/dragon.png";
-        return img;
-      })()
-    };
 
-    let pipes = [];
-    let score = 0;
-    let frame = 0;
+      const lienzo = document.querySelector('.canvas')
+      const lapiz  = lienzo.getContext('2d')
+      const urls   = ['Game/dragonGame.png']
+      const images = []
+      const objects = []
+      // Funcion para cargar imagenes
 
-    function createPipe() {
-      let top = Math.random() * 200 + 50;
-      let gap = 120;
-      pipes.push({
-        x: canvas.width,
-        top: top,
-        bottom: top + gap,
-        width: 50
-      });
-    }
+      
 
-    function drawBird() {
-      if (bird.image.complete) {
-        ctx.drawImage(bird.image, bird.x, bird.y, bird.width, bird.height);
-      } else {
-        ctx.fillStyle = "yellow";
-        ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+      function loadImage(urls, imgloaded, callback){
+        let imgsloaded = 0
+
+        urls.forEach((url)=> {
+          let img = new Image()
+          img.src = url
+
+          img.onload = function(){
+            imgloaded.push(img)
+            imgsloaded++
+            
+            if(imgsloaded == urls.length){
+              console.log('imagenes cargadas')
+              callback()
+            }
+          }
+        })
       }
-    }
 
-    function drawPipes() {
-      ctx.fillStyle = "green";
-      pipes.forEach(p => {
-        ctx.fillRect(p.x, 0, p.width, p.top);
-        ctx.fillRect(p.x, p.bottom, p.width, canvas.height - p.bottom);
-      });
-    }
+      
+      // Game
 
-    function updatePipes() {
-      pipes.forEach(p => {
-        p.x -= 2;
+      const gameState = {
+      
+        gravedad : 0.6,
+        gap : 150,
+        espacio : 250,
 
-        if (p.x + p.width === Math.floor(bird.x)) {
-          score++;
+      }
+      // objetos (personajes)
+
+      const bird = {
+        x : 10,
+        y : lienzo.height / 2 + 50,
+        width : 85,
+        height : 48,
+        image : null,
+        jump : -15,
+        velY : 0
+      }
+
+      let pilar = {
+        x : lienzo.width - 100,
+        y : 0,
+        width : 65,
+        height : lienzo.height / 2,
+        
+      }
+      function dibujar(){
+          lapiz.clearRect(0, 0, lienzo.width, lienzo.height)
+          lapiz.drawImage(bird.image, bird.x, bird.y, bird.width, bird.height)
+          
+          // bird.velY += gameState.gravedad
+          // bird.y    += bird.velY
+          // if(bird.y + bird.height > lienzo.height){
+          //     bird.y = 1
+          // }else if(bird.y < 0 ) bird.y = lienzo.height - 50
+          lapiz.fillStyle = 'blue'
+          lapiz.fillRect(pilar.x, pilar.y, pilar.width, pilar.height)
+          lapiz.fillStyle = 'red'
+          lapiz.fillRect(pilar.x, pilar.height + gameState.gap, pilar.width, pilar.height)
+
+
+
+          
+          requestAnimationFrame(dibujar)
+      }
+
+      
+
+      document.addEventListener('keydown', (e)=>{
+        if(e.code == 'Space'){
+          bird.velY = bird.jump
         }
+      })
 
-        if (
-          bird.x + bird.width > p.x &&
-          bird.x < p.x + p.width &&
-          (bird.y < p.top || bird.y + bird.height > p.bottom)
-        ) {
-          gameOver();
-        }
-      });
+      
+    loadImage(urls, images, function(){
+      bird.image = images[0]
+      dibujar()
+    })
 
-      pipes = pipes.filter(p => p.x + p.width > 0);
-    }
-
-    function drawScore() {
-      ctx.fillStyle = "white";
-      ctx.font = "20px Arial";
-      ctx.fillText("Puntaje: " + score, 10, 30);
-    }
-
-    function gameOver() {
-      alert("¡Perdiste! Puntaje: " + score);
-      document.location.reload();
-    }
-
-    function update() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      bird.velY += bird.gravity;
-      bird.y += bird.velY;
-
-      if (bird.y + bird.height > canvas.height || bird.y < 0) {
-        gameOver();
-      }
-
-      if (frame % 100 === 0) {
-        createPipe();
-      }
-
-      updatePipes();
-      drawPipes();
-      drawBird();
-      drawScore();
-
-      frame++;
-      requestAnimationFrame(update);
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "Space") {
-        bird.velY = bird.lift;
-      }
-    });
-
-    update();
-  </script>
+    </script>
 </body>
 </html>
-  
+            
