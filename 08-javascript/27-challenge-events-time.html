@@ -48,9 +48,14 @@
 
       const lienzo = document.querySelector('.canvas')
       const lapiz  = lienzo.getContext('2d')
-      const urls   = ['Game/dragonGame.png']
+      const urls   = ['Game/dragonGame.png', 'Game/pilaresGame.png', 'Game/gameover.png']
       const images = []
-      const objects = []
+      const pilars = [{x: lienzo.width, y : 0,width : 65, height : Math.floor(Math.random() * 400), pasado : false}]
+
+      // AUDIOS
+
+      const coin = new Audio('Game/coin-recieved-230517.mp3')
+
       // Funcion para cargar imagenes
 
       
@@ -78,11 +83,13 @@
       // Game
 
       const gameState = {
-      
+        score : 0,
         gravedad : 0.6,
-        gap : 150,
+        gap : 200,
         espacio : 250,
-
+        niveles : [2, 4, 5],
+        nivel : 0,
+        isPlaying : true
       }
       // objetos (personajes)
 
@@ -92,33 +99,74 @@
         width : 85,
         height : 48,
         image : null,
-        jump : -15,
+        jump : -8,
         velY : 0
       }
 
-      let pilar = {
-        x : lienzo.width - 100,
-        y : 0,
-        width : 65,
-        height : lienzo.height / 2,
-        
+      function score(dragon, pilar){
+        if(pilar.pasado == false && dragon.x > pilar.x + pilar.width){
+          gameState.score += 5
+          pilar.pasado = true
+          coin.play()
+        }
+      }
+      
+      function colisiones(element1, element2){
+        return (
+          element1.x + element1.width > element2.x &&
+          element1.x < element2.x + element2.width &&
+          element1.y + element1.height > element2.y + 25 &&
+          element1.y < element2.y + element2.height + 20  
+        )
+      }
+      function crearPilar(){
+        if(pilars.length < 2){
+            if(pilars[0].x + pilars[0].width < 150){
+            pilars.push({image: images[1],x: lienzo.width, y : 0,width : 65, height : Math.floor(Math.random() * 400), pasado : false })
+          }
+        }
+
+        if(pilars[0].x + pilars[0].width < 0){
+          pilars.shift()
+        }
       }
       function dibujar(){
+        if(!gameState.isPlaying) return
           lapiz.clearRect(0, 0, lienzo.width, lienzo.height)
           lapiz.drawImage(bird.image, bird.x, bird.y, bird.width, bird.height)
+          bird.velY += gameState.gravedad
+          bird.y    += bird.velY
+          if(bird.y + bird.height > lienzo.height){
+              bird.y = 1
+          }else if(bird.y < 0 ) bird.y = lienzo.height - 50
+
+          crearPilar()
+          pilars.forEach(pilar => {
+            
+            lapiz.drawImage(pilar.image, pilar.x, pilar.y - 50, pilar.width, pilar.height + 100)
+            lapiz.drawImage(pilar.image, pilar.x, pilar.height + gameState.gap, pilar.width, 500)
+            if(colisiones(bird, pilar)){
+              gameState.isPlaying = false
+              pilars.length = 0
+               lapiz.drawImage(images[2], 0, 0, 380, 600)
+            }
+
+            if(colisiones(bird, {x: pilar.x, y : pilar.height + gameState.gap, width : pilar.width, height : 500 })){
+              gameState.isPlaying = false
+              pilars.length = 0
+              lapiz.drawImage(images[2], 0, 0, 380, 600)
+            }
+            pilar.x -= gameState.niveles[0]
+
+            score(bird, pilar)
+          })
+
+
           
-          // bird.velY += gameState.gravedad
-          // bird.y    += bird.velY
-          // if(bird.y + bird.height > lienzo.height){
-          //     bird.y = 1
-          // }else if(bird.y < 0 ) bird.y = lienzo.height - 50
-          lapiz.fillStyle = 'blue'
-          lapiz.fillRect(pilar.x, pilar.y, pilar.width, pilar.height)
-          lapiz.fillStyle = 'red'
-          lapiz.fillRect(pilar.x, pilar.height + gameState.gap, pilar.width, pilar.height)
-
-
-
+          lapiz.font = '30px Arial'
+          lapiz.textBaseline = 'top'
+          lapiz.fillStyle = 'white'
+          lapiz.fillText('Score: ' + gameState.score, 5, 10)
           
           requestAnimationFrame(dibujar)
       }
@@ -126,14 +174,47 @@
       
 
       document.addEventListener('keydown', (e)=>{
+        if(e.code == 'Space' && gameState.isPlaying == false){
+          gameState.isPlaying = true
+          gameState.score = 0
+
+          bird.x  = 5 
+          pilars.push({x: lienzo.width, y : 0,width : 65, height : Math.floor(Math.random() * 400), pasado : false})
+          pilars[0].image = images[1]
+
+          dibujar()
+        }
         if(e.code == 'Space'){
           bird.velY = bird.jump
         }
       })
 
+      document.addEventListener('touchstart', (e) => {
+        // Prevenir el comportamiento predeterminado del toque (por ejemplo, desplazamiento)
+        e.preventDefault();
+
+        if (gameState.isPlaying === false) {
+          gameState.isPlaying = true;
+          gameState.score = 0;
+
+          bird.x = 5;
+          pilars.push({ x: lienzo.width, y: 0, width: 65, height: Math.floor(Math.random() * 400), pasado: false });
+          pilars[0].image = images[1];
+
+          dibujar();
+        }
+
+        // Simula el salto del pájaro
+        bird.velY = bird.jump;
+      });
+
+
+      
       
     loadImage(urls, images, function(){
       bird.image = images[0]
+      pilars[0].image = images[1]
+
       dibujar()
     })
 
