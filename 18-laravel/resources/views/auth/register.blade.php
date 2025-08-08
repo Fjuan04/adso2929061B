@@ -21,11 +21,7 @@
             @endif
             <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-6">
                  @csrf
-                 {{-- 
-        
-                'gender',
-               
-                 --}}
+
                 <div class="mt-4">
                      <label class="mt-4">Document:</label>
                      <input type="text" name="document" placeholder="750001002" class="input bg-[transparent] border-white" value="{{ old('document') }}"/>

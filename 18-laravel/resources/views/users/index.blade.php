@@ -9,6 +9,16 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"></path></svg>
                 Users Module:
             </h1>
+            
+            <div class="join mt-5">
+                <a href="{{url('users/create')}}" class="btn join-item btn-success"><svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Add user</a>
+                <a href="{{ url('export/users/pdf')}}" class="btn join-item"><svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="#000000" viewBox="0 0 256 256"><path d="M224,152a8,8,0,0,1-8,8H192v16h16a8,8,0,0,1,0,16H192v16a8,8,0,0,1-16,0V152a8,8,0,0,1,8-8h32A8,8,0,0,1,224,152ZM92,172a28,28,0,0,1-28,28H56v8a8,8,0,0,1-16,0V152a8,8,0,0,1,8-8H64A28,28,0,0,1,92,172Zm-16,0a12,12,0,0,0-12-12H56v24h8A12,12,0,0,0,76,172Zm88,8a36,36,0,0,1-36,36H112a8,8,0,0,1-8-8V152a8,8,0,0,1,8-8h16A36,36,0,0,1,164,180Zm-16,0a20,20,0,0,0-20-20h-8v40h8A20,20,0,0,0,148,180ZM40,112V40A16,16,0,0,1,56,24h96a8,8,0,0,1,5.66,2.34l56,56A8,8,0,0,1,216,88v24a8,8,0,0,1-16,0V96H152a8,8,0,0,1-8-8V40H56v72a8,8,0,0,1-16,0ZM160,80h28.69L160,51.31Z"></path></svg> Export</a>
+                <a href="{{ url('export/users/excel')}}" class="btn join-item">Export</a>
+                <input type="search" name="qsearch" id="qsearch" placeholder="Search" class="outline-0 rounded-tr-sm rounded-br-sm indent-2 bg-white/10" >
+            </div>
+
+            
+
             <div class="overflow-x-auto mt-8 rounded-box border">
                 <table class="table table-xs bg-[#0006]">
                     <!-- head -->
@@ -63,4 +73,22 @@
                 {{$users->links('layouts.paginator')}}
             </div>
     </main>
+@endsection
+
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+            @if(session('message'))
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Congrats",
+                    text: "{{session('message')}}",
+                    showConfirmButton: true,
+                    })
+            @endif
+        
+        })
+    </script>
 @endsection
