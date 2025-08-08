@@ -1,3 +1,9 @@
+<?php
+
+    include '../config/app.php';
+    include '../config/database.php';
+    include '../config/security.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +15,7 @@
 </head>
 <body>
     <main class="edit">
+        <?= $css ?>
         <header>
             <h2>Modificar Mascota</h2>
             <a href="dashboard.html" class="back"></a>

@@ -1,3 +1,9 @@
+<?php
+
+    include '../config/app.php';
+    include '../config/database.php';
+    include '../config/security.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

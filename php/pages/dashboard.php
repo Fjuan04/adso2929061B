@@ -21,7 +21,7 @@
             <h2>Administrar Mascotas</h2>
             <a href="logout.php" class="close"></a>
         </header>
-       <a href="add.php" class="add"></a>   
+       <a href="add" class="add"></a>   
        <table>  
 
         <?php 
@@ -29,18 +29,20 @@
         
             forEach($pets as $pet):
         ?>
+        
            <tr>
                <td>
+                
                     <figure class="photo">
-                        <img style="overflow: hidden; object-fit: cover; width: 70px; height: 72px; border-radius: 50%; border: 4px solid #2c467499 " src="<?= $pet['photo'] ?>" alt="">
+                        <img style="overflow: hidden; object-fit: cover; width: 70px; height: 72px; border-radius: 50%; border: 4px solid #2c467499 " src="<?= '../uploads/'.$pet['photo'] ?>" alt="">
                     </figure>
                     <div class="info">
                         <h3><?= $pet['name'] ?></h3>
                         <h4><?= $pet['specie'] ?> - <?= $pet['breed'] ?></h4>
                     </div>
                     <div class="controls">
-                        <a href="show.php?<?= $pet['id'] ?>" class="show"></a>
-                        <a href="edit.php?<?= $pet['id'] ?>" class="edit"></a>
+                        <a href="show/<?= $pet['id'] ?>" class="show"></a>
+                        <a href="edit/<?= $pet['id'] ?>" class="edit"></a>
                         <a class="delete" href="javascript:deletePet(<?= $pet['id'] ?>, '<?= htmlspecialchars($pet['name'], ENT_QUOTES) ?>')"></a>
 
                     </div>

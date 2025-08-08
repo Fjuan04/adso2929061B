@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteRule ^login$ index.php
+RewriteRule ^pages/dashboard$ pages/dashboard.php
+RewriteRule ^pages/add$ pages/add.php
+RewriteRule ^pages/edit/([1-9]+)$ pages/edit.php?id=$1
+

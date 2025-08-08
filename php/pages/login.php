@@ -1,3 +1,7 @@
+<?php
+    include 'config/app.php';
+    include 'config/database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,7 @@
             <button>Ingresar</button>
         </form>
         <?php 
+            echo $css;
             if($_POST){
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -23,7 +28,7 @@
 
                 if(login($email, md5($password), $conx)){
                     echo "<script> 
-                    window.location.replace('pages/dashboard.php')
+                    window.location.replace('pages/dashboard')
                     </script>";
                 };
             }
