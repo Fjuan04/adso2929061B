@@ -1,5 +1,4 @@
 <?php
-
     include '../config/app.php';
     include '../config/database.php';
     include '../config/security.php';
@@ -17,17 +16,21 @@
     <main class="show">
         <header>
             <h2>Consultar Mascota</h2>
-            <a href="dashboard.html" class="back"></a>
-            <a href="index.html" class="close"></a>
+            <a href="dashboard.php" class="back"></a>
+            <a href="../close.php" class="close"></a>
         </header>
+        <?php
+            $id = $_GET['id'];
+            $pet = showPet($id, $conx);
+        ?>
         <figure class="photo-preview">
-            <img src="imgs/photo-lg-1.svg" alt="">
+            <img id="preview" src="../uploads/<?=$pet['photo']?>" alt="">
         </figure>
         <div>
-            <article class="info-name"><p>Reigner</p></article>
-            <article class="info-race"><p>Bulldog</p></article>
-            <article class="info-category"><p>Perro</p></article>
-            <article class="info-gender"><p>Macho</p></article>
+            <article class="info-name"><p><?=$pet['name']?></p></article>
+            <article class="info-race"><p><?=$pet['specie']?></p></article>
+            <article class="info-category"><p><?=$pet['breed']?></p></article>
+            <article class="info-gender"><p><?=$pet['sex']?></p></article>
         </div>
     </main>
 </body>

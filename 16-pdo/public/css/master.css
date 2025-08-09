@@ -369,8 +369,45 @@ main.show div article p {
 }
 
 main section.error {
-    background-color: #dc143ccc;
+    background-color: #dc143cdd;
     border-radius: 1rem;
+    position: absolute;
+    text-align: center;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     color: #fff;
-    padding: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    width: 260px;
+}
+ 
+main section.message {
+    background-color: #11a44edd;
+    border-radius: 1rem;
+    position: absolute;
+    text-align: center;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    width: 260px;
+}
+ 
+main figure.photo {
+    img {
+        border: 2px solid #2C467499;
+        border-radius: 50%;
+        object-fit: cover;
+        height: 72px;
+        width: 70px;
+    }
+}
+ 
+main img#preview {
+    border: 4px solid #fff9;
+    border-radius: 50%;
+    height: 150px;
+    object-fit: cover;
+    width: 150px;
 }
