@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #F2F2F2;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 320px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    input, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<form id="formulario">
+    <h2>Formulario</h2>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" required>
+
+    <label for="apellido">Apellido</label>
+    <input type="text" id="apellido" required>
+
+    <label for="correo">Correo</label>
+    <input type="email" id="correo" required>
+
+    <label for="fecha">Fecha de nacimiento</label>
+    <input type="date" id="fecha" required>
+
+    <label for="edad">Edad</label>
+    <input type="number" id="edad" required min="1" max="120">
+
+    <label for="tipoDoc">Tipo de documento</label>
+    <select id="tipoDoc" required>
+        <option value="">Seleccione</option>
+        <option value="CC">Cédula</option>
+        <option value="TI">Tarjeta de identidad</option>
+        <option value="Otro">Otro</option>
+    </select>
+
+    <label for="documento">Número de documento</label>
+    <input type="number" id="documento" required>
+
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" required>
+
+    <label for="direccion">Dirección</label>
+    <input type="text" id="direccion" required>
+
+    <label for="departamento">Departamento</label>
+    <select id="departamento" required>
+        <option value="">Seleccione</option>
+            <option value="Amazonas">Amazonas</option>
+            <option value="Antioquia">Antioquia</option>
+            <option value="Arauca">Arauca</option>
+            <option value="Atlántico">Atlántico</option>
+            <option value="Bolívar">Bolívar</option>
+            <option value="Boyacá">Boyacá</option>
+            <option value="Caldas">Caldas</option>
+            <option value="Caquetá">Caquetá</option>
+            <option value="Casanare">Casanare</option>
+            <option value="Cauca">Cauca</option>
+            <option value="Cesar">Cesar</option>
+            <option value="Chocó">Chocó</option>
+            <option value="Córdoba">Córdoba</option>
+            <option value="Cundinamarca">Cundinamarca</option>
+            <option value="Guainía">Guainía</option>
+            <option value="Guaviare">Guaviare</option>
+            <option value="Huila">Huila</option>
+            <option value="La Guajira">La Guajira</option>
+            <option value="Magdalena">Magdalena</option>
+            <option value="Meta">Meta</option>
+            <option value="Nariño">Nariño</option>
+            <option value="Norte de Santander">Norte de Santander</option>
+            <option value="Putumayo">Putumayo</option>
+            <option value="Quindío">Quindío</option>
+            <option value="Risaralda">Risaralda</option>
+            <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+            <option value="Santander">Santander</option>
+            <option value="Sucre">Sucre</option>
+            <option value="Tolima">Tolima</option>
+            <option value="Valle del Cauca">Valle del Cauca</option>
+            <option value="Vaupés">Vaupés</option>
+            <option value="Vichada">Vichada</option>
+    </select>
+
+    <label for="municipio">Municipio</label>
+    <select id="municipio" required>
+        <option value="Leticia">Leticia</option>
+        <option value="Puerto Nariño">Puerto Nariño</option>
+        <option value="El Encanto">El Encanto</option>
+        <option value="La Chorrera">La Chorrera</option>
+        <option value="La Pedrera">La Pedrera</option>
+        <!-- ANTIOQUIA -->
+        <option value="Medellín">Medellín</option>
+        <option value="Bello">Bello</option>
+        <option value="Itagüí">Itagüí</option>
+        <option value="Envigado">Envigado</option>
+        <option value="Apartadó">Apartadó</option>
+        <!-- ARAUCA -->
+        <option value="Arauca">Arauca</option>
+        <option value="Tame">Tame</option>
+        <option value="Saravena">Saravena</option>
+        <option value="Fortul">Fortul</option>
+        <option value="Arauquita">Arauquita</option>
+        <!-- ATLÁNTICO -->
+        <option value="Barranquilla">Barranquilla</option>
+        <option value="Soledad">Soledad</option>
+        <option value="Malambo">Malambo</option>
+        <option value="Sabanagrande">Sabanagrande</option>
+        <option value="Puerto Colombia">Puerto Colombia</option>
+        <!-- BOLÍVAR -->
+        <option value="Cartagena">Cartagena</option>
+        <option value="Magangué">Magangué</option>
+        <option value="Turbaco">Turbaco</option>
+        <option value="El Carmen de Bolívar">El Carmen de Bolívar</option>
+        <option value="Arjona">Arjona</option>
+        <!-- BOYACÁ -->
+        <option value="Tunja">Tunja</option>
+        <option value="Duitama">Duitama</option>
+        <option value="Sogamoso">Sogamoso</option>
+        <option value="Chiquinquirá">Chiquinquirá</option>
+        <option value="Paipa">Paipa</option>
+        <!-- CALDAS -->
+        <option value="Manizales">Manizales</option>
+        <option value="Villamaría">Villamaría</option>
+        <option value="Chinchiná">Chinchiná</option>
+        <option value="Riosucio">Riosucio</option>
+        <option value="Anserma">Anserma</option>
+        <!-- CAQUETÁ -->
+        <option value="Florencia">Florencia</option>
+        <option value="San Vicente del Caguán">San Vicente del Caguán</option>
+        <option value="Belén de los Andaquíes">Belén de los Andaquíes</option>
+        <option value="La Montañita">La Montañita</option>
+        <option value="Curillo">Curillo</option>
+        <!-- CASANARE -->
+        <option value="Yopal">Yopal</option>
+        <option value="Aguazul">Aguazul</option>
+        <option value="Villanueva">Villanueva</option>
+        <option value="Tauramena">Tauramena</option>
+        <option value="Monterrey">Monterrey</option>
+        <!-- CAUCA -->
+        <option value="Popayán">Popayán</option>
+        <option value="Santander de Quilichao">Santander de Quilichao</option>
+        <option value="Puerto Tejada">Puerto Tejada</option>
+        <option value="Patía">Patía</option>
+        <option value="Corinto">Corinto</option>
+        <!-- CESAR -->
+        <option value="Valledupar">Valledupar</option>
+        <option value="Aguachica">Aguachica</option>
+        <option value="Bosconia">Bosconia</option>
+        <option value="Codazzi">Codazzi</option>
+        <option value="La Paz">La Paz</option>
+        <!-- CHOCÓ -->
+        <option value="Quibdó">Quibdó</option>
+        <option value="Istmina">Istmina</option>
+        <option value="Condoto">Condoto</option>
+        <option value="Riosucio">Riosucio</option>
+        <option value="Acandí">Acandí</option>
+        <!-- CÓRDOBA -->
+        <option value="Montería">Montería</option>
+        <option value="Cereté">Cereté</option>
+        <option value="Sahagún">Sahagún</option>
+        <option value="Lorica">Lorica</option>
+        <option value="Planeta Rica">Planeta Rica</option>
+        <!-- CUNDINAMARCA -->
+        <option value="Bogotá">Bogotá</option>
+        <option value="Soacha">Soacha</option>
+        <option value="Girardot">Girardot</option>
+        <option value="Zipaquirá">Zipaquirá</option>
+        <option value="Fusagasugá">Fusagasugá</option>
+        <!-- GUAINÍA -->
+        <option value="Inírida">Inírida</option>
+        <option value="Barranco Minas">Barranco Minas</option>
+        <option value="Mapiripana">Mapiripana</option>
+        <option value="San Felipe">San Felipe</option>
+        <option value="Puerto Colombia">Puerto Colombia</option>
+        <!-- GUAVIARE -->
+        <option value="San José del Guaviare">San José del Guaviare</option>
+        <option value="Calamar">Calamar</option>
+        <option value="El Retorno">El Retorno</option>
+        <option value="Miraflores">Miraflores</option>
+        <!-- HUILA -->
+        <option value="Neiva">Neiva</option>
+        <option value="Pitalito">Pitalito</option>
+        <option value="Garzón">Garzón</option>
+        <option value="La Plata">La Plata</option>
+        <option value="Campoalegre">Campoalegre</option>
+        <!-- LA GUAJIRA -->
+        <option value="Riohacha">Riohacha</option>
+        <option value="Maicao">Maicao</option>
+        <option value="San Juan del Cesar">San Juan del Cesar</option>
+        <option value="Fonseca">Fonseca</option>
+        <option value="Barrancas">Barrancas</option>
+        <!-- MAGDALENA -->
+        <option value="Santa Marta">Santa Marta</option>
+        <option value="Ciénaga">Ciénaga</option>
+        <option value="Fundación">Fundación</option>
+        <option value="El Banco">El Banco</option>
+        <option value="Plato">Plato</option>
+        <!-- META -->
+        <option value="Villavicencio">Villavicencio</option>
+        <option value="Acacías">Acacías</option>
+        <option value="Granada">Granada</option>
+        <option value="Puerto López">Puerto López</option>
+        <option value="Cumaral">Cumaral</option>
+        <!-- NARIÑO -->
+        <option value="Pasto">Pasto</option>
+        <option value="Tumaco">Tumaco</option>
+        <option value="Ipiales">Ipiales</option>
+        <option value="Túquerres">Túquerres</option>
+        <option value="Samaniego">Samaniego</option>
+        <!-- NORTE DE SANTANDER -->
+        <option value="Cúcuta">Cúcuta</option>
+        <option value="Los Patios">Los Patios</option>
+        <option value="Villa del Rosario">Villa del Rosario</option>
+        <option value="Ocaña">Ocaña</option>
+        <option value="Pamplona">Pamplona</option>
+        <!-- PUTUMAYO -->
+        <option value="Mocoa">Mocoa</option>
+        <option value="Puerto Asís">Puerto Asís</option>
+        <option value="Orito">Orito</option>
+        <option value="Valle del Guamuez">Valle del Guamuez</option>
+        <option value="Villagarzón">Villagarzón</option>
+        <!-- QUINDÍO -->
+        <option value="Armenia">Armenia</option>
+        <option value="Calarcá">Calarcá</option>
+        <option value="La Tebaida">La Tebaida</option>
+        <option value="Montenegro">Montenegro</option>
+        <option value="Quimbaya">Quimbaya</option>
+        <!-- RISARALDA -->
+        <option value="Pereira">Pereira</option>
+        <option value="Dosquebradas">Dosquebradas</option>
+        <option value="Santa Rosa de Cabal">Santa Rosa de Cabal</option>
+        <option value="La Virginia">La Virginia</option>
+        <option value="Marsella">Marsella</option>
+        <!-- SAN ANDRÉS Y PROVIDENCIA -->
+        <option value="San Andrés">San Andrés</option>
+        <option value="Providencia">Providencia</option>
+        <!-- SANTANDER -->
+        <option value="Bucaramanga">Bucaramanga</option>
+        <option value="Floridablanca">Floridablanca</option>
+        <option value="Girón">Girón</option>
+        <option value="Piedecuesta">Piedecuesta</option>
+        <option value="Barrancabermeja">Barrancabermeja</option>
+        <!-- SUCRE -->
+        <option value="Sincelejo">Sincelejo</option>
+        <option value="Corozal">Corozal</option>
+        <option value="Sampués">Sampués</option>
+        <option value="San Marcos">San Marcos</option>
+        <option value="Tolú">Tolú</option>
+        <!-- TOLIMA -->
+        <option value="Ibagué">Ibagué</option>
+        <option value="Espinal">Espinal</option>
+        <option value="Melgar">Melgar</option>
+        <option value="Honda">Honda</option>
+        <option value="Chaparral">Chaparral</option>
+        <!-- VALLE DEL CAUCA -->
+        <option value="Cali">Cali</option>
+        <option value="Palmira">Palmira</option>
+        <option value="Buenaventura">Buenaventura</option>
+        <option value="Tuluá">Tuluá</option>
+        <option value="Cartago">Cartago</option>
+        <!-- VAUPÉS -->
+        <option value="Mitú">Mitú</option>
+        <option value="Carurú">Carurú</option>
+        <option value="Pacoa">Pacoa</option>
+        <!-- VICHADA -->
+        <option value="Puerto Carreño">Puerto Carreño</option>
+        <option value="La Primavera">La Primavera</option>
+        <option value="Santa Rosalía">Santa Rosalía</option>
+        <option value="Cumaribo">Cumaribo</option>
+    </select>
+
+    <button type="button" onclick="validarFormulario()">Validar</button>
+</form>
+
+<script>
+function validarFormulario() {
+    let nombre = document.getElementById("nombre").value.trim();
+    let apellido = document.getElementById("apellido").value.trim();
+    let correo = document.getElementById("correo").value.trim();
+    let fecha = document.getElementById("fecha").value;
+    let edad = document.getElementById("edad").value.trim();
+    let tipoDoc = document.getElementById("tipoDoc").value;
+    let documento = document.getElementById("documento").value.trim();
+    let telefono = document.getElementById("telefono").value.trim();
+    let direccion = document.getElementById("direccion").value.trim();
+    let departamento = document.getElementById("departamento").value;
+    let municipio = document.getElementById("municipio").value;
+
+    if (!nombre || !apellido || !correo || !fecha || !edad || !tipoDoc || !documento || !telefono || !direccion || !departamento || !municipio) {
+        alert("Por favor complete todos los campos.");
+        return;
+    }
+    if (!correo.includes("@") || !correo.includes(".")) {
+        alert("El correo no es válido.");
+        return;
+    }
+    if (isNaN(edad) || edad <= 0 || edad > 120) {
+        alert("Edad no válida.");
+        return;
+    }
+    if (telefono.length < 7) {
+        alert("El teléfono debe tener al menos 7 dígitos.");
+        return;
+    }
+    alert("Formulario válido. ¡Datos correctos!");
+    document.getElementById("formulario").reset();
+}
+</script>
+</body>
+</html>

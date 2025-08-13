@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Digite su nombre por favor: <input type="text" id="nombre">
+    </p>    
+    <button onclick="saludar()">Aceptar</button>
+
+    <script type="text/javascript">
+        function saludar(){
+            var persona = document.getElementById("nombre").value;
+            alert("Hola " + persona + ", bienvenido a la página web de Robinson");
+        }
+    </script>
+</body>
+</html>
