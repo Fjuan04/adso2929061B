@@ -1,0 +1,85 @@
+ @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/Inter.var.woff2') format('woff2');
+}
+body {
+    font-family: 'Inter', sans-serif;
+}
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background-color: #8b5a2b;
+  color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #704926;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #553820;
+  border: 1px solid #d9c8b3;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+  background-color: #f0eae2;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #43a047;
+}
+
+.btn-text {
+  color: #8b5a2b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: none;
+  border: none;
+}
+
+.btn-text:hover {
+  color: #704926;
+  background-color: #f0eae2;
+}

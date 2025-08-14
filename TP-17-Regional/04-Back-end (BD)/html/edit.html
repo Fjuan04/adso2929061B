@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - La Cabra - Coffee Shop</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+    <main class="edit">
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <header>
+            <a class="btn-back" href="dashboard.html">
+                <img src="images/btn-back.svg" alt="Back">
+            </a>
+            <h2>EDIT Product</h2>
+            <label for="burger-toggle" class="btn-mburger">
+                <img src="images/btn-mburger.svg" alt="Menu Burger" class="burger-icon">
+                <img src="images/btn-close.svg" alt="Close Menu" class="close-icon">
+            </label>
+        </header>
+        <nav class="burger-menu">
+            <img src="images/logo.png" alt="Logo">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html">LOGOUT</a>
+        </nav>
+        <img class="preview" src="../pictures/french-press-kit.png" alt="Preview" >
+        <form action="dashboard.html" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" maxlength="32" placeholder="Name" value="French Press Kit">
+            <select name="category_id">
+                <option value="">Select Category...</option>
+                <option value="1" selected>Merchandise</option>
+                <option value="2">Cold Drinks</option>
+                <option value="3">Hot Drinks</option>
+            </select>
+            <input type="text" name="price" maxlength="12" placeholder="Price" value="35">
+            <select name="active">
+                <option value="">Is Active...</option>
+                <option value="0" selected>True</option>
+                <option value="1">False</option>
+            </select>
+            <input class="upload" type="button">
+            <input class="picture" type="file" name="picture">
+            <input type="text" name="date" maxlength="12" placeholder="Date" value="07-30-2025">
+            <button>Update</button>
+        </form>
+    </main>
+</body>
+</html>

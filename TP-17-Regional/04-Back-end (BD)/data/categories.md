@@ -1,0 +1,8 @@
+- Hot Coffee Drinks
+- Cold Coffee Drinks
+- Specialty Brews
+- Bakery & Pastries
+- Coffee Beans
+- Merchandise
+- Classic Coffees 
+- Barista Kits
