@@ -98,7 +98,8 @@
     // Show Pet
     function showPet($id, $conx) {
         try {
-            $sql = "SELECT  p.specie_id,
+            $sql = "SELECT  
+                            p.specie_id,
                             p.sex_id,
                             p.breed_id,
                             p.name AS name,
@@ -162,7 +163,29 @@
     }
 
 
-    //update species
+    //update pet
 
-    
- 
+    function updatePet($id,$name, $specie_id, $breed_id, $sex_id, $photo, $conx){
+        $sql = "UPDATE pets 
+                SET name = :name,
+                    specie_id = :specie,
+                    breed_id = :breed,
+                    sex_id = :sex,
+                    photo = :photo
+                    WHERE id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':specie', $specie_id);
+        $stmt->bindParam(':breed', $breed_id);
+        $stmt->bindParam(':sex', $sex_id);
+        $stmt->bindParam(':photo', $photo);
+        
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
+        
+    }

@@ -54,7 +54,7 @@
         <script>
             function deletePet(id, name) {
             
-                if(confirm(`Esta usted seguro? Va eliminar a ${name}`)) {
+                if(confirm(`La mascota ${name} será eliminada, desea continuar?`)) {
                     window.location.replace('delete.php?id='+id)
                 }
             }

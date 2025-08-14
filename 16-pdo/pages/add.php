@@ -30,7 +30,7 @@
                     <?php $species = listSpecies($conx) ?>
                     <?php foreach($species as $specie): ?>
                         <option value="<?=$specie['id']?>" <?php if(isset($_POST['specie_id']) && $_POST['specie_id'] == $specie['id']) echo "selected"; ?>><?=$specie['id']?>-<?=$specie['name']?></option>
-                    <?php endforeach ?>
+                    <?php endforeach ?> 
                 </select>
             </div>
             <div class="select">

@@ -22,6 +22,9 @@ html {
 /* Login */
 /* + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + */
 /* main.login */
+body {
+   background: url(../imgs/bgpets.png) no-repeat center / cover;
+}
 main.login {
     background: url(../imgs/bg-login.svg) no-repeat center;
     border-radius: 40px;
