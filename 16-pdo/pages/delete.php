@@ -2,7 +2,6 @@
     include '../config/app.php';
     include '../config/database.php';
     include '../config/security.php';
-
     if($_GET){
         $id = $_GET['id'];
         $stmt = $conx->prepare("SELECT photo

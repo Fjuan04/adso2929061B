@@ -2,6 +2,8 @@
     include '../config/app.php';
     include '../config/database.php';
     include '../config/security.php';
+    echo $_SERVER['HTTP_HOST'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
