@@ -79,7 +79,12 @@ Route::middleware('auth')->group(function () {
             // 'pets'      => PetController::class,
             // 'adoptions' => AdoptionController::class
         ]);
+
+        //Search
+        Route::post('search/users', [UserController::class, 'search']);
+        // Route::post('search/pets', [PetController::class, 'search']);
     });
 });
+
 
 require __DIR__.'/auth.php';

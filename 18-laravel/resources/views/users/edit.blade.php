@@ -1,14 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Users Module')
+@section('title', 'Edit')
 
 @section('content')
     @include('layouts.navbar')
     <main class="bg-[url(images/bg-users.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-96 text-white p-10 rounded-lg flex flex-col justify-center items-center mt-20">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Add user
+                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Edit User
+                
             </h1>
-            
+
             <div class="breadcrumbs text-sm mt-5">
                 <ul>
                     <li>
@@ -48,60 +49,64 @@
                             stroke-width="2"
                             d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
-                        Add user
+                        Edit user
                     </span>
                     </li>
                 </ul>
             </div>
 
-            <form action="{{url('users')}}" method="post" enctype="multipart/form-data" class="my-6 flex flex-col  gap-2 ">
+            <form action="{{url('users/'. $user->id)}}" method="post" enctype="multipart/form-data" class="my-6 flex flex-col  gap-2 ">
                 @csrf
+                @method('put')
                 <div class="avatar mt-6 flex flex-col items-center">
+
                         <div id="upload" class="mask mask-squircle w-48 cursor-pointer hover:scale-110 transition-transform">
-                            <img id="preview" src="{{asset('images/no-photo.webp')}}" />
+                            <img id="preview" src="{{asset('images/'.$user->photo)}}" />
                         </div>
                         <small class="font-bold text-gray-500  mt-2 gap-1">Upload photo</small>
                     </div>
                     <input type="file" id="photo" name="photo" class="hidden" accept="image/*" >
+                    <input type="hidden" name="originphoto" value="{{$user->photo}}">
                     <div class="mt-4">
                      <label class="mt-4">Document:</label>
-                     <input type="text" name="document" placeholder="750001002" class="input bg-[transparent] border-white w-full" value="{{ old('document') }}"/>
+                     <input type="text" name="document" placeholder="750001002" class="input bg-[transparent] border-white w-full" value="{{ old('document', $user->document) }}"/>
                  </div>
                  <div>
                      <label class="mt-4">Full Name:</label>
-                     <input type="text" name="fullname" placeholder="John Wick" class="input bg-[transparent] border-white w-full" value="{{ old('fullname') }}"/>
+                     <input type="text" name="fullname" placeholder="John Wick" class="input bg-[transparent] border-white w-full" value="{{ old('fullname', $user->fullname) }}"/>
                  </div>
                  <div>
                      <label class="mt-4">Gender:</label>
                      <select name="gender" class="select bg-[#0006] border-white w-full">
                         <option value="">Select Gender...</option>
-                        <option value="Female" @if(old('gender') == 'Female') selected @endif>Female</option>
-                        <option value="Male" @if(old('gender') == 'Male') selected @endif>Male</option>
+                        <option value="Female" @if(old('gender', $user->gender) == 'Female') selected @endif>Female</option>
+                        <option value="Male" @if(old('gender', $user->gender) == 'Male') selected @endif>Male</option>
                      </select>
                  </div>
                  <div>
                      <label class="mt-4">Birthdate:</label>
-                     <input type="date" name="birthdate" placeholder="2000-10-08" class="input bg-[transparent] border-white w-full" value="{{ old('birthdate') }}"/>
+                     <input type="date" name="birthdate" placeholder="2000-10-08" class="input bg-[transparent] border-white w-full" value="{{ old('birthdate', $user->birthdate) }}"/>
                  </div>
                  <div>
                      <label class="mt-4">Phone Number:</label>
-                     <input type="text" name="phone" placeholder="3201231234" class="input bg-[transparent] border-white w-full" value="{{ old('phone') }}"/>
+                     <input type="text" name="phone" placeholder="3201231234" class="input bg-[transparent] border-white w-full" value="{{ old('phone', $user->phone) }}"/>
                  </div>
                  <div>
                      <label class="mt-4">Email:</label>
-                     <input type="text" name="email" placeholder="jonhw@mail.com" class="input bg-[transparent] border-white w-full" value="{{ old('email') }}"/>
+                     <input type="text" name="email" placeholder="jonhw@mail.com" class="input bg-[transparent] border-white w-full" value="{{ old('email', $user->email) }}"/>
                  </div>
                  <div>
-                     <label class="mt-4">Password:</label>
-                     <input type="password" name="password" placeholder="secret" class="input bg-[transparent] border-white w-full" />
+                     <label class="mt-4">active:</label>
+                     <select name="active" class="select bg-[#0006] border-white w-full">
+                        <option value="">Select Status</option>
+                        <option value="1" @if(old('active', $user->active) == 1) selected @endif>Active</option>
+                        <option value="0" @if(old('active', $user->active) == 0) selected @endif>Inactive</option>
+                     </select>
                  </div>
-                 <div>
-                     <label class="mt-4">Password Confirmation:</label>
-                     <input type="password" name="password_confirmation" placeholder="secret" class="input bg-[transparent] border-white w-full" />
-                 </div>
+                 
                  <div>
                     <button class="btn btn-light w-full ">
-                        Register
+                        Update
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                         </svg>
