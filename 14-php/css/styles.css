@@ -1,0 +1,260 @@
+/* - - - - - - - - - - - - - - - - */
+/* R E S E T */
+/* - - - - - - - - - - - - - - - - */ 
+
+@font-face {
+    font-family: dankmono;
+    src: url(fonts/DankMono-Bold.otf);
+}
+*, *::before, *::after{
+    box-sizing: border-box; 
+    font-family:"dankmono";
+}
+
+
+
+/* *{
+    margin: 0; 
+    padding: 0; 
+} */
+
+ul[role='list'], ol[role='list']{
+    list-style: none; 
+}
+
+html:focus-within{
+    scroll-behavior: smooth; 
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto; 
+}
+
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    height: auto; 
+    vertical-align: middle; 
+    font-style: italic; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+/*
+input, button, textarea, select{
+    font: inherit; 
+}
+*/
+@media (prefers-reduced-motion: reduce){
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+body, html{
+    height: 100%; 
+    scroll-behavior: smooth; 
+}
+/* - - - - - - - - - - - - - - - - */
+/* F O N T S */
+/* - - - - - - - - - - - - - - - - */ 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+/* - - - - - - - - - - - - - - - - */
+/* V A R I A B L E S */
+/* - - - - - - - - - - - - - - - - */ 
+:root {
+    --color-1: rgba(255, 255, 255, 0.951);
+    --color-2: #0009;
+    --font-bd: Poppins, sans-serif;
+}
+
+/* - - - - - - - - - - - - - - - - */
+/* G E N E R A L */
+/* - - - - - - - - - - - - - - - - */ 
+body {
+    color: var(--color-2);
+    font-family: var(--font-bd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    nav:not(.nofloat) { 
+        
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        a:is(:link, :visited) {
+            background-color: var(--color-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            opacity: .8;
+            transition: all 0.2s ease-in;
+            width: 35px;
+            svg {
+                width: 24px;
+            }
+            
+        }
+        a:is(:hover){
+            
+                transform: scale(1.25);
+                align-self: auto;
+        }
+    }
+    main {
+        header {
+            
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            h1 {
+                font-size: 3rem;
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                span {
+                    border-radius: 50px;
+                    background-color: var(--color-2);
+                    color: var(--color-1);
+                    font-size: 1.4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+            h2 {
+                
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: #ccc;
+            }
+            h3 {
+                font-size: 1rem;
+                font-weight: 400;
+                border-radius: 50px;
+                background-color: var(--color-2);
+                color: var(--color-1);
+                padding: 8px 16px;
+            
+            }
+            p{
+                text-align: center;
+                color: #ffffff;}
+            img {
+                border-radius: 50%;
+                border: 10px solid var(--color-2);
+                height: 200px;
+                width: 200px;
+                object-fit: cover;
+            }
+                  
+
+        }
+        
+        section {
+            padding: 1rem;
+            background-color: #eed;
+            border-radius: 4px;
+            margin-inline: auto;
+            margin-block: 1rem;
+            min-height: 25vh;
+            min-width: 400px;
+            
+            h3 {
+                border-bottom: 2px dotted var(--color-2);
+            }
+            p {
+                font-size: 1.6rem;
+                margin-bottom: 0.6rem;
+                svg {
+                    width: 20px;
+                }
+                
+            }
+            xmp {
+                color: #00ff33;
+                margin-top: 0.6rem;
+                border-radius: 5px;
+                padding: 0 0.8rem 0.8rem;
+                background-color: #0009;
+            }
+            
+        }
+        menu {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            a:is(:link, :visited) {
+                border-radius: 50px;
+                background-color: var(--color-1);
+                color: var(--color-2);
+                display: flex;
+                padding: 0.6rem;
+                text-decoration: none;
+                transition: all 0.4s ease-in;
+                gap: 0.6rem;
+                width: 280px;
+                align-items: center;
+                background: linear-gradient(to right, #ffffff54, #ffffff38);
+                
+            }
+            a:is(:hover){
+                background-color: #ebebeb;
+                transform: scale(1.05) translateY(-10px);
+                align-self: auto;
+                
+            }
+            a.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+            span {
+                border-radius: 20px;
+                background-color: var(--color-2);
+                color: var(--color-1);
+                font-weight: 600;
+                height:28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                
+            }
+        }
+        section{
+            background-color: var(--color-1);
+            border-radius: 4px;
+            margin-block: 1rem;
+            min-height: 25vh;
+            width: 400px;
+        }
+    }
+}
+
+
+/* - - - - - - - - - - - - - - - - */
+/*  P H P */
+/* - - - - - - - - - - - - - - - - */
+body.php {
+    background-color: #4F5B93;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='2000' viewBox='0 0 800 800'%3E%3Cg fill='none' %3E%3Cg stroke='%238892BF' stroke-width='17'%3E%3Cline x1='-8' y1='-8' x2='808' y2='808'/%3E%3Cline x1='-8' y1='792' x2='808' y2='1608'/%3E%3Cline x1='-8' y1='-808' x2='808' y2='8'/%3E%3C/g%3E%3Cg stroke='%23848ebc' stroke-width='16'%3E%3Cline x1='-8' y1='767' x2='808' y2='1583'/%3E%3Cline x1='-8' y1='17' x2='808' y2='833'/%3E%3Cline x1='-8' y1='-33' x2='808' y2='783'/%3E%3Cline x1='-8' y1='-783' x2='808' y2='33'/%3E%3C/g%3E%3Cg stroke='%23818bb9' stroke-width='15'%3E%3Cline x1='-8' y1='742' x2='808' y2='1558'/%3E%3Cline x1='-8' y1='42' x2='808' y2='858'/%3E%3Cline x1='-8' y1='-58' x2='808' y2='758'/%3E%3Cline x1='-8' y1='-758' x2='808' y2='58'/%3E%3C/g%3E%3Cg stroke='%237d87b7' stroke-width='14'%3E%3Cline x1='-8' y1='67' x2='808' y2='883'/%3E%3Cline x1='-8' y1='717' x2='808' y2='1533'/%3E%3Cline x1='-8' y1='-733' x2='808' y2='83'/%3E%3Cline x1='-8' y1='-83' x2='808' y2='733'/%3E%3C/g%3E%3Cg stroke='%237a84b4' stroke-width='13'%3E%3Cline x1='-8' y1='92' x2='808' y2='908'/%3E%3Cline x1='-8' y1='692' x2='808' y2='1508'/%3E%3Cline x1='-8' y1='-108' x2='808' y2='708'/%3E%3Cline x1='-8' y1='-708' x2='808' y2='108'/%3E%3C/g%3E%3Cg stroke='%237680b1' stroke-width='12'%3E%3Cline x1='-8' y1='667' x2='808' y2='1483'/%3E%3Cline x1='-8' y1='117' x2='808' y2='933'/%3E%3Cline x1='-8' y1='-133' x2='808' y2='683'/%3E%3Cline x1='-8' y1='-683' x2='808' y2='133'/%3E%3C/g%3E%3Cg stroke='%23727dae' stroke-width='11'%3E%3Cline x1='-8' y1='642' x2='808' y2='1458'/%3E%3Cline x1='-8' y1='142' x2='808' y2='958'/%3E%3Cline x1='-8' y1='-158' x2='808' y2='658'/%3E%3Cline x1='-8' y1='-658' x2='808' y2='158'/%3E%3C/g%3E%3Cg stroke='%236f79ac' stroke-width='10'%3E%3Cline x1='-8' y1='167' x2='808' y2='983'/%3E%3Cline x1='-8' y1='617' x2='808' y2='1433'/%3E%3Cline x1='-8' y1='-633' x2='808' y2='183'/%3E%3Cline x1='-8' y1='-183' x2='808' y2='633'/%3E%3C/g%3E%3Cg stroke='%236b76a9' stroke-width='9'%3E%3Cline x1='-8' y1='592' x2='808' y2='1408'/%3E%3Cline x1='-8' y1='192' x2='808' y2='1008'/%3E%3Cline x1='-8' y1='-608' x2='808' y2='208'/%3E%3Cline x1='-8' y1='-208' x2='808' y2='608'/%3E%3C/g%3E%3Cg stroke='%236873a6' stroke-width='8'%3E%3Cline x1='-8' y1='567' x2='808' y2='1383'/%3E%3Cline x1='-8' y1='217' x2='808' y2='1033'/%3E%3Cline x1='-8' y1='-233' x2='808' y2='583'/%3E%3Cline x1='-8' y1='-583' x2='808' y2='233'/%3E%3C/g%3E%3Cg stroke='%23646fa3' stroke-width='7'%3E%3Cline x1='-8' y1='242' x2='808' y2='1058'/%3E%3Cline x1='-8' y1='542' x2='808' y2='1358'/%3E%3Cline x1='-8' y1='-558' x2='808' y2='258'/%3E%3Cline x1='-8' y1='-258' x2='808' y2='558'/%3E%3C/g%3E%3Cg stroke='%23616ca1' stroke-width='6'%3E%3Cline x1='-8' y1='267' x2='808' y2='1083'/%3E%3Cline x1='-8' y1='517' x2='808' y2='1333'/%3E%3Cline x1='-8' y1='-533' x2='808' y2='283'/%3E%3Cline x1='-8' y1='-283' x2='808' y2='533'/%3E%3C/g%3E%3Cg stroke='%235d689e' stroke-width='5'%3E%3Cline x1='-8' y1='292' x2='808' y2='1108'/%3E%3Cline x1='-8' y1='492' x2='808' y2='1308'/%3E%3Cline x1='-8' y1='-308' x2='808' y2='508'/%3E%3Cline x1='-8' y1='-508' x2='808' y2='308'/%3E%3C/g%3E%3Cg stroke='%235a659b' stroke-width='4'%3E%3Cline x1='-8' y1='467' x2='808' y2='1283'/%3E%3Cline x1='-8' y1='317' x2='808' y2='1133'/%3E%3Cline x1='-8' y1='-333' x2='808' y2='483'/%3E%3Cline x1='-8' y1='-483' x2='808' y2='333'/%3E%3C/g%3E%3Cg stroke='%23566298' stroke-width='3'%3E%3Cline x1='-8' y1='342' x2='808' y2='1158'/%3E%3Cline x1='-8' y1='442' x2='808' y2='1258'/%3E%3Cline x1='-8' y1='-458' x2='808' y2='358'/%3E%3Cline x1='-8' y1='-358' x2='808' y2='458'/%3E%3C/g%3E%3Cg stroke='%23535e96' stroke-width='2'%3E%3Cline x1='-8' y1='367' x2='808' y2='1183'/%3E%3Cline x1='-8' y1='417' x2='808' y2='1233'/%3E%3Cline x1='-8' y1='-433' x2='808' y2='383'/%3E%3Cline x1='-8' y1='-383' x2='808' y2='433'/%3E%3C/g%3E%3Cg stroke='%234F5B93' stroke-width='1'%3E%3Cline x1='-8' y1='392' x2='808' y2='1208'/%3E%3Cline x1='-8' y1='-408' x2='808' y2='408'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+}
