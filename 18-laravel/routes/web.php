@@ -83,6 +83,19 @@ Route::middleware('auth')->group(function () {
         //Search
         Route::post('search/users', [UserController::class, 'search']);
         // Route::post('search/pets', [PetController::class, 'search']);
+        
+        // PDF
+        Route::get('export/users/pdf', [UserController::class, 'pdf']);
+
+        // EXCEL
+        Route::get('export/users/excel', [UserController::class, 'excel']);
+        
+        
+        //import
+        Route::post('import/users', [UserController::class, 'import']);
+
+        
+
     });
 });
 
