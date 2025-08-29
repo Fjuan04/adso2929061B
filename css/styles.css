@@ -240,7 +240,7 @@ body {
             }
         }
         section{
-            background-color: var(--color-1);
+            background-color: #fff9;
             border-radius: 4px;
             margin-block: 1rem;
             min-height: 25vh;
