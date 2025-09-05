@@ -38,7 +38,6 @@ class PetController extends Controller
                 'breed'       => ['nullable', 'string', 'max:100'], 
                 'location'    => ['required', 'string', 'max:150'],
                 'description' => ['nullable', 'string', 'max:255'],
-                'status'      => ['required', 'in:0,1'], 
             ]);
 
         if($validation){
@@ -89,7 +88,6 @@ class PetController extends Controller
                 'location'    => 'required|string|max:150',
                 'description' => 'nullable|string|max:500',
                 'active'      => 'required|in:0,1',
-                'status'      => 'required|in:0,1',
             ]);
 
 
@@ -129,17 +127,18 @@ class PetController extends Controller
 
     public function search(Request $request){
         // return "Searching...............". $request->q;
-        dd($request);
         $pets = Pet::names($request->q)->paginate(5);
         return view('pets.search')->with('pets', $pets);
     }
 
-    public function pdf(){
-        $pets = Pet::all();
-        $pdf = PDF::loadview('pets.pdf', compact('pets'));
-        return $pdf->download('allpets.pdf');
+    public function pdf() {
+    $pets = Pet::all();
+    $pdf = PDF::loadView('pets.pdf', compact('pets'))
+              ->setPaper('a4','landscape'); 
 
+        return $pdf->download('allpets.pdf');
     }
+
 
 
     

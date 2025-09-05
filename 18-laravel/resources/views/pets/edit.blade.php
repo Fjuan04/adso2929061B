@@ -3,10 +3,10 @@
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[url(images/bg-pets.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-[#2A8C82] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-96 text-white p-10 rounded-lg flex flex-col justify-center items-center mt-20">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Edit User
+                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Edit Pet
                 
             </h1>
 
@@ -22,17 +22,7 @@
                     </li>
                     <li>
                     <a href="{{url('pets')}}">
-                        <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        class="h-4 w-4 stroke-current">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" class="size-5" viewBox="0 0 256 256"><path d="M212,80a28,28,0,1,0,28,28A28,28,0,0,0,212,80Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,212,120ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM44,120a12,12,0,1,1,12-12A12,12,0,0,1,44,120ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm0-40A12,12,0,1,1,80,60,12,12,0,0,1,92,48Zm72,40a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,48Zm23.12,100.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72ZM168,208a24,24,0,0,1-9.45-1.93,80.14,80.14,0,0,0-61.19,0,24,24,0,0,1-20.71-43.26,51.22,51.22,0,0,0,24.46-30.67,28,28,0,0,1,53.78,0,51.27,51.27,0,0,0,24.53,30.71A24,24,0,0,1,168,208Z"></path></svg>
                         Pets Module
                     </a>
                     </li>
@@ -106,14 +96,7 @@
                         <option value="0" @if(old('active', $pet->active) == 0) selected @endif>Inactive</option>
                      </select>
                  </div>
-                 <div>
-                     <label class="mt-4">status:</label>
-                     <select name="status" class="select bg-[#0006] border-white w-full">
-                        <option value="">Select Status</option>
-                        <option value="1" @if(old('status', $pet->status) == 1) selected @endif>Adopted</option>
-                        <option value="0" @if(old('status', $pet->status) == 0) selected @endif>Free</option>
-                     </select>
-                 </div>
+                 
                  
                  <div>
                     <button class="btn btn-light w-full ">
@@ -150,20 +133,22 @@
                 $('#preview').attr('src', window.URL.createObjectURL($(this)[0].files[0]))
             })
 
-            @if (count($errors->all()) > 0)
-                @php $content = '<ul class="flex flex-col gap-1>"' @endphp
+                    @if (count($errors->all()) > 0)
+                        @php $content = '<ul class="flex flex-col gap-1>"' @endphp
 
-                    @foreach ($errors->all() as $msg)
-                            @php $content .= "<li class='badge badge-error gap-4'>". $msg  . "</li>" @endphp
-                    @endforeach
+                            @foreach ($errors->all() as $msg)
+                                    @php $content .= "<li class='badge badge-error gap-4'>". $msg  . "</li>" @endphp
+                            @endforeach
                     @php $content .= '</ul>' @endphp
                     Swal.fire({
-                    position: "top-end",
-                    icon: "error",
-                    title: "Something went wrong",
-                    html: `@php echo $content @endphp`,
-                    showConfirmButton: true,
-                    })
+                        position: "top-end",
+                        icon: "error",
+                        title: "Something went wrong",
+                        html: `@php echo $content @endphp`,
+                        showConfirmButton: true,
+                        timer: 2000 
+                    });
+
             @endif
         })
     </script>

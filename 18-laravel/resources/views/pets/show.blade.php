@@ -3,7 +3,7 @@
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[#154869] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-[#2A8C82] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
@@ -23,9 +23,7 @@
                     </li>
                     <li>
                         <a href="{{ url('pets') }}" class="flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="#fff" viewBox="0 0 256 256">
-                                <path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"></path>
-                            </svg>
+                            <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256"><path d="M212,80a28,28,0,1,0,28,28A28,28,0,0,0,212,80Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,212,120ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM44,120a12,12,0,1,1,12-12A12,12,0,0,1,44,120ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm0-40A12,12,0,1,1,80,60,12,12,0,0,1,92,48Zm72,40a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,48Zm23.12,100.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72ZM168,208a24,24,0,0,1-9.45-1.93,80.14,80.14,0,0,0-61.19,0,24,24,0,0,1-20.71-43.26,51.22,51.22,0,0,0,24.46-30.67,28,28,0,0,1,53.78,0,51.27,51.27,0,0,0,24.53,30.71A24,24,0,0,1,168,208Z"></path></svg>
                             Pets Module
                         </a>
                     </li>
@@ -44,11 +42,11 @@
             <div class="w-full max-w-2xl mt-8 bg-[#000000b3] rounded-xl p-6 shadow-lg">
                 <div class="flex flex-col md:flex-row gap-8">
                     {{-- Photo Section --}}
-                    <div class="flex-shrink-0 flex flex-col items-center relative">
+                    <div class="flex-shrink-0  flex flex-col items-center justify-center relative">
                         @if($pet->active == 1)
-                            <div class="rounded rounded-full w-[20px] h-[20px] bg-green-600 absolute top-[-5px] right-[-5px]"></div>
+                            <div class="rounded rounded-full w-[100px] h-[30px] bg-green-600 absolute top-[0px] left-[50%] translate-x-[-50%] text-center  font-bold flex items-center justify-center">Active</div>
                         @else 
-                            <div class="rounded rounded-full w-[20px] h-[20px] bg-red-600 absolute top-[-5px] right-[-5px]"></div>
+                            <div class="rounded rounded-full w-[100px] h-[30px] bg-red-600 absolute top-[0px] left-[50%] translate-x-[-50%] text-center  font-bold flex items-center justify-center">Inactive</div>
                         @endif
                         <div class="mask mask-squircle w-48 h-48 bg-gray-700 flex items-center justify-center">
                             @if($pet->image)
@@ -66,7 +64,7 @@
                         <div class="mt-4 text-center">
                             <h2 class="text-xl font-bold">{{ $pet->name }}</h2>
                             <p class="text-gray-300">{{ $pet->kind }}</p>
-                            <p class="text-gray-300">{{ $pet->age }}</p>
+                            <p class="text-gray-300">Age: {{ $pet->age }}</p>
 
                         </div>
                     </div>
@@ -88,7 +86,10 @@
                             <h3 class="text-gray-400 text-sm font-semibold">Description</h3>
                             <p class="mt-1">{{ $pet->description }}</p>
                         </div>
-
+                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Status</h3>
+                            <p class="mt-1">{{$pet->status == 0 ? 'Avaliable' : 'Adopted'}}</p>
+                        </div>
                         <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
                             <h3 class="text-gray-400 text-sm font-semibold">Created At</h3>
                             <p class="mt-1">{{ $pet->created_at->format('d/m/Y H:i') }}</p>

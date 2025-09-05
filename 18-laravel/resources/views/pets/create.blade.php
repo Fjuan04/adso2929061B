@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Users Module')
+@section('title', 'Pets Module')
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[url(images/bg-pets.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-[#2A8C82] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-96 text-white p-10 rounded-lg flex flex-col justify-center items-center mt-20">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Add user
+                <svg xmlns="http://www.w3.org/2000/svg"  class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path></svg> Add pet
             </h1>
             
             <div class="breadcrumbs text-sm mt-5">
@@ -58,7 +58,7 @@
     @csrf
     <div class="avatar mt-6 flex flex-col items-center">
         <div id="upload" class="mask mask-squircle w-48 cursor-pointer hover:scale-110 transition-transform">
-            <img id="preview" src="{{ asset('images/no-photo.webp') }}">
+            <img id="preview" src="{{ asset('images/no-image.webp') }}">
         </div>
         <small class="font-bold text-gray-500 mt-2 gap-1">Upload photo</small>
     </div>
@@ -94,14 +94,7 @@
         <input type="text" name="description" placeholder="Very child" class="input bg-[transparent] border-white w-full" value="{{ old('description') }}">
     </div>
     
-    <div>
-        <label class="mt-4">Status:</label>
-        <select name="status" class="select bg-[#0006] border-white w-full">
-            <option value="">Select Status</option>
-            <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Adopted</option>
-            <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Free</option>
-        </select>
-    </div>
+    
     
     <div>
         <button class="btn btn-light w-full ">
@@ -150,6 +143,7 @@
                     title: "Something went wrong",
                     html: `@php echo $content @endphp`,
                     showConfirmButton: true,
+                    timer: 2000
                     })
             @endif
         })

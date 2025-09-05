@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Pet;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\AdoptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,7 +58,7 @@ Route::middleware('auth')->group(function () {
         Route::resources([
             'pets'      => PetController::class,
             'users'     => UserController::class,
-            // 'adoptions' => AdoptionController::class
+            'adoptions' => AdoptionController::class
         ]);
 
         //Search

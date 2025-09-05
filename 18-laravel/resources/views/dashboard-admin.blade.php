@@ -65,7 +65,7 @@
                         </h2>
                         <p>Manages adoption data: read.</p>
                         <div class="card-actions justify-end">
-                        <a href="{{ url('adptions') }}" class="btn text-white bg-purple-900">More Info</a>
+                        <a href="{{ url('adoptions') }}" class="btn text-white bg-purple-900">More Info</a>
                         </div>
                     </div>
                 </div>
