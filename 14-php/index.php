@@ -87,7 +87,7 @@
                         Conditional if
                     </a>
 
-                    <a href="11-conditional-switch">
+                    <a href="11-conditional-switch.php">
                         <span>11</span>
                         Conditional Switch
                     </a>
@@ -97,17 +97,17 @@
                         Arrays Index Numeric
                     </a>
 
-                    <a href="13-arrays-associative">
+                    <a href="13-arrays-associative.php">
                         <span>13</span>
                         Arrays Associative
                     </a>
 
-                    <a href="14-arrays-multidimensionals">
+                    <a href="14-arrays-multidimensionals.php">
                         <span>14</span>
                         Arrays Multidimensionals
                     </a>
 
-                    <a href="15-loop-while">
+                    <a href="15-loop-while.php">
                         <span>15</span>
                         Loop While
                     </a>
@@ -117,24 +117,24 @@
                         Loop Do While
                     </a>
 
-                    <a href="">
+                    <a href="17-loop-for.php">
                         <span>17</span>
-
+                        Loop For
                     </a>
 
-                    <a href="">
+                    <a href="18-loop-foreach.php">
                         <span>18</span>
-
+                        Loop Foreach
                     </a>
 
-                    <a href="">
+                    <a href="19-functions.php">
                         <span>19</span>
-
+                        Functions
                     </a>
 
-                    <a href="">
+                    <a href="20-function-with-params.php">
                         <span>20</span>
-
+                        Function With Params
                     </a>
 
                     <a href="21-functions-return.php">
