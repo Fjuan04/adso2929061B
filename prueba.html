@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .gradient {
+            width: 400px;
+            height: 900px;
+            border: 1px solid;
+            background: linear-gradient(to bottom, #C394E8, #fff);
+            animation: breath 5s linear infinite;
+        }
+
+
+
+        @keyframes breath {
+            from   {
+                background: linear-gradient(to bottom, #C394E8, #fff);
+                filter: grayscale(0);
+            }
+            
+            50% {
+                background: linear-gradient(to bottom, #C394E8, #fff);
+                filter: grayscale(0.5);
+            }
+            to {
+                background: linear-gradient(to bottom, #C394E8, #fff);
+                filter: grayscale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient">
+
+    </div>
+</body>
+</html>
