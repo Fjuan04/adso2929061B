@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pet; 
-
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PetsExport;
 // use App\Imports\PetsImport;
 class PetController extends Controller
 {
+   
     public function index()
     {
         $pets = Pet::paginate(5);
@@ -62,6 +63,11 @@ class PetController extends Controller
     {
         return view('pets.show')->with('pet', $pet);
 
+    }
+
+    public function adopt(Pet $pet){
+        $user = Auth::user();
+        return view('pets.adopt', compact('pet', 'user'));
     }
 
     /**
@@ -139,18 +145,19 @@ class PetController extends Controller
         return $pdf->download('allpets.pdf');
     }
 
+     
+    public function freepets(){
+        $pets = Pet::where('status', 0)
+        ->where('active', 1)->paginate(6);
+        return view('adoptions.free', compact('pets'));
+    }
 
-
+    
     
     public function excel(){
         return Excel::download(new PetsExport, 'allpets.xlsx');
     }
 
-    public function import(Request $request){
-        $file = $request->file('file');
-        Excel::import(new PetsImport, $file);
-        return redirect()->back()->with('message','Pets imported successful');
-
-    }
+    
 }
 

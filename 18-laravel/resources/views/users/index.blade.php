@@ -117,27 +117,40 @@
             $(this).parent().submit()
         })
 
-        //Search
-        $('body').on('input', '#qsearch', function(e){
-            event.preventDefault()
-            $query = $(this).val()
-            $token = $('[name=_token]').val()
-            $('.datalist').empty() 
-            // $('.datalist').hide()
-            $('.datalist').html(`<tr>
-                                    <td colspan="4" class="text-center py-20">
-                                        <span class="loading loading-ring loading-xl "></span>
-                                    </td>
-                                </tr>
-
-            `),
-            setTimeout(()=>{
-                    $.post('search/users', {q: $query, _token: $token}, function(data){
-                        $('.datalist').html(data).hide().fadeIn(2000)
-                    })    
-            },2000)
-            
-        })
+        // Search
+            function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
+            }
+            const search = debounce(function(query) {
+                
+                $token = $('input[name=_token]').val()
+                
+                $.post("search/users", {'q': query, '_token': $token},
+                    function (data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
+            $('body').on('input', '#qsearch', function(event) {
+                event.preventDefault()
+                const query = $(this).val()
+                
+                $('.datalist').html(`<tr>
+                                        <td colspan="4" class="text-center py-18">
+                                            <span class="loading loading-spinner loading-xl"></span>
+                                        </td>
+                                    </tr>`)
+                
+                search(query)
+            })
 
 
         // Delete

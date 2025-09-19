@@ -40,3 +40,6 @@ public function scopeNames($pets, $q){
         }
     }
 }
+
+//Scope Kinds
+

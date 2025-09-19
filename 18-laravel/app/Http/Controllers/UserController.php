@@ -126,6 +126,9 @@ class UserController extends Controller
             $user->active = $request->active;
             
             if($user->save()){
+                if($user->role == 'Customer'){
+                    return redirect()->back()->with('message', 'User updated');
+                }
                 return redirect('users')->with('message', 'The user: '.$user->fullname.' was successfully updated');
             }
         }

@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Adoption;
-use App\Models\Pet;
 use Illuminate\Http\Request;
-
-class AdoptionController extends Controller
+use App\Models\User;
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $adoptions = Adoption::paginate(20);
-        return view('adoptions.index', compact('adoptions'));
+        //
     }
 
     /**
@@ -30,37 +28,32 @@ class AdoptionController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = $request->validate([
-            'user_id'=>'required',
-            'pet_id'=>'required'
-        ]);
-        $pet = Pet::find($request->pet_id);
-        $pet->status = 1;
-        $pet->save();
-        Adoption::create($datos);
-        return redirect()->route('customer.show', $request->user_id)->with('message', 'Thanks for adopting!');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Adoption $adoption)
+    public function show(string $id)
     {
-        //
+        $adoptions = Adoption::where('user_id', $id)->paginate(5);
+        return view('adoptions.index', compact('adoptions'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Adoption $adoption)
-    {
-        //
+    public function edit(String $user)
+    {   
+        $user = User::find($user);
+        return view('users.edit')->with('user', $user);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Adoption $adoption)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -68,7 +61,7 @@ class AdoptionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Adoption $adoption)
+    public function destroy(string $id)
     {
         //
     }

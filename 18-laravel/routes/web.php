@@ -9,6 +9,7 @@ use App\Models\Pet;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,6 +82,13 @@ Route::middleware('auth')->group(function () {
         
 
     });
+    Route::group(['withoutMiddleware'=> 'admin'], function(){
+        Route::get('pets/{pet}', [PetController::class, 'adopt'])->name('showpet');
+        Route::post('adopt', [AdoptionController::class, 'store'])->name('mkadopt');
+        Route::put('users/{user}', [UserController::class, 'update']);
+    });
+    Route::resource('customer', CustomerController::class);
+    Route::get('make-adoption', [PetController::class, 'freepets'])->name('freepets');
 });
 
 
