@@ -84,9 +84,29 @@
         // $(function (){
         // HACER UN READY COMO SHORTHAND
         // })
-        $(document).ready(function() {
-            
-        })
+         $(document).ready(function() {
+            // Events
+			$('button.btn-d1').click(function(event) {
+				$w = $('div.box').width();
+				$h = $('div.box').height();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d2').click(function(event) {
+				$w = $('div.box').innerWidth();
+				$h = $('div.box').innerHeight();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d3').click(function(event) {
+				$w = $('div.box').outerWidth();
+				$h = $('div.box').outerHeight();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d4').click(function(event) {
+				$w = $(window).width();
+				$h = $(window).height();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+        });
 
         
     </script>

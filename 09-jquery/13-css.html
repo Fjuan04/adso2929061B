@@ -137,8 +137,154 @@
         // HACER UN READY COMO SHORTHAND
         // })
         $(document).ready(function() {
-            
-        })
+            // Events
+			$('body').on('click', 'div.rowt:not(.mark)', function(event) {
+				event.preventDefault();
+				if( $('figure.tictactoe').hasClass('turn-cross') ) {
+					$(this).addClass('cross');
+					$('figure.tictactoe').removeClass('turn-cross')
+										  .addClass('turn-circle');
+				} else {
+					$(this).addClass('circle');
+					$('figure.tictactoe').removeClass('turn-circle')
+										  .addClass('turn-cross');
+				}
+				$(this).addClass('mark');
+				if(!checkWinner()) {
+					checkDraw();
+				}
+			});
+
+			$('.btn-reset').click(function(event) {
+				$('div.rowt').removeClass('mark')
+							.removeClass('markwin')
+							.removeClass('markdraw')
+				            .removeClass('cross')
+				            .removeClass('circle');
+				$('figure.tictactoe').removeClass('turn-circle')
+									  .addClass('turn-cross');
+				$('h4').remove();
+			});
+
+			// Functions
+			function checkWinner() {
+				// X
+				if($('div.rowt').eq(0).hasClass('cross') && 
+				   $('div.rowt').eq(1).hasClass('cross') &&
+				   $('div.rowt').eq(2).hasClass('cross')) {
+						markWinners(0,1,2,'X');
+						return true;
+				}
+				if($('div.rowt').eq(3).hasClass('cross') && 
+				   $('div.rowt').eq(4).hasClass('cross') &&
+				   $('div.rowt').eq(5).hasClass('cross')) {
+						markWinners(3,4,5,'X');
+						return true;
+				}
+				if($('div.rowt').eq(6).hasClass('cross') && 
+				   $('div.rowt').eq(7).hasClass('cross') &&
+				   $('div.rowt').eq(8).hasClass('cross')) {
+						markWinners(6,7,8,'X');
+						return true;
+				}
+				if($('div.rowt').eq(0).hasClass('circle') && 
+				   $('div.rowt').eq(1).hasClass('circle') &&
+				   $('div.rowt').eq(2).hasClass('circle')) {
+						markWinners(0,1,2,'O');
+						return true;
+				}
+				if($('div.rowt').eq(3).hasClass('circle') && 
+				   $('div.rowt').eq(4).hasClass('circle') &&
+				   $('div.rowt').eq(5).hasClass('circle')) {
+						markWinners(3,4,5,'O');
+						return true;
+				}
+				if($('div.rowt').eq(6).hasClass('circle') && 
+				   $('div.rowt').eq(7).hasClass('circle') &&
+				   $('div.rowt').eq(8).hasClass('circle')) {
+						markWinners(6,7,8,'O');
+						return true;
+				}
+				// Y
+				if($('div.rowt').eq(0).hasClass('cross') && 
+				   $('div.rowt').eq(3).hasClass('cross') &&
+				   $('div.rowt').eq(6).hasClass('cross')) {
+						markWinners(0,3,6,'X');
+						return true;
+				}
+				if($('div.rowt').eq(1).hasClass('cross') && 
+				   $('div.rowt').eq(4).hasClass('cross') &&
+				   $('div.rowt').eq(7).hasClass('cross')) {
+						markWinners(1,4,7,'X');
+						return true;
+				}
+				if($('div.rowt').eq(2).hasClass('cross') && 
+				   $('div.rowt').eq(5).hasClass('cross') &&
+				   $('div.rowt').eq(8).hasClass('cross')) {
+						markWinners(2,5,8,'X');
+						return true;
+				}
+				if($('div.rowt').eq(0).hasClass('circle') && 
+				   $('div.rowt').eq(3).hasClass('circle') &&
+				   $('div.rowt').eq(6).hasClass('circle')) {
+						markWinners(0,3,6,'O');
+						return true;
+				}
+				if($('div.rowt').eq(1).hasClass('circle') && 
+				   $('div.rowt').eq(4).hasClass('circle') &&
+				   $('div.rowt').eq(7).hasClass('circle')) {
+						markWinners(1,4,7,'O');
+						return true;
+				}
+				if($('div.rowt').eq(2).hasClass('circle') && 
+				   $('div.rowt').eq(5).hasClass('circle') &&
+				   $('div.rowt').eq(8).hasClass('circle')) {
+						markWinners(2,5,8,'O');
+						return true;
+				}
+				// Diagonals
+				if($('div.rowt').eq(0).hasClass('cross') && 
+				   $('div.rowt').eq(4).hasClass('cross') &&
+				   $('div.rowt').eq(8).hasClass('cross')) {
+						markWinners(0,4,8,'X');
+						return true;
+				}
+				if($('div.rowt').eq(2).hasClass('cross') && 
+				   $('div.rowt').eq(4).hasClass('cross') &&
+				   $('div.rowt').eq(6).hasClass('cross')) {
+						markWinners(2,4,6,'X');
+						return true;
+				}
+				if($('div.rowt').eq(0).hasClass('circle') && 
+				   $('div.rowt').eq(4).hasClass('circle') &&
+				   $('div.rowt').eq(8).hasClass('circle')) {
+						markWinners(0,4,8,'O');
+						return true;
+				}
+				if($('div.rowt').eq(2).hasClass('circle') && 
+				   $('div.rowt').eq(4).hasClass('circle') &&
+				   $('div.rowt').eq(6).hasClass('circle')) {
+						markWinners(2,4,6,'O');
+						return true;
+				}
+				return false;
+			}
+
+			function markWinners(i1,i2,i3,mk) {
+				$('div.rowt').eq(i1).addClass('markwin');
+				$('div.rowt').eq(i2).addClass('markwin');
+				$('div.rowt').eq(i3).addClass('markwin');
+				$('h3').html('<h3>WON THE: '+mk+'</h3>');
+				$('div.rowt').addClass('mark');
+			}
+
+			function checkDraw(){
+				if($('div.rowt.mark').length == 9) {
+					$('h3').html('<h3>DRAW</h3>');
+					$('div.rowt').addClass('markdraw');
+				}
+			}
+        });
 
         
     </script>

@@ -58,8 +58,14 @@
         // HACER UN READY COMO SHORTHAND
         // })
         $(document).ready(function() {
-            
-        })
+            // Events
+            $('.btn-load').click(function(event) {
+				$('.text').load('text/lorem.txt').hide().fadeIn(1200);
+			});
+			$('.btn-load-lp').click(function(event) {
+				$('.text').load('text/lorem.txt .lp').hide().fadeIn(1200);
+			});
+        });
 
         
     </script>

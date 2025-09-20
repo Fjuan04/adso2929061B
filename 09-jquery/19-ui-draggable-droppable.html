@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<link rel="stylesheet" href="css/animate.min.css">
+	<script src="js/jquery-ui.min.js"></script>
     <style>
 	figure.landscape {
 		background: url(images/bg-pokemon.png) no-repeat center;
@@ -85,8 +87,32 @@
         // HACER UN READY COMO SHORTHAND
         // })
         $(document).ready(function() {
-            
-        })
+            $('div.drag').draggable({
+				containment: '.landscape',
+				cursor: 'move',
+				snap: '.pk',
+				snapMode: 'inner',
+				revert: 'invalid'
+			});
+			$('div.bulbassaur').droppable({
+				accept: '.drag',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+			$('div.venussaur').droppable({
+				accept: '.superball',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+        });
 
         
     </script>

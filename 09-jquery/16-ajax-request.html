@@ -65,8 +65,30 @@
         // HACER UN READY COMO SHORTHAND
         // })
         $(document).ready(function() {
-            
-        })
+            // Events
+			$('.btn-load').click(function(event) {
+				// Ajax
+				$.ajax({
+					url: 'json/games.json',
+					dataType: 'json',
+				})
+				.done(function(data) {
+					$('.games').html('');
+					$.each(data, function(index, val) {
+						 $('.games').append('<li>'+val['name']+' - \
+						                   ('+val['year']+')</li>');
+					});
+					console.log("success");
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				.always(function() {
+					console.log("complete");
+				});
+				
+			});
+        });
 
         
     </script>

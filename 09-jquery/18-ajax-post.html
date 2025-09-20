@@ -59,8 +59,20 @@
         // HACER UN READY COMO SHORTHAND
         // })
         $(document).ready(function() {
-            
-        })
+            // Events
+			$('.images').change(function(event) {
+				$img = $(this).val();
+				if($img.length > 0) {
+					$('.image').removeClass('animate__flipInX');
+					// POST
+					$.post('php/images.php', {img: $img}, function(data) {
+						$('.image').addClass('animate__flipInX');
+						$('.image').css('background-image', 'url('+data+')');
+					});
+				}
+			});
+        });
+
 
         
     </script>
