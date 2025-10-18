@@ -1,0 +1,77 @@
+
+
+//Conect to sql 
+> mysql -u root -p
+
+//MYSQL VERSION 
+> mysql --version'
+
+// Show all DBS
+show databases;
+
+//Create database
+> create database {name}
+
+
+
+
+
+
+
+//Connect to database\
+> connect pokeadso;
+> use pokeadso;
+
+//Create table gyms 
+
+> CREATE TABLE gyms(
+    -> id INT AUTO_INCREMENT,
+    -> name VARCHAR(32) NOT NULL UNIQUE,
+    -> PRIMARY KEY(id));
+
+
+//Create table trainers
+
+> CREATE TABLE trainers(
+    -> id INT PRIMARY KEY AUTO_INCREMENT,
+    -> name VARCHAR(32) NOT NULL UNIQUE,
+    -> level INT NOT NULL,
+    -> gym_id INT,
+    -> FOREIGN KEY (gym_id) REFERENCES gyms(id));
+
+
+//Create table pokemons
+
+> CREATE TABLE pokemons(
+    -> id INT PRIMARY KEY AUTO_INCREMENT,
+    -> name VARCHAR(32) NOT NULL UNIQUE,
+    -> type VARCHAR(32) NOT NULL,
+    -> strength INT NOT NULL,
+    -> stamina INT NOT NULL,
+    -> speed INT NOT NULL,
+    -> accuracy INT NOT NULL,
+    -> trainer_id INT,
+    -> FOREIGN KEY (trainer_id) REFERENCES trainers(id));
+
+
+//Describe table
+> describe {name}
+
+
+//Create Backup 
+> mysqldump -u root pokeadso > /Users/APRENDIZ/Desktop/backup_pokeadso.sql
+
+
+//Drop database
+> drop database {dbname}
+
+
+//Truncate TABLE
+> truncate table {table};
+> DELETE * FROM {table};
+
+
+//Recovery database
+> create database {name};
+
+> mysqldump -u root pokeadso > /Users/APRENDIZ/Desktop/backup_pokeadso.sql

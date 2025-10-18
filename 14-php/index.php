@@ -142,7 +142,7 @@
                         Functions With Return
                     </a>
 
-                    <a href="22-forms-get.php">
+                    <a href="22-forms-get.php?method=ESTO ES UN FORMULARIO GET">
                         <span>22</span>
                         Forms GET
                     </a>
@@ -167,7 +167,7 @@
                         Server Side Include (SSI)
                     </a>
 
-                    <a href="27.file-text.php">
+                    <a href="27-file-text.php">
                         <span>27</span>
                         File Text
                     </a>
