@@ -411,6 +411,10 @@ body.typescript {
     background-attachment: fixed;
     background-size: cover;
 
+    h1 {
+        color: #fff;
+    }
+
 }
 
 body.sql {
