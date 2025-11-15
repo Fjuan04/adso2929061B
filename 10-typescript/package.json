@@ -2,6 +2,10 @@
   "name": "typescript-silksong",
   "version": "1.0.0",
   "description": "TypeScript learning project with Hollow Knight Silksong theme",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
