@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 
 </head>
