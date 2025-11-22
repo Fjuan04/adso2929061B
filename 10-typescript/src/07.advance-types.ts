@@ -19,8 +19,11 @@ let persona : Strings<Data> =  {
 }
 
 
+
 // Unions
-let phone : string | number = 'Puede ser un string'
+let union : string | number = 'Hola'
+
+
 
 const output07 = document.getElementById('output07');
 
@@ -28,6 +31,12 @@ if(output07){
     output07.innerHTML =   `<li class="chat-bubble my-2"><strong>ReMapped variables:</strong></li>
                             <li><strong>(Original type STRING): </strong> ${persona.name} </li>
                             <li><strong>(Original type NUMBER):</strong> ${persona.age} (FINAL TYPE: ${typeof(persona.age)}) </li>
-                            <li><strong>(Original type STRING):</strong> ${persona.phone} </li>`
+                            <li><strong>(Original type STRING):</strong> ${persona.phone} </li>
+                            
+                            <li class="chat-bubble my-2"><strong>Union Types:</strong></li>
+                            <li><strong>( string | number)</strong> ${union} |  Type: ${typeof(union)} </li>
 
+                            <li class="chat-bubble my-2"><strong>Intersection:</strong></li>
+                            <li><strong>( string & number)</strong> ${union} |  Type: ${typeof(union)} </li>
+                            `
 }
