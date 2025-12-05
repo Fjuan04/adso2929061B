@@ -5,8 +5,9 @@ let persona = {
     age: '21', // Sin el remapeo de tipos me da error
     phone: '3206814798'
 };
+const item = { title: "1984", author: "George Orwell", copies: 5 };
 // Unions
-let union = 'Hola';
+let union = 'Union';
 const output07 = document.getElementById('output07');
 if (output07) {
     output07.innerHTML = `<li class="chat-bubble my-2"><strong>ReMapped variables:</strong></li>
@@ -15,9 +16,14 @@ if (output07) {
                             <li><strong>(Original type STRING):</strong> ${persona.phone} </li>
                             
                             <li class="chat-bubble my-2"><strong>Union Types:</strong></li>
-                            <li><strong>( string | number)</strong> ${union} |  Type: ${typeof (union)} </li>
+                            <li><strong>( string | number)</strong> ${union} =>  Type: ${typeof (union)} </li>
 
                             <li class="chat-bubble my-2"><strong>Intersection:</strong></li>
-                            <li><strong>( string & number)</strong> ${union} |  Type: ${typeof (union)} </li>
+                            <li><strong>( string & number)</strong> ${union} =>  Type: ${typeof (item)} </li>
+
+
+                            <li><strong>Title:</strong> ${item.title}</li>
+                            <li><strong>Author:</strong> ${item.author}</li>
+                            <li><strong>Copies:</strong> ${item.copies}</li>
                             `;
 }

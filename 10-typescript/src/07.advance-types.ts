@@ -18,10 +18,15 @@ let persona : Strings<Data> =  {
     phone : '3206814798' 
 }
 
+type BookInfo = { title: string; author: string };
+type Inventory2 = { copies: number };
+type LibraryItem = BookInfo & Inventory2;
+type Condition = "New" | "Used";
 
+const item: LibraryItem = { title: "1984", author: "George Orwell", copies: 5 };
 
 // Unions
-let union : string | number = 'Hola'
+let union : string | number = 'Union'
 
 
 
@@ -34,9 +39,14 @@ if(output07){
                             <li><strong>(Original type STRING):</strong> ${persona.phone} </li>
                             
                             <li class="chat-bubble my-2"><strong>Union Types:</strong></li>
-                            <li><strong>( string | number)</strong> ${union} |  Type: ${typeof(union)} </li>
+                            <li><strong>( string | number)</strong> ${union} =>  Type: ${typeof(union)} </li>
 
                             <li class="chat-bubble my-2"><strong>Intersection:</strong></li>
-                            <li><strong>( string & number)</strong> ${union} |  Type: ${typeof(union)} </li>
+                            <li><strong>( string & number)</strong> ${union} =>  Type: ${typeof(item)} </li>
+
+
+                            <li><strong>Title:</strong> ${item.title}</li>
+                            <li><strong>Author:</strong> ${item.author}</li>
+                            <li><strong>Copies:</strong> ${item.copies}</li>
                             `
 }

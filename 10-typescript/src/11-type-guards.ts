@@ -66,10 +66,10 @@ let ps5 : Play = {
 function render(console : Play | Xbox):void {
     if(isPlay(console)){
         if(output11){
-                for(let k in console){
-                    const key = k as keyof typeof console;
-                    output11.innerHTML += `<li class="w-full border m-auto p-5 rounded-sm text-xl"><span class='badge badge-primary'>${key}</span> ${console[key]}</li>`;
-                }
+                    for(let k in console){
+                        const key = k as keyof typeof console;
+                        output11.innerHTML += `<li class="w-full border m-auto p-5 rounded-sm text-xl"><span class='badge badge-primary'>${key}</span> ${console[key]}</li>`;
+                    }
             }
         }
     }
