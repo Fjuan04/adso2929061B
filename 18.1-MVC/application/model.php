@@ -15,7 +15,7 @@ class Model extends DataBase {
 
     public function show($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM pokemons WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT p.*, t.name as tname FROM pokemons as p, trainers as t WHERE p.id = ? AND t.id = p.trainer_id");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
