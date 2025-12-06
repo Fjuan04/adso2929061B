@@ -4,6 +4,7 @@
 $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/',$uri);
 $id = $parts[2] ?? 1;
+$method = $_SERVER['REQUEST_METHOD'];
 
 switch ($uri){
     case '/':
