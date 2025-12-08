@@ -11,9 +11,16 @@ class PokemonController extends Controller {
         
     }
     
-    public function show($id){
+    public function show($id)
+    {
         $pokemon = $this->model->show($id);
         $this->load->view('show.php', $pokemon);
+    }
+
+    public function add()
+    {
+        $trainers = $this->model->listTrainers();
+        $this->load->view('add.php', $trainers);
     }
 
 }

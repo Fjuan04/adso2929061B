@@ -5,19 +5,21 @@ $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/',$uri);
 $id = $parts[2] ?? 1;
 $method = $_SERVER['REQUEST_METHOD'];
+require_once 'application/mvc.php';
 
 switch ($uri){
-    case '/':
-        require_once 'application/mvc.php';
+    case str_starts_with($uri, '/pokemons/create'):
+        $controller = new PokemonController;
+        $controller->add();
         break;
-    
-    case str_starts_with($uri, "/pokemons/$id"):
-        require 'application/database.php';
-        require 'application/model.php';
-        require 'application/load.php';
-        require 'application/controllers/controller.php';
-        require 'application/controllers/PokemonController.php';
+
+    case filter_var($id, FILTER_VALIDATE_INT) !== false && str_starts_with($uri, "/pokemons/$id"):
 
         $controller = new PokemonController;
         $controller->show($id);
+        break;
+
+    default:
+        new Controller;
+    
 }
