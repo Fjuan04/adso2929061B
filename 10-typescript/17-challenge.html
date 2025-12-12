@@ -25,11 +25,53 @@
                 Build a complete project using TypeScript features.
             </p>
         </header>
-        <section>
+        <section class="max-w-2xl mx-auto p-6">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title text-2xl mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H40a8,8,0,0,0-8,8V208a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V160h48v16a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V56A8,8,0,0,0,216,48ZM88,208H48V128H88Zm0-96H48V64H88Zm64,32H104V64h48Zm56,32H168V128h40Zm0-64H168V64h40Z"></path></svg> Lista de Tareas</h2>
+                    
+                    <form id="todo-form" class="mb-6">
+                        <div class="flex gap-2">
+                            <input 
+                                type="text" 
+                                id="todo-input" 
+                                placeholder="Escribe una nueva tarea..." 
+                                class="input input-bordered flex-1"
+                                required
+                            />
+                            <button type="submit" class="btn btn-primary">
+                                Agregar
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="stats stats-horizontal shadow mb-4">
+                        <div class="stat">
+                            <div class="stat-title">Total</div>
+                            <div class="stat-value text-primary" id="todo-count">0</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Completadas</div>
+                            <div class="stat-value text-success" id="completed-count">0</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <ul id="todo-list" class="space-y-2 min-h-[200px]">
+                        <li class="text-center text-gray-500 py-4">No hay tareas. ¡Agrega una nueva!</li>
+                    </ul>
+
+                    <div class="card-actions justify-end mt-4">
+                        <button id="clear-completed" class="btn btn-outline btn-error">
+                            Limpiar Completadas
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     
-    
+    <script src="dist/17-challenge.js"></script>
 </body>
 </html>
             

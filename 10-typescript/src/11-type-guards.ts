@@ -48,6 +48,7 @@ interface Play {
 }
 
 function isPlay(c : Xbox | Play): c is Play {
+    //type assertion
     return (c as Play).suscription == 'Ps Plus';
 } 
 
