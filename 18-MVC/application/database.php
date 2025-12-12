@@ -9,7 +9,7 @@ abstract class DataBase {
                 $host = 'localhost';
                 $dbnm = 'pokeadso';
                 $user = 'root';
-                $pass = 'root';
+                $pass = '';
 
                 self::$conn = new PDO("mysql:host=$host;dbname=$dbnm;charset=utf8mb4", $user, $pass);
             } catch (PDOException $e){

@@ -97,7 +97,7 @@ $types = [
         <div>
           <label class="label"><span class="label-text text-lg">Image URL</span></label>
           <input 
-            type="url" 
+            type="text" 
             name="image_url"
             placeholder="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
             class="input input-bordered w-full"
